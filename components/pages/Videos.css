@@ -1,0 +1,269 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.left-section,
+.right-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-section {
+  width: 62%;
+}
+
+.right-section {
+  width: 33%;
+}
+
+.video {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+  background-color: black;
+}
+
+.video iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.description {
+  margin-top: 15px;
+}
+
+.read-more {
+  margin-top: 10px;
+  color: blue;
+  cursor: pointer;
+}
+
+.thumbnail {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.thumbnail img {
+  width: 200px;
+  height: 118px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.thumbnail-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.thumbnail-description h4 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.thumbnail-description p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.youtube-channel-info {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.youtube-profile-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.youtube-channel-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.youtube-channel-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.youtube-subscribe-button {
+  padding: 5px 10px;
+  background-color: #4ba889;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.corner-wrapper {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+  transform: translateZ(0px);
+  border: 3px solid #eee;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+  }
+
+  .right-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .thumbnail {
+    width: calc(33.33% - 10px);
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .thumbnail img {
+    width: 100%;
+    height: auto;
+  }
+
+  .thumbnail-description {
+    margin-top: 10px;
+  }
+
+  .thumbnail-description h4 {
+    font-size: 14px;
+  }
+
+  .thumbnail-description p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+  }
+
+  .right-section {
+    margin-top: 20px;
+  }
+
+  .thumbnail {
+    flex-direction: column;
+  }
+
+  .thumbnail img {
+    width: 100%;
+    height: auto;
+  }
+
+  .thumbnail-description {
+    margin-top: 8px;
+  }
+}
+
+.about-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 350px;
+  width: 100%;
+  color: #fff;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.videos-title {
+  text-align: center;
+  margin: 20px auto;
+  font-size: 2rem;
+  color: #4ba889;
+}
+
+.video-info-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.video-info-section h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.video-info-intro {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.video-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.video-info-card {
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.about-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0; 
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/about-banner2.png");
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(0.9);
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .about-banner {
+    height: 180px;
+  }
+
+  .about-banner::before {
+    width: 100%;
+    background-size: cover;
+  }
+}
+
+.image-conatiner {
+  margin-bottom: 30px;
+}
+
+
+

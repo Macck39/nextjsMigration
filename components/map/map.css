@@ -1,0 +1,9 @@
+.sec2map {
+  background-image: url("/assets/Map.png");
+  background-size: cover; /* Ensures the image covers the entire div */
+  background-position: center; /* Centers the image */
+  overflow: hidden;
+  height: 550px;
+  width: 100%;
+}
+

@@ -1,0 +1,45 @@
+.vertical-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+h4 {
+  color: #4ba899;
+  margin: 0;
+}
+
+.appointment-modal-img {
+  width: 75px;
+}
+
+.appointment-modal .ant-modal-body {
+  text-align: center;
+}
+
+.appointment-btn,
+.callback-btn {
+  background: #4ba899;
+  color: #fff;
+  border-radius: 15px;
+}
+
+:where(.css-dev-only-do-not-override-m4timi).ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  /* color: #4096ff; */
+  /* border-color: #4096ff; */
+  /* background: #ffffff; */
+}
+
+@media screen and (max-width: 900px) {
+  .vertical-buttons {
+    flex-direction: column;
+  }
+
+  .ant-btn {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,172 @@
+#footer {
+  width: 100%;
+  background: #1f4438;
+  color: #dbdbdb;
+  padding: 20px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content and copyright are spaced vertically */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.footer-column {
+  flex: 1;
+  margin: 0 10px;
+  min-width: 200px;
+  text-align: center;
+}
+
+.footer-column .logo {
+  margin-bottom: 10px;
+}
+
+.footer-column .logo img {
+  width: 50px;
+}
+
+.footer-column p,
+.footer-column a {
+  color: #dbdbdb;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-column a {
+  text-decoration: none;
+  color: #dea963;
+}
+
+.contact-number {
+  display: inline;
+}
+
+.social-icons-footer {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.social-icons-footer svg {
+  color: #dbdbdb;
+  font-size: 2em;
+  border: 2px solid #dbdbdb; /* Add border to the icons */
+  border-radius: 50%; /* Apply border-radius to make the icons circular */
+  padding: 5px; /* Add padding inside the border */
+}
+
+.copyrights {
+  position: relative;
+  top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-column {
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-column p,
+  .footer-column a {
+    font-size: 14px;
+  }
+
+  .social-icons-footer svg {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 480px) {
+  .copyrights {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .copyright-icon {
+    display: none;
+  }
+
+  .footer-column p,
+  .footer-column a {
+    font-size: 12px;
+  }
+
+  .social-icons-footer svg {
+    font-size: 2em;
+  }
+}
+
+/* Adjustments for smaller tablets and large phones */
+@media (min-width: 577px) and (max-width: 768px) {
+  .footer-column {
+    margin: 0 5px;
+    min-width: 150px;
+  }
+
+  .footer-column p,
+  .footer-column a {
+    font-size: 13px;
+  }
+
+  .social-icons-footer svg {
+    font-size: 2em;
+  }
+}
+
+/* Ensure proper spacing for larger screens */
+@media (min-width: 769px) {
+  .footer-column {
+    margin: 0 10px;
+    min-width: 200px;
+  }
+}
+.float {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 25px;
+  right: 20px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  transition: transform 0.5s;
+}
+.float-call {
+  bottom: 85px;
+}
+
+.float:hover {
+  transform: scale(1.2);
+  color: rgb(7, 111, 15);
+}
+
+.my-float {
+  margin-top: 10px;
+}
+.float-dialer {
+  margin-top: 11px;
+}
+
