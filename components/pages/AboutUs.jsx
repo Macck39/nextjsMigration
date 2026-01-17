@@ -17,36 +17,31 @@ const AboutUs = () => {
       name: "Dr. Anmol kumar",
       position: "Founder & CEO",
       bio: "EX. RMO MKW hospital, MEDENTA, MAX- Healthcare,Maharaja Agersen Hospital , AIIMS Delhi Critical care experts unit.  ",
-      // image: "https://placehold.co/200x200?text=Dr.+Kumar"
+      image: "/assets/DrAnmol.jpg"
     },
     {
       name: "Dr. Pradeep Mishra",
       position: "Co-founder",
       bio: "(G.P) Apollo Healthcare ICU Experts Director - Research& Academic",
-      // image: "https://placehold.co/200x200?text=Priya"
+      image: "/assets/DrPradeep.jpg"
     },
     {
       name: "Mr. Vivek Rawat",
       position: "Suppliers Head",
       bio: "Suppliers Head Delhi NCR - Ragini Nursing Bureau",
-      // image: "https://placehold.co/200x200?text=Amit"
-    },
-    {
-      name: "Miss Rakhi",
-      position: "Critical Care Experts Head",
-      bio: "Nursing officer B.sc  NICU CCU ICU PICU, Critical care experts Delhi & NCR Head",
-      // image: "https://placehold.co/200x200?text=Dr.+Gupta"
+      image: "/assets/Vivek.jpg"
     },
     {
       name: "Mr. Rajesh (HR) ",
       position: "Resources Management",
-      bio: "Resources Management Guide. ( Accounts).  ",
+      bio: "Resources Management Guide. ( Accounts).",
+      image: "/assets/Rajesh.jpg"
     },
     {
-      name: "Mrs. Babita",
+      name: "Mrs. Sejal Saini",
       position: "Life & End Care Expert",
       bio: "Life & End care experts ICU Unit & Medicals Equipment Delhi Hospital (DNC ).",
-      // image: "https://placehold.co/200x200?text=Neha"
+      image: "/assets/SejalSaini.jpg"
     }
   ]
 
