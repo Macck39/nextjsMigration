@@ -35,71 +35,40 @@
   background-color: #3498db;
 }
 
-/* Accordion Styles */
-.accordion-item {
-  margin-bottom: 1rem;
-  border: 1px solid #e1e1e1;
-  border-radius: 6px;
-  overflow: hidden;
+.policy-block {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e1e1e1;
 }
 
-.accordion-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background-color: #f8f9fa;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.accordion-header:hover {
-  background-color: #e9ecef;
-}
-
-.accordion-header.active {
-  background-color: #3498db;
-  color: white;
-}
-
-.accordion-header h2 {
-  margin: 0;
-  font-size: 1.2rem;
+.policy-block-title {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
   font-weight: 600;
+  text-align: left;
+  /* display: flex;
+  justify-content: start */
 }
 
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: 0 1.5rem;
-}
-
-.accordion-content.active {
-  max-height: 1000px;
-  padding: 1.5rem;
-  border-top: 1px solid #e1e1e1;
-}
-
-.accordion-content p {
-  margin-top: 0;
-  line-height: 1.6;
+.policy-block p {
+  margin: 0.3rem 0;
+  line-height: 1.7;
   color: #555;
 }
 
-.accordion-content ul {
+.policy-block ul {
   padding-left: 1.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0 0.5rem;
 }
 
-.accordion-content li {
+.policy-block li {
   margin-bottom: 0.8rem;
-  line-height: 1.6;
+  line-height: 1.7;
   color: #555;
 }
 
-.accordion-content strong {
+.policy-block strong {
   font-weight: 600;
   color: #2c3e50;
 }
@@ -118,13 +87,9 @@
   .policy-main-title {
     font-size: 1.8rem;
   }
-  
-  .accordion-header h2 {
+
+  .policy-block-title {
     font-size: 1.1rem;
-  }
-  
-  .accordion-content.active {
-    padding: 1rem;
   }
 }
 
@@ -141,19 +106,9 @@
   .policy-main-title {
     font-size: 1.5rem;
   }
-  
-  .accordion-header {
-    padding: 0.8rem 1rem;
-  }
-  
-  .accordion-header h2 {
+
+  .policy-block-title {
     font-size: 1rem;
   }
-  
-  .accordion-content.active {
-    padding: 0.8rem;
-  }
 }
-
-
 
