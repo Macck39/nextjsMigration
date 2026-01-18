@@ -329,8 +329,9 @@ const LandingPage = () => {
         <div className="left-section">
           <div className="video corner-wrapper">
             <iframe
-              width="720"
-              height="315"
+              className="video-embed"
+              width="100%"
+              height="100%"
               src={currentVideo.src}
               title={`YouTube video player - ${currentVideo.title}`}
               frameBorder="0"
@@ -370,10 +371,7 @@ const LandingPage = () => {
           ))}
         </div>
       </div>
-          <div
-            className="d-flex justify-content-end"
-            style={{ marginRight: "300px" }}
-          >
+          <div className="link-container">
             <Link href="/videos" className="d-flex align-items-center">
               <span>Show More </span>
               <span className="ml-1">

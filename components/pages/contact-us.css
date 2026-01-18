@@ -42,16 +42,20 @@
   padding: 20px;
   border-top: 1px solid #ddd;
   background-color: #f8f8f8;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 16px;
 }
 
 .contact-column {
   flex: 1;
-  border: 1px solid #4ab899;
-  border-radius: 5px;
+  border: 1px solid #e6f5f0;
+  border-radius: 12px;
   padding: 20px;
   margin: 10px;
   background-color: #fff;
   text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .contact-column p,
@@ -81,18 +85,27 @@
 .contact-section {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding: 30px 20px;
+  background: #f5faf8;
 }
 
 .contact-map-form-container {
   display: flex;
   width: 100%;
   max-width: 1200px;
+  gap: 20px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 .map-container {
   flex: 0 1 60%;
   padding-right: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e6f5f0;
 }
 
 .contact-enquiry-container {
@@ -110,9 +123,12 @@
 .contact-form-fields {
   display: flex;
   flex-direction: column;
-  background: #4ab899;
+  background: #fff;
   padding: 15px;
-  margin: 10px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid #e6f5f0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .contact-input-wrapper {
@@ -133,8 +149,9 @@
 .contact-input-wrapper textarea {
   width: 100%;
   padding: 10px 10px 10px 35px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  background: #f9fffd;
 }
 
 .contact-input-wrapper textarea {
@@ -145,7 +162,7 @@
 .submit-button {
   margin-top: 10px;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #4ba889;
   color: white;
   border: none;
   border-radius: 30px;
@@ -154,7 +171,7 @@
 }
 
 .submit-button:hover {
-  background-color: #0056b3;
+  background-color: #3b8f73;
 }
 
 @media screen and (max-width: 900px) {
@@ -176,6 +193,14 @@
   .contact-column {
     width: 100%;
     margin: 10px 0;
+  }
+
+  .contact-map-form-container {
+    padding: 16px;
+  }
+
+  .submit-button {
+    width: 100%;
   }
 }
 

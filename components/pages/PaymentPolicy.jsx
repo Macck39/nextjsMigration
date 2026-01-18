@@ -11,161 +11,122 @@ const PaymentPolicy = () => {
         <div className="payment-block">
           <h2 className="payment-block-title">1. Applicable Services</h2>
           <p>
-            This Payment Policy applies to all services provided by Ragini Nursing Bureau, including
-            but not limited to:
+            This Payment Policy applies to all services provided by Ragini Nursing Bureau, including 
+            Attendant, Nursing Care, Critical Care, Infant Care, Medical Equipment, and Medicine 
+            Delivery System.
           </p>
-          <ul>
-            <li>Nursing Care Services</li>
-            <li>Elderly Care Services</li>
-            <li>Physiotherapy Services</li>
-            <li>Medical Equipment Rental</li>
-            <li>Doctor Consultation Services</li>
-            <li>Laboratory Services</li>
-            <li>Ambulance Services</li>
-            <li>Any other healthcare services offered by Ragini Nursing Bureau</li>
-          </ul>
+          <p>
+            <strong>Note:</strong> Payment is required before service delivery, except for Laboratory 
+            Services and Short-term Intervention Services.
+          </p>
         </div>
 
         <div className="payment-block">
-          <h2 className="payment-block-title">2. Payment Facilities</h2>
+          <h2 className="payment-block-title">2. Direct Payment to Ragini Nursing Bureau</h2>
+          <p>
+            You are not required to pay the caregiver directly in cash or cheque unless specifically 
+            instructed by the Ragini Nursing Bureau Customer Service team. All payments should be 
+            made directly to Ragini Nursing Bureau through online transfer or by requesting a 
+            cash/cheque pickup.
+          </p>
+        </div>
+
+        <div className="payment-block">
+          <h2 className="payment-block-title">3. Payment Mode</h2>
           <p>Ragini Nursing Bureau accepts the following payment methods:</p>
           <ul>
-            <li>
-              <strong>Cash Payment:</strong> Direct cash payment to our authorized representatives.
-            </li>
-            <li>
-              <strong>Online Banking:</strong> Bank transfers to our designated account.
-            </li>
-            <li>
-              <strong>UPI Payments:</strong> Through popular UPI apps like Google Pay, PhonePe,
-              Paytm, etc.
-            </li>
-            <li>
-              <strong>Credit/Debit Cards:</strong> Major credit and debit cards are accepted.
-            </li>
-            <li>
-              <strong>Digital Wallets:</strong> Selected digital wallet payments are accepted.
-            </li>
+            <li><strong>Online UPI</strong> (Google Pay, PhonePe, Paytm, etc.)</li>
+            <li><strong>NEFT</strong> (Bank Transfer)</li>
+            <li><strong>Cheque</strong></li>
+            <li><strong>Cash</strong></li>
           </ul>
           <p>
-            All payments are subject to applicable taxes and surcharges as per government
-            regulations. A receipt will be provided for all payments made.
+            Ragini Nursing Bureau promotes and prefers online payment in advance, which enables us 
+            to pay our caregivers on time without hassle.
+          </p>
+          <p>
+            <strong>Important:</strong> For Cash/Cheque pickup, the amount should be more than 
+            Rs. 1,500/-. Any amount below that should be paid online.
           </p>
         </div>
 
         <div className="payment-block">
-          <h2 className="payment-block-title">3. General Terms and Conditions on Payments</h2>
-          <ul>
-            <li>All payments must be made in Indian Rupees (INR).</li>
-            <li>
-              For ongoing services, payment must be made in advance as per the agreed payment
-              schedule.
-            </li>
-            <li>
-              For one-time services, full payment is required before or at the time of service
-              delivery.
-            </li>
-            <li>
-              For equipment rental, a security deposit may be required in addition to the rental
-              fee.
-            </li>
-            <li>Late payment may result in service interruption or additional charges.</li>
-            <li>
-              Any bank charges or transaction fees associated with the payment will be borne by the
-              client.
-            </li>
-            <li>
-              Prices for services are subject to change without prior notice. However, once a
-              service is booked and paid for, the price will remain fixed for the duration of that
-              service.
-            </li>
-            <li>All applicable taxes will be charged as per government regulations.</li>
-          </ul>
-        </div>
-
-        <div className="payment-block">
-          <h2 className="payment-block-title">4. Refund Policy</h2>
+          <h2 className="payment-block-title">4. Taxes</h2>
           <p>
-            Our refund policy is designed to be fair and transparent. Please note the following
-            conditions:
+            A <strong>5% tax</strong> will apply to all services provided by Ragini Nursing Bureau. 
+            This is in accordance with prevailing tax regulations.
           </p>
-          <ul>
-            <li>
-              Refunds will be processed only if the service has not been rendered or if there is a
-              legitimate reason for dissatisfaction with the service provided.
-            </li>
-            <li>
-              Refund requests must be submitted within 7 days of the service date or payment date,
-              whichever is earlier.
-            </li>
-            <li>
-              Refunds for unused portions of ongoing services will be calculated on a pro-rata basis
-              after deducting administrative charges.
-            </li>
-            <li>
-              Refunds for equipment rental will be processed after the equipment is returned and
-              inspected for any damages.
-            </li>
-            <li>
-              Refund processing may take 7-14 business days depending on the payment method used.
-            </li>
-            <li>
-              Refunds will be made through the same payment method used for the original transaction
-              whenever possible.
-            </li>
-            <li>No refunds will be provided for services that have been fully rendered and completed.</li>
-          </ul>
         </div>
 
         <div className="payment-block">
-          <h2 className="payment-block-title">5. Cancellation Policy</h2>
-          <p>Our cancellation policy is as follows:</p>
+          <h2 className="payment-block-title">5. Payment Facilities</h2>
+          
+          <div className="payment-sub-block">
+            <h3 className="payment-sub-title">Weekly Payment</h3>
+            <p>
+              Every 7 days, a weekly invoice will be generated and payment for the same needs to be 
+              paid in advance.
+            </p>
+            <p>
+              <strong>Penalty:</strong> Non-advance payment will add a penalty of Rs. 100/- on a 
+              daily basis.
+            </p>
+          </div>
+
+          <div className="payment-sub-block">
+            <h3 className="payment-sub-title">Monthly Payment</h3>
+            <p>
+              This is an advance payment service. You will need to pay 30 days payment in advance.
+            </p>
+            <p>
+              <strong>Note:</strong> If advance payment is not made, the default Weekly payment 
+              cycle will be applied.
+            </p>
+          </div>
+
+          <div className="payment-sub-block">
+            <h3 className="payment-sub-title">Festival Surcharge</h3>
+            <p>
+              Surcharge will be applicable during the festival season as an add-on incentive for 
+              the Caregiver to work and support the patient.
+            </p>
+            <p>
+              <strong>Surcharge Range:</strong> Rs. 100 to Rs. 300 per 12-hour visit, depending 
+              on the festival.
+            </p>
+            <p>
+              <strong>Notice:</strong> Surcharge fee will be informed two days prior to any festival.
+            </p>
+          </div>
+        </div>
+
+        <div className="payment-block">
+          <h2 className="payment-block-title">6. General Terms and Conditions on Payments</h2>
           <ul>
             <li>
-              <strong>For Regular Services:</strong>
-              <ul>
-                <li>Cancellation more than 24 hours before the scheduled service: Full refund</li>
-                <li>Cancellation between 12-24 hours before the scheduled service: 75% refund</li>
-                <li>Cancellation between 6-12 hours before the scheduled service: 50% refund</li>
-                <li>Cancellation less than 6 hours before the scheduled service: No refund</li>
-              </ul>
+              Ragini Nursing Bureau will not be accountable for any amount paid directly to the 
+              Caregiver (CG). The service fee must be paid to Ragini Nursing Bureau, and under no 
+              circumstances will the amount paid to the CG be adjusted with the service fee.
             </li>
             <li>
-              <strong>For Emergency Services:</strong>
-              <ul>
-                <li>
-                  Due to the nature of emergency services, cancellation charges may be waived at the
-                  discretion of Ragini Nursing Bureau.
-                </li>
-              </ul>
+              If payment is not made within 30 days after the overdue date, the case will be 
+              legally filed and the dispute will be resolved in Rohini District Court.
             </li>
             <li>
-              <strong>For Long-term Care Services:</strong>
-              <ul>
-                <li>Cancellation requires a minimum 7-day notice period.</li>
-                <li>
-                  Cancellation with less than 7 days&apos; notice will result in charges for the
-                  notice period.
-                </li>
-              </ul>
-            </li>
-            <li>
-              <strong>For Equipment Rental:</strong>
-              <ul>
-                <li>
-                  Cancellation before equipment delivery: Full refund minus administrative charges
-                </li>
-                <li>
-                  Cancellation after equipment delivery: Charges for the minimum rental period plus
-                  delivery and pickup charges
-                </li>
-              </ul>
+              The invoiced amount only includes payment charges for those visits where the 
+              attendance of the caregiver has been verified. The mentioned amount is not for all 
+              visits till date and should not be considered as the final amount. Charges for 
+              unverified visits will be added after getting confirmation from both the customer 
+              and the caregiver.
             </li>
           </ul>
-          <p>
-            Ragini Nursing Bureau reserves the right to modify or update this Payment Policy at any
-            time without prior notice. The updated policy will be effective immediately upon posting
-            on our website.
+        </div>
+
+        <div className="payment-block payment-block-last">
+          <p className="payment-note">
+            Ragini Nursing Bureau reserves the right to modify or update this Payment Policy at 
+            any time without prior notice. The updated policy will be effective immediately upon 
+            posting on our website.
           </p>
         </div>
       </section>
@@ -174,6 +135,3 @@ const PaymentPolicy = () => {
 }
 
 export default PaymentPolicy
-
-
-

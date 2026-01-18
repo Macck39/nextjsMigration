@@ -158,13 +158,9 @@ const PrivacyPolicy = () => {
             practices, please contact us at:
           </p>
           <p>
-            Ragini Nursing Bureau
+            <b>Ragini Nursing Bureau</b>
             <br />
-            H-29, Anandvas, DDA Market
-            <br />
-            Block H, Shakurpur, Samrat Cinema,
-            <br />
-            Shakurpur colony, Delhi 110034
+            Head office H-29, Anandvas, DDA Market <br/> Pitampura. Delhi 110034              Shakurpur colony, Delhi 110034
             <br />
             <strong>Email:</strong> info@ragininursingbureau.com
             <br />

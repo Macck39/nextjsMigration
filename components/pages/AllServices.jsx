@@ -660,22 +660,6 @@ const AllServices = () => {
             </div>
           </div>
         </section>
-
-        {/* Dementia Care Tips Section */}
-        <section className="dementia-tips-section" id="dementia-care">
-          <div className="dementia-tips-container">
-            <h2 className="section-title">{dementiaTips.title}</h2>
-            <div className="tips-grid">
-              {dementiaTips.tips.map((tip, index) => (
-                <div key={index} className="tip-card">
-                  <h3>{tip.title}</h3>
-                  <p>{tip.content}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Benefits Section */}
         <section className="benefits-section" id="benefits">
           <div className="benefits-container">
