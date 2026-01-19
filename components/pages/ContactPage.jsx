@@ -9,6 +9,7 @@ import MapComponent from "../map/MapComponent"
 import cards from "../../util/serviceList"
 import { useNotification } from "../NotificationContext"
 import { createEnquiry } from "../../util/api"
+import { socialLinks, quickLinks, contactInfo } from "../../util/commonData"
 
 const ContactPage = () => {
   const servicesOptions = cards.map((item) => item.title)
@@ -51,68 +52,17 @@ const ContactPage = () => {
     }
   }
 
-  // Social media links
-  const socialLinks = [
-    {
-      name: "Facebook",
-      url: "https://www.facebook.com/share/1BdL9fmENZ/",
-      icon: <FaFacebook />,
-      color: "#1877f2"
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/ragininursingbureau",
-      icon: <FaInstagram />,
-      color: "#e4405f"
-    },
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/posts/ragini-nursing-bureau_elderycaresefty-activity-7319251713406705664-CkB1",
-      icon: <FaLinkedin />,
-      color: "#0077b5"
-    },
-    {
-      name: "YouTube",
-      url: "https://www.youtube.com/@RAGININURSINGBUREAU1",
-      icon: <FaYoutube />,
-      color: "#ff0000"
-    },
-    {
-      name: "Pinterest",
-      url: "https://pin.it/1YR2F8ESB",
-      icon: <FaPinterest />,
-      color: "#e60023"
+  // Map social media names to their icon components
+  const getSocialIcon = (name) => {
+    const icons = {
+      "Facebook": <FaFacebook />,
+      "Instagram": <FaInstagram />,
+      "LinkedIn": <FaLinkedin />,
+      "YouTube": <FaYoutube />,
+      "Pinterest": <FaPinterest />
     }
-  ]
-
-  // Quick links
-  const quickLinks = [
-    {
-      name: "Our Website",
-      url: "https://ragininursingbureau.com/",
-      icon: "🌐"
-    },
-    {
-      name: "Google Maps",
-      url: "https://g.co/kgs/si1G8hY",
-      icon: "📍"
-    },
-    {
-      name: "JustDial",
-      url: "https://www.justdial.com/Delhi/Ragini-Nursing-Bureau-Near-Shakurpur-Samrat-Cinema-Shakurpur-Colony/011PXX11-XX11-211112125145-V6D9_BZDET",
-      icon: "📱"
-    },
-    {
-      name: "LikeMe",
-      url: "https://www.likeme.co.in/delhi/ragini-nursing-bureau/head-office-h-29-shakurpur-near-samrat-cinema-pitam-pura-delhi/000115208",
-      icon: "👍"
-    },
-    {
-      name: "BharatiBiz",
-      url: "https://www.bharatibiz.com/en/ragini-nursing-bureau-male-female-076782-67005",
-      icon: "🏢"
-    }
-  ]
+    return icons[name] || null
+  }
   
   return (
     <>
@@ -143,10 +93,10 @@ const ContactPage = () => {
             </div>
             <h3 className="contact-column-title">Our Office Address</h3>
             <p className="contact-column-text">
-              H-29, Anandvas, DDA <br />
-              Market Block, H, Shakurpur <br />
-              Colony, Shakurpur, Samrat Cinema, <br />
-              Shakurpur Colony, Delhi 110034
+              {contactInfo.address.line1} <br />
+              {contactInfo.address.line2} <br />
+              {contactInfo.address.line3} <br />
+              {contactInfo.address.line4}
             </p>
           </div>
 
@@ -157,22 +107,22 @@ const ContactPage = () => {
             <h3 className="contact-column-title">Contact Us</h3>
             <div className="contact-links">
               <a
-                href="mailto:info@ragininursingbureau.com"
+                href={`mailto:${contactInfo.email}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-link-item"
               >
                 <FaEnvelope className="inline-icon" />
-                info@ragininursingbureau.com
+                {contactInfo.email}
               </a>
               <div className="contact-number">
-                <a href="tel:+91-7859989007" className="contact-link-item">
+                <a href={`tel:${contactInfo.phone.primary}`} className="contact-link-item">
                   <FaPhone className="inline-icon" />
-                  +91-7859989007
+                  {contactInfo.phone.primary}
                 </a>
-                <a href="tel:+91-7678267005" className="contact-link-item">
+                <a href={`tel:${contactInfo.phone.whatsapp}`} className="contact-link-item">
                   <FaWhatsapp className="inline-icon whatsapp-color" />
-                  +91-7678267005
+                  {contactInfo.phone.whatsapp}
                 </a>
               </div>
             </div>
@@ -184,9 +134,8 @@ const ContactPage = () => {
             </div>
             <h3 className="contact-column-title">Opening Hours</h3>
             <p className="contact-column-text">
-              <strong>Available 24/7</strong><br />
-              Mon - Sun : Open All Day<br />
-              24 Hours Service
+              <strong>{contactInfo.hours.availability}</strong><br />
+              {contactInfo.hours.description}
             </p>
           </div>
         </div>
@@ -208,7 +157,7 @@ const ContactPage = () => {
                 style={{ '--social-color': social.color }}
               >
                 <div className="social-icon-wrapper">
-                  {social.icon}
+                  {getSocialIcon(social.name)}
                 </div>
                 <span className="social-name">{social.name}</span>
               </a>
@@ -243,7 +192,10 @@ const ContactPage = () => {
       <section className="contact-section">
         <div className="contact-map-form-container">
           <div className="map-container">
-            <h3 className="map-heading"><b>Head office:</b> <br /> H, 29 Shakurpur, near samrat cinema, Saint Nagar Delhi, Rani Bagh, Pitampura, Delhi, 110034</h3>
+            <h3 className="map-heading">
+              <b>Head office:</b> <br /> 
+              {contactInfo.address.line1}, {contactInfo.address.line2}, {contactInfo.address.line3}, {contactInfo.address.line4}
+            </h3>
             <MapComponent />
           </div>
           <div className="contact-enquiry-container">

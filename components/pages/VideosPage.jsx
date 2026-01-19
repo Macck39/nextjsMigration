@@ -3,6 +3,7 @@
 import { useState } from "react"
 import "./Videos.css"
 import { FaUserNurse,FaHospital,FaBrain,FaLungs,FaHome,FaPills,FaPlus,FaMinus,FaCheckCircle } from "react-icons/fa"
+import { detailedServices, videoPageVideos, dementiaTips } from "../../util/commonData"
 
 
 const VideosPage = () => {
@@ -16,212 +17,12 @@ const VideosPage = () => {
   const toggleAccordion = (section) => {
     setActiveAccordion(activeAccordion === section ? null : section)
   }
-// Detailed Services Data
-const detailedServices = {
-  careGiver: {
-    title: "Care Giver Trained Care Attendants",
-    subtitle: "@Home For 12/24 Hours Delhi NCR",
-    icon: FaUserNurse,
-    services: [
-      "Caregivers In Activities Of Daily Living",
-      "Sponge Bath Hygiene",
-      "Wheelchair Mobilization",
-      "Bedridden Patient Care",
-      "Medication Reminders",
-      "Meal Preparation & Feeding Assistance",
-      "Personal Hygiene Assistance",
-      "Dressing & Grooming Support",
-      "Companionship & Emotional Support",
-      "Light Housekeeping",
-      "Vital Signs Monitoring",
-      "Emergency Response Coordination"
-    ]
-  },
-  icuNurse: {
-    title: "Professional Qualified ICU Nurse Care",
-    subtitle: "@Home 12/24 Hours Near you services",
-    icon: FaHospital,
-    services: [
-      "Vital Sign Check & Monitoring",
-      "IM Injections/IV Infusion/Injections & Patient Monitoring",
-      "Tracheostomy Care & Management",
-      "Ventilator Management",
-      "Central Line Care",
-      "Wound Dressing & Care",
-      "Nasogastric Tube Management",
-      "Catheter Care",
-      "Oxygen Therapy Management",
-      "Post-Operative Care",
-      "Critical Care Monitoring"
-    ]
-  },
-  neuroCare: {
-    title: "Best Neuro Care Services",
-    subtitle: "Specialized Neurological Care at Home",
-    icon: FaBrain,
-    benefits: [
-      "Specialized care for stroke patients",
-      "Parkinson's disease management",
-      "Alzheimer's and dementia care",
-      "Seizure management and monitoring",
-      "Cognitive therapy support",
-      "Mobility assistance for neurological conditions",
-      "Speech and swallowing therapy coordination"
-    ],
-    description: "Our neuro care services provide specialized support for patients with neurological conditions, ensuring comprehensive care in the comfort of your home."
-  },
-  cancerCare: {
-    title: "Cancer Caring Services Oncology",
-    subtitle: "Comprehensive Cancer Care Support",
-    icon: FaLungs,
-    services: [
-      "Chemotherapy support and monitoring",
-      "Pain management",
-      "Nutritional counseling and diet management",
-      "Wound care for surgical sites",
-      "Emotional and psychological support",
-      "Medication management",
-      "Symptom monitoring and reporting",
-      "Coordination with oncologists"
-    ],
-    dietInfo: "Our cancer care includes specialized diet management focusing on maintaining strength, managing side effects, and supporting recovery through proper nutrition."
-  },
-  icuSetup: {
-    title: "ICU Setup @Home",
-    subtitle: "Complete ICU Environment at Your Home",
-    icon: FaHome,
-    components: [
-      "Hospital-grade beds with adjustable positions",
-      "Ventilator systems",
-      "Oxygen concentrators",
-      "Cardiac monitors",
-      "IV pumps and infusion systems",
-      "Suction machines",
-      "Emergency equipment and supplies",
-      "Professional installation and training"
-    ],
-    benefits: [
-      "Cost-effective alternative to hospital ICU",
-      "Familiar and comfortable environment",
-      "Reduced risk of hospital-acquired infections",
-      "24/7 professional monitoring",
-      "Family involvement in care",
-      "Personalized care plans"
-    ],
-    challenges: [
-      "Requires adequate space",
-      "Need for reliable power supply",
-      "Regular equipment maintenance",
-      "Coordination with multiple healthcare providers"
-    ]
-  },
-  medicineDelivery: {
-    title: "Medicine Delivered @Home",
-    subtitle: "Convenient Prescription Delivery Service",
-    icon: FaPills,
-    features: [
-      "Prescription medication delivery",
-      "Over-the-counter medications",
-      "Medical supplies and equipment",
-      "Scheduled refills",
-      "Emergency medication delivery",
-      "Prescription verification",
-      "Temperature-controlled storage for sensitive medications",
-      "Insurance coordination"
-    ],
-    process: [
-      "Submit prescription via phone or online",
-      "Verification by licensed pharmacists",
-      "Same-day or scheduled delivery",
-      "Secure packaging and handling",
-      "Delivery confirmation"
-    ]
-  }
-}
-  
-  const videos = [
-    {
-      id: 1,
-      src: "https://www.youtube.com/embed/uEXSBuhJ1AA?si=thCqm7RBzg6vlleI",
-      title: "#Medicall #exbihition",
-      description: "all hospital requiredment Medical Equipment Pan India",
-      thumbnail: "/assets/Mask group.png",
-    },
-    {
-      id: 2,
-      src: "https://www.youtube.com/embed/cC5sdwRsu4g",
-      title: "#घाव की ड्रेसिंग करने का तरीका",
-      description: "Dressing kaise karte hai by Dr.ANMOL KUMAR",
-      thumbnail: "/assets/dressing.jpg",
-    },
-    {
-      id: 3,
-      src: "https://youtube.com/embed/duwQNtb-7rw?si=SKld_sSO0AT36jbL",
-      title: "Home Service",
-      description: "Bahut Dino se Office nahi aa rahe.",
-      thumbnail: "/assets/IVF.png",
-    },
-    {
-      id: 4,
-      src: "https://www.youtube.com/embed/saYYa6rbjb0",
-      title: "Home Service",
-      description: "Surgery ke baad sankraman",
-      thumbnail: "/assets/surgery.jpg",
-    },
-    {
-      id: 5,
-      src: "https://www.youtube.com/embed/5XXRNJE2iMU",
-      title: "homehealthcare",
-      description: "आपके माता पिता आपके बच्चे आपके अपनों का ख्याल हम रखते",
-      thumbnail: "/assets/homeheathcare.jpg",
-    },
-  ]
   
   const handleVideoClick = (video) => {
     setCurrentVideo({
       src: video.src,
       title: video.title,
     })
-  }
-
-
-
-
-  // Dementia Care Tips (moved from Services page)
-  const dementiaTips = {
-    title: "Tips for Caregivers & Family's of People With Dementia",
-    tips: [
-      {
-        title: "Dementia Care Services at Home",
-        content:
-          "Dementia care services at home provide personalized support tailored to each individual's needs. Our trained caregivers understand the unique challenges of dementia and provide compassionate, patient-centered care that maintains dignity and quality of life.",
-      },
-      {
-        title: "Personal Care Assistance",
-        content:
-          "Personal care assistance with daily activities including bathing, dressing, grooming, and toileting. Our caregivers are trained in dementia-specific techniques to reduce anxiety and maintain independence as much as possible.",
-      },
-      {
-        title: "Staff Care Approach",
-        content:
-          "Our staff follows a person-centered care approach, focusing on the individual's remaining abilities rather than limitations. We create a safe, structured environment with consistent routines that help reduce confusion and agitation.",
-      },
-      {
-        title: "Communication Strategies",
-        content:
-          "Our caregivers use effective communication techniques including simple, clear language, maintaining eye contact, and providing reassurance. We understand that non-verbal communication is equally important.",
-      },
-      {
-        title: "Safety Management",
-        content:
-          "We implement safety measures to prevent wandering, falls, and other risks while maintaining the patient's sense of freedom and autonomy. This includes environmental modifications and constant supervision.",
-      },
-      {
-        title: "Family Support",
-        content:
-          "We provide education and support to family members, helping them understand the condition and learn effective caregiving techniques. Regular updates and communication ensure families stay informed and involved.",
-      },
-    ],
   }
  
   return (
@@ -259,7 +60,7 @@ const detailedServices = {
           </div> */}
         </div>
         <div className="right-section">
-          {videos.map((video) => (
+          {videoPageVideos.map((video) => (
             <div
               className="thumbnail"
               key={video.id}

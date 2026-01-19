@@ -10,6 +10,7 @@ import { FaUserNurse, FaHospital, FaSmile, FaMapMarkerAlt, FaPhone, FaEnvelope }
 import cards from "../../util/serviceList"
 import { createEnquiry } from "../../util/api"
 import { useNotification } from "../NotificationContext"
+import { serviceLocations, testimonials, landingVideos, whyChooseUs } from "../../util/commonData"
 
 const LandingPage = () => {
   const limitedItems = cards.slice(0, 8)
@@ -25,39 +26,6 @@ const LandingPage = () => {
   }
   const [enquiryData, setEnquiryData] = useState(initialEnquiryData)
   
-  // Service locations
-  const serviceLocations = [
-    "Pitampura Delhi", "Gurgaon", "Faridabad", "Noida", 
-    "Ghaziabad", "Panjab", "Mumbai", "Kolkata"
-  ]
-
-  const [testimonials] = useState([
-    {
-      text: '"Very professional at home medical services offered by Ragini Nursing Bureau. Will definitely recommend it to everyone who is in need! Thank you team."',
-      author: {
-        name: "Swati Bansal",
-      },
-    },
-    {
-      text: '"Ragini nursing is the best nursing service provider in Delhi NCR."',
-      author: {
-        name: "Dev Mandal",
-      },
-    },
-    {
-      text: '"Service is good. But behaviour is best."',
-      author: {
-        name: "Manita Sharma",
-      },
-    },
-    {
-      text: '"Their service is very good, I have taken service from all over Delhi."',
-      author: {
-        name: "Bunty studio B.R",
-      },
-    },
-  ])
-
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const [currentVideo, setCurrentVideo] = useState({
@@ -71,30 +39,6 @@ const LandingPage = () => {
       return nextIndex >= testimonials.length ? 0 : nextIndex
     })
   }
-
-  const videos = [
-   {
-      id: 1,
-      src: "https://www.youtube.com/embed/uEXSBuhJ1AA?si=thCqm7RBzg6vlleI",
-      title: "Experiment",
-      description: "Short Description.",
-      thumbnail: "/assets/Mask group.png",
-    },
-    {
-      id: 2,
-      src: "https://youtube.com/embed/duwQNtb-7rw?si=SKld_sSO0AT36jbL",
-      title: "Home Service",
-      description: "Bahut Dino se Office nahi aa rahe.",
-      thumbnail: "/assets/IVF.png",
-    },
-    {
-      id: 3,
-      src: "https://www.youtube.com/embed/saYYa6rbjb0",
-      title: "Home Service",
-      description: "Surgery ke baad sankraman",
-      thumbnail: "/assets/IVF.png",
-    },
-  ]
 
   const [showModal, setShowModal] = useState(false)
 
@@ -276,52 +220,17 @@ const LandingPage = () => {
           <h2 className="section-title">Why families choose us</h2>
         </div>
         <div className="why-choose-container">
-          <div className="product_card">
-            <div className="image">
-              <img src="/assets/home-service.webp" alt="Home Service" />
+          {whyChooseUs.map((item, index) => (
+            <div className="product_card" key={index}>
+              <div className="image">
+                <img src={item.image} alt={item.title} />
+              </div>
+              <div className="product_info">
+                <h2 className="product_name">{item.title}</h2>
+                <p className="product_description">{item.description}</p>
+              </div>
             </div>
-            <div className="product_info">
-              <h2 className="product_name">Home Service</h2>
-              <p className="product_description">
-                All the nurses are trained to give the best patient care at
-                home.
-              </p>
-            </div>
-          </div>
-          <div className="product_card">
-            <div className="image">
-              <img src="/assets/chooseUsImg.png" alt="Care" />
-            </div>
-            <div className="product_info">
-              <h2 className="product_name">Care</h2>
-              <p className="product_description">
-                We help recover faster at Home by giving proper care.
-              </p>
-            </div>
-          </div>
-          <div className="product_card">
-            <div className="image">
-              <img src="/assets/best-protocol.jpg" alt="Best Protocols" />
-            </div>
-            <div className="product_info">
-              <h2 className="product_name">Best Protocols</h2>
-              <p className="product_description">
-                All clinical procedures performed are based on best protocols.
-              </p>
-            </div>
-          </div>
-          <div className="product_card">
-            <div className="image">
-              <img src="/assets/happier-you.jpg" alt="Convenience" />
-            </div>
-            <div className="product_info">
-              <h2 className="product_name">Convenience</h2>
-              <p className="product_description">
-                Be assured for high standards of trusted quality & service
-                consistency.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
       <section className="mt-5">
@@ -355,7 +264,7 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="landing-videos-right">
-            {videos.map((video) => (
+            {landingVideos.map((video) => (
               <div
                 className="thumbnail"
                 key={video.id}

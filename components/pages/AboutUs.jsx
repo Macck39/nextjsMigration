@@ -3,6 +3,7 @@
 import { useState } from "react"
 import "./AboutUs.css"
 import { FaCheckCircle, FaHistory, FaUsers, FaHandshake, FaAward, FaHospital, FaUserNurse, FaHeartbeat } from 'react-icons/fa'
+import { teamMembers, historyTimeline } from "../../util/commonData"
 
 const AboutUs = () => {
   const [activeAccordion, setActiveAccordion] = useState("mission")
@@ -10,69 +11,6 @@ const AboutUs = () => {
   const toggleAccordion = (section) => {
     setActiveAccordion(activeAccordion === section ? null : section)
   }
-
-  // Team members data
-  const teamMembers = [
-    {
-      name: "Dr. Anmol kumar",
-      position: "Founder & CEO",
-      bio: "EX. RMO MKW hospital, MEDENTA, MAX- Healthcare,Maharaja Agersen Hospital , AIIMS Delhi Critical care experts unit.  ",
-      image: "/assets/DrAnmol.jpg"
-    },
-    {
-      name: "Dr. Pradeep Mishra",
-      position: "Co-founder",
-      bio: "(G.P) Apollo Healthcare ICU Experts Director - Research& Academic",
-      image: "/assets/DrPradeep.jpg"
-    },
-    {
-      name: "Mr. Vivek Rawat",
-      position: "Suppliers Head",
-      bio: "Suppliers Head Delhi NCR - Ragini Nursing Bureau",
-      image: "/assets/Vivek.jpg"
-    },
-    {
-      name: "Mr. Rajesh (HR) ",
-      position: "Resources Management",
-      bio: "Resources Management Guide. ( Accounts).",
-      image: "/assets/Rajesh.jpg"
-    },
-    {
-      name: "Mrs. Sejal Saini",
-      position: "Life & End Care Expert",
-      bio: "Life & End care experts ICU Unit & Medicals Equipment Delhi Hospital (DNC ).",
-      image: "/assets/SejalSaini.jpg"
-    }
-  ]
-
-  // Company history timeline data
-  const historyTimeline = [
-    {
-      year: "2016",
-      title: "Foundation",
-      description: "Ragini Nursing Bureau was established in Delhi with a mission to provide quality home healthcare services to patients in need."
-    },
-    {
-      year: "2018",
-      title: "Expansion",
-      description: "Expanded our services to include specialized care for elderly patients, post-surgical recovery, and maternal care services."
-    },
-    {
-      year: "2020",
-      title: "Growth",
-      description: "Added physiotherapy services, ICU setups at home, and medical equipment rental to our comprehensive offerings."
-    },
-    {
-      year: "2022",
-      title: "Regional Expansion",
-      description: "Extended our services to Gurgaon, Faridabad, Noida, and Ghaziabad to serve more patients across the NCR region."
-    },
-    {
-      year: "2024",
-      title: "National Presence",
-      description: "Established presence in major cities including Mumbai, Kolkata, and Punjab, reaching the milestone of serving over 500 satisfied clients."
-    }
-  ]
 
   return (
     <div className="about-us-container">
