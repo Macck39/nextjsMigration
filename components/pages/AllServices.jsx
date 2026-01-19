@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import "./all-services.css"
 import AppointmentModal from "../appointment-modal/AppointmentModal"
 import cards from "../../util/serviceList"
-import { FaPlus, FaMinus, FaMapMarkerAlt, FaPhone, FaEnvelope, FaCheckCircle, FaUserNurse, FaHospital, FaBrain, FaLungs, FaHome, FaPills, FaStethoscope, FaHeartbeat, FaClock, FaShieldAlt, FaUsers, FaHandHoldingHeart, FaUserMd, FaAmbulance, FaPrescriptionBottleAlt } from 'react-icons/fa'
+import { FaPlus, FaMinus, FaMapMarkerAlt, FaPhone, FaEnvelope, FaCheckCircle, FaUserNurse, FaHospital, FaBrain, FaLungs, FaHome, FaPills, FaStethoscope, FaHeartbeat, FaShieldAlt, FaPrescriptionBottleAlt } from 'react-icons/fa'
 
 const AllServices = () => {
   const [showModal, setShowModal] = useState(false)
@@ -128,7 +128,6 @@ const AllServices = () => {
         "Specialized care for stroke patients",
         "Parkinson's disease management",
         "Alzheimer's and dementia care",
-        "Spinal cord injury rehabilitation",
         "Seizure management and monitoring",
         "Cognitive therapy support",
         "Mobility assistance for neurological conditions",
@@ -205,36 +204,6 @@ const AllServices = () => {
     }
   }
 
-  // Dementia Care Tips
-  const dementiaTips = {
-    title: "Tips for Caregivers & Family's of People With Dementia",
-    tips: [
-      {
-        title: "Dementia Care Services at Home",
-        content: "Dementia care services at home provide personalized support tailored to each individual's needs. Our trained caregivers understand the unique challenges of dementia and provide compassionate, patient-centered care that maintains dignity and quality of life."
-      },
-      {
-        title: "Personal Care Assistance",
-        content: "Personal care assistance with daily activities including bathing, dressing, grooming, and toileting. Our caregivers are trained in dementia-specific techniques to reduce anxiety and maintain independence as much as possible."
-      },
-      {
-        title: "Staff Care Approach",
-        content: "Our staff follows a person-centered care approach, focusing on the individual's remaining abilities rather than limitations. We create a safe, structured environment with consistent routines that help reduce confusion and agitation."
-      },
-      {
-        title: "Communication Strategies",
-        content: "Our caregivers use effective communication techniques including simple, clear language, maintaining eye contact, and providing reassurance. We understand that non-verbal communication is equally important."
-      },
-      {
-        title: "Safety Management",
-        content: "We implement safety measures to prevent wandering, falls, and other risks while maintaining the patient's sense of freedom and autonomy. This includes environmental modifications and constant supervision."
-      },
-      {
-        title: "Family Support",
-        content: "We provide education and support to family members, helping them understand the condition and learn effective caregiving techniques. Regular updates and communication ensure families stay informed and involved."
-      }
-    ]
-  }
 
   // Benefits Data
   const benefits = {
@@ -435,11 +404,125 @@ const AllServices = () => {
           </div>
         </section>
 
+        {/* Specialized Premium Services Section */}
+        <section className="specialized-care-section" id="specialized-care">
+          <div className="specialized-care-container">
+            <h2 className="section-title">Our Specialized Premium Care Services</h2>
+            <p className="section-subtitle">Expert care for complex medical conditions, delivered with compassion in the comfort of your home</p>
+            
+            <div className="specialized-cards-staggered">
+              {/* Neuro Care */}
+              <div className="specialized-card card-left">
+                <div className="specialized-card-icon">
+                  <FaBrain />
+                </div>
+                <div className="specialized-card-content">
+                  <h3>{detailedServices.neuroCare.title}</h3>
+                  <p className="card-subtitle">{detailedServices.neuroCare.subtitle}</p>
+                  <p className="card-description">{detailedServices.neuroCare.description}</p>
+                  <div className="card-benefits">
+                    <h4>Key Services:</h4>
+                    <ul>
+                      {detailedServices.neuroCare.benefits.slice(0, 4).map((benefit, index) => (
+                        <li key={index}>
+                          <FaCheckCircle className="list-check-icon" />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <button 
+                    className="specialized-btn"
+                    onClick={() => handleAppointmentClick({ title: detailedServices.neuroCare.title })}
+                  >
+                    Book Consultation
+                  </button>
+                </div>
+              </div>
+
+              {/* Cancer Care */}
+              <div className="specialized-card card-right">
+                <div className="specialized-card-icon">
+                  <FaLungs />
+                </div>
+                <div className="specialized-card-content">
+                  <h3>{detailedServices.cancerCare.title}</h3>
+                  <p className="card-subtitle">{detailedServices.cancerCare.subtitle}</p>
+                  <p className="card-description">Comprehensive oncology care with specialized support for cancer patients and their families.</p>
+                  <div className="card-benefits">
+                    <h4>Our Services Include:</h4>
+                    <ul>
+                      {detailedServices.cancerCare.services.slice(0, 4).map((service, index) => (
+                        <li key={index}>
+                          <FaCheckCircle className="list-check-icon" />
+                          <span>{service}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="diet-highlight">
+                    <FaPills className="diet-icon" />
+                    <p>{detailedServices.cancerCare.dietInfo}</p>
+                  </div>
+                  <button 
+                    className="specialized-btn"
+                    onClick={() => handleAppointmentClick({ title: detailedServices.cancerCare.title })}
+                  >
+                    Book Consultation
+                  </button>
+                </div>
+              </div>
+
+              {/* ICU Setup at Home */}
+              <div className="specialized-card card-left">
+                <div className="specialized-card-icon">
+                  <FaHome />
+                </div>
+                <div className="specialized-card-content">
+                  <h3>{detailedServices.icuSetup.title}</h3>
+                  <p className="card-subtitle">{detailedServices.icuSetup.subtitle}</p>
+                  <p className="card-description">Transform your home into a fully equipped ICU with hospital-grade equipment and 24/7 professional monitoring.</p>
+                  <div className="icu-highlights">
+                    <div className="highlight-box">
+                      <h4>Equipment Includes:</h4>
+                      <ul>
+                        {detailedServices.icuSetup.components.slice(0, 4).map((component, index) => (
+                          <li key={index}>
+                            <FaCheckCircle className="list-check-icon" />
+                            <span>{component}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="highlight-box">
+                      <h4>Benefits:</h4>
+                      <ul>
+                        {detailedServices.icuSetup.benefits.slice(0, 3).map((benefit, index) => (
+                          <li key={index}>
+                            <FaShieldAlt className="list-check-icon" />
+                            <span>{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <button 
+                    className="specialized-btn"
+                    onClick={() => handleAppointmentClick({ title: detailedServices.icuSetup.title })}
+                  >
+                    Setup Consultation
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Detailed Services Section */}
         <section className="detailed-services-section" id="detailed-services">
           <div className="detailed-services-container">
-            <h2 className="section-title">Explore comprehensive details about our specialized healthcare services</h2>
-            {/* <p className="section-subtitle">Explore comprehensive details about our specialized healthcare services</p> */}
+            <h2 className="section-title">Additional Care Services</h2>
+            <p className="section-subtitle">Comprehensive healthcare support tailored to your needs</p>
             
             <div className="service-criteria-accordion">
               {/* Care Giver Services */}
@@ -495,122 +578,6 @@ const AllServices = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-
-              {/* Neuro Care Services */}
-              <div className="accordion-item">
-                <div 
-                  className={`accordion-header ${activeAccordion === "neuroCare" ? "active" : ""}`}
-                  onClick={() => toggleAccordion("neuroCare")}
-                >
-                  {(() => {
-                    const IconComponent = detailedServices.neuroCare.icon;
-                    return <IconComponent className="accordion-icon" />;
-                  })()}
-                  <div className="accordion-header-content">
-                    <h3>{detailedServices.neuroCare.title}</h3>
-                    <p className="accordion-subtitle">{detailedServices.neuroCare.subtitle}</p>
-                  </div>
-                  {activeAccordion === "neuroCare" ? <FaMinus /> : <FaPlus />}
-                </div>
-                <div className={`accordion-content ${activeAccordion === "neuroCare" ? "active" : ""}`}>
-                  <p className="service-description">{detailedServices.neuroCare.description}</p>
-                  <ul className="service-list">
-                    {detailedServices.neuroCare.benefits.map((benefit, index) => (
-                      <li key={index} className="service-list-item">
-                        <FaCheckCircle className="check-icon" />
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Cancer Care Services */}
-              <div className="accordion-item">
-                <div 
-                  className={`accordion-header ${activeAccordion === "cancerCare" ? "active" : ""}`}
-                  onClick={() => toggleAccordion("cancerCare")}
-                >
-                  {(() => {
-                    const IconComponent = detailedServices.cancerCare.icon;
-                    return <IconComponent className="accordion-icon" />;
-                  })()}
-                  <div className="accordion-header-content">
-                    <h3>{detailedServices.cancerCare.title}</h3>
-                    <p className="accordion-subtitle">{detailedServices.cancerCare.subtitle}</p>
-                  </div>
-                  {activeAccordion === "cancerCare" ? <FaMinus /> : <FaPlus />}
-                </div>
-                <div className={`accordion-content ${activeAccordion === "cancerCare" ? "active" : ""}`}>
-                  <ul className="service-list">
-                    {detailedServices.cancerCare.services.map((service, index) => (
-                      <li key={index} className="service-list-item">
-                        <FaCheckCircle className="check-icon" />
-                        <span>{service}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="diet-info-box">
-                    <h4>Diet Management</h4>
-                    <p>{detailedServices.cancerCare.dietInfo}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* ICU Setup */}
-              <div className="accordion-item">
-                <div 
-                  className={`accordion-header ${activeAccordion === "icuSetup" ? "active" : ""}`}
-                  onClick={() => toggleAccordion("icuSetup")}
-                >
-                  {(() => {
-                    const IconComponent = detailedServices.icuSetup.icon;
-                    return <IconComponent className="accordion-icon" />;
-                  })()}
-                  <div className="accordion-header-content">
-                    <h3>{detailedServices.icuSetup.title}</h3>
-                    <p className="accordion-subtitle">{detailedServices.icuSetup.subtitle}</p>
-                  </div>
-                  {activeAccordion === "icuSetup" ? <FaMinus /> : <FaPlus />}
-                </div>
-                <div className={`accordion-content ${activeAccordion === "icuSetup" ? "active" : ""}`}>
-                  <div className="icu-setup-info">
-                    <div className="info-section">
-                      <h4>Components Included</h4>
-                      <ul className="service-list">
-                        {detailedServices.icuSetup.components.map((component, index) => (
-                          <li key={index} className="service-list-item">
-                            <FaCheckCircle className="check-icon" />
-                            <span>{component}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="info-section">
-                      <h4>Benefits</h4>
-                      <ul className="service-list">
-                        {detailedServices.icuSetup.benefits.map((benefit, index) => (
-                          <li key={index} className="service-list-item">
-                            <FaCheckCircle className="check-icon" />
-                            <span>{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="info-section">
-                      <h4>Considerations</h4>
-                      <ul className="service-list">
-                        {detailedServices.icuSetup.challenges.map((challenge, index) => (
-                          <li key={index} className="service-list-item">
-                            <FaClock className="check-icon" />
-                            <span>{challenge}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
                 </div>
               </div>
 

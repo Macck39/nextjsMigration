@@ -481,6 +481,339 @@
 }
 
 /* ============================================
+   Specialized Premium Care Section
+   ============================================ */
+.specialized-care-section {
+  padding: 5rem 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.specialized-care-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(74, 184, 153, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(74, 184, 153, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.specialized-care-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.specialized-cards-staggered {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.specialized-card {
+  display: flex;
+  gap: 2rem;
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.specialized-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, #4ab899 0%, #3a9d7f 100%);
+}
+
+.specialized-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(74, 184, 153, 0.2);
+}
+
+.card-left {
+  margin-right: auto;
+  max-width: 900px;
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.card-right {
+  margin-left: auto;
+  max-width: 900px;
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.specialized-card-icon {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #4ab899 0%, #3a9d7f 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(74, 184, 153, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.specialized-card:hover .specialized-card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.specialized-card-content {
+  flex: 1;
+}
+
+.specialized-card-content h3 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.card-subtitle {
+  color: #4ab899;
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.card-description {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.card-benefits {
+  margin-bottom: 1.5rem;
+}
+
+.card-benefits h4 {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.card-benefits ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
+}
+
+.card-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.list-check-icon {
+  color: #4ab899;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.diet-highlight {
+  background: linear-gradient(135deg, #e8f5f1 0%, #d1ebe3 100%);
+  border-left: 4px solid #4ab899;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.diet-icon {
+  color: #4ab899;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.diet-highlight p {
+  margin: 0;
+  color: #2c3e50;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.icu-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.highlight-box {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e9ecef;
+}
+
+.highlight-box h4 {
+  color: #2c3e50;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.highlight-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.highlight-box li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.highlight-box li:last-child {
+  margin-bottom: 0;
+}
+
+.specialized-btn {
+  background: linear-gradient(135deg, #4ab899 0%, #3a9d7f 100%);
+  color: white;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 20px rgba(74, 184, 153, 0.3);
+  margin-top: 1rem;
+}
+
+.specialized-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(74, 184, 153, 0.4);
+}
+
+.specialized-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive for specialized cards */
+@media (max-width: 992px) {
+  .specialized-card {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .card-left,
+  .card-right {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .specialized-card-icon {
+    width: 100px;
+    height: 100px;
+    font-size: 3rem;
+    margin: 0 auto;
+  }
+
+  .specialized-card-content h3 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .card-subtitle,
+  .card-description {
+    text-align: center;
+  }
+
+  .card-benefits ul {
+    grid-template-columns: 1fr;
+  }
+
+  .icu-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .specialized-care-section {
+    padding: 3rem 1rem;
+  }
+
+  .specialized-cards-staggered {
+    gap: 2rem;
+  }
+
+  .specialized-card {
+    padding: 1.5rem;
+  }
+
+  .specialized-card-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+  }
+
+  .specialized-card-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .specialized-btn {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* ============================================
    Detailed Services Section
    ============================================ */
 .detailed-services-section {

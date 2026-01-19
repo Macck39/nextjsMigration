@@ -140,12 +140,12 @@ const LandingPage = () => {
   }
 
   return (
-    <>
+    <div className="landing-page">
       <section>
         <div className="wrapper">
           <div className="banner-content">
             <h1>Your Health Is Our Concern!</h1>
-            <h1>Your Personal Healthcare Assistant</h1>
+            <p className="hero-subtitle">Your personal healthcare assistant</p>
             <button className="btn" onClick={handleClick}>
               Book an Appointment
             </button>
@@ -201,7 +201,10 @@ const LandingPage = () => {
             </div>
             <div className="service-right-section">
               <div className="service">
-                <h2 className="text-center">Services & Enquiry</h2>
+                <div className="section-header">
+                  <h2 className="section-title">Our Services</h2>
+                  <p className="section-subtitle">Choose a service and we’ll call you back.</p>
+                </div>
                 <div className="cards-container">
                   {limitedItems.map((card, index) => (
                     <div className="card"
@@ -218,16 +221,15 @@ const LandingPage = () => {
                     </div>
                   ))}
                 </div>
-                
+                <div className="section-cta">
+                  <Link href="/services" className="cta-link">
+                    Show all services
+                    <span className="p-2">
+                      <i className="fa-solid fa-angles-right"></i>
+                    </span>
+                  </Link>
+                </div>
               </div>
-               <div id="show-more">
-              <Link href="/services">
-                Show More
-                <span className="p-2">
-                  <i className="fa-solid fa-angles-right"></i>
-                </span>
-              </Link>
-            </div>
             </div>
           </div>
         </div>
@@ -236,7 +238,9 @@ const LandingPage = () => {
         <div className="about-us-section">
           <div className="about-us-content">
             <div className="text-content">
-              <h2 className="text-center">About Us</h2>
+              <div className="section-header">
+                <h2 className="section-title">About Ragini Nursing Bureau</h2>
+              </div>
               <p>
                 We Ragini Nursing Bureau at Shakurpur Colony, Delhi, provide
                 expertise nursing care by our qualified and trained care takers.
@@ -268,8 +272,8 @@ const LandingPage = () => {
         </div>
       </section>
       <section className="why-choose-section mt-5">
-        <div>
-          <h2 className="text-center">Why Choose Us ?</h2>
+        <div className="section-header">
+          <h2 className="section-title">Why families choose us</h2>
         </div>
         <div className="why-choose-container">
           <div className="product_card">
@@ -321,70 +325,68 @@ const LandingPage = () => {
         </div>
       </section>
       <section className="mt-5">
-        <div>
-        <div>
-        <h2 className="text-center">Our Videos & Real Stories</h2>
-      </div>
-          <div className="container">
-        <div className="left-section">
-          <div className="video corner-wrapper">
-            <iframe
-              className="video-embed"
-              width="100%"
-              height="100%"
-              src={currentVideo.src}
-              title={`YouTube video player - ${currentVideo.title}`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <div className="youtube-channel-info">
-            <img
-              src="/assets/youtube-profile-image.jpg"
-              alt="Profile"
-              className="youtube-profile-photo"
-            />
-            <div className="youtube-channel-details">
-              <p className="youtube-channel-name">Ragini Nursing Bureau</p>
-            </div>
-          </div>
+        <div className="section-header">
+          <h2 className="section-title">Patient stories & videos</h2>
         </div>
-        <div className="right-section">
-          {videos.map((video) => (
-            <div
-              className="thumbnail"
-              key={video.id}
-              onClick={() => handleVideoClick(video)}
-            >
+        <div className="landing-videos-container">
+          <div className="landing-videos-left">
+            <div className="video corner-wrapper">
+              <iframe
+                className="video-embed"
+                width="100%"
+                height="100%"
+                src={currentVideo.src}
+                title={`YouTube video player - ${currentVideo.title}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="youtube-channel-info">
               <img
-                className="thumbnail-image"
-                src={video.thumbnail}
-                alt={`Thumbnail for ${video.title}`}
+                src="/assets/youtube-profile-image.jpg"
+                alt="Profile"
+                className="youtube-profile-photo"
               />
-              <div className="thumbnail-description">
-                <h4>{video.title}</h4>
-                <p>{video.description}</p>
+              <div className="youtube-channel-details">
+                <p className="youtube-channel-name">Ragini Nursing Bureau</p>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-          <div className="link-container">
-            <Link href="/videos" className="d-flex align-items-center">
-              <span>Show More </span>
-              <span className="ml-1">
-                <i className="fa-solid fa-angles-right"></i>
-              </span>
-            </Link>
           </div>
+          <div className="landing-videos-right">
+            {videos.map((video) => (
+              <div
+                className="thumbnail"
+                key={video.id}
+                onClick={() => handleVideoClick(video)}
+              >
+                <img
+                  className="thumbnail-image"
+                  src={video.thumbnail}
+                  alt={`Thumbnail for ${video.title}`}
+                />
+                <div className="thumbnail-description">
+                  <h4>{video.title}</h4>
+                  <p>{video.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="link-container">
+          <Link href="/videos" className="d-flex align-items-center">
+            <span>Show more</span>
+            <span className="ml-1">
+              <i className="fa-solid fa-angles-right"></i>
+            </span>
+          </Link>
         </div>
       </section>
 
       <section>
-        <div>
-          <h2 className="text-center">Testimonials</h2>
+        <div className="section-header">
+          <h2 className="section-title">What our clients say</h2>
         </div>
         <div className="testimonial-section">
           <div className="testimonial-left">
@@ -417,8 +419,9 @@ const LandingPage = () => {
         </div>
       </section>
       <section className="my-5">
-        <div>
-          <h2 className="text-center">Enquiry</h2>
+        <div className="section-header">
+          <h2 className="section-title">Request a callback</h2>
+          <p className="section-subtitle">Tell us what you need — we’ll contact you shortly.</p>
         </div>
         <div className="d-flex container">
           <div className="enquiry-container col-md-9">
@@ -500,7 +503,7 @@ const LandingPage = () => {
           </button>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

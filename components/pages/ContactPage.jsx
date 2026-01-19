@@ -101,6 +101,16 @@ const ContactPage = () => {
       name: "JustDial",
       url: "https://www.justdial.com/Delhi/Ragini-Nursing-Bureau-Near-Shakurpur-Samrat-Cinema-Shakurpur-Colony/011PXX11-XX11-211112125145-V6D9_BZDET",
       icon: "📱"
+    },
+    {
+      name: "LikeMe",
+      url: "https://www.likeme.co.in/delhi/ragini-nursing-bureau/head-office-h-29-shakurpur-near-samrat-cinema-pitam-pura-delhi/000115208",
+      icon: "👍"
+    },
+    {
+      name: "BharatiBiz",
+      url: "https://www.bharatibiz.com/en/ragini-nursing-bureau-male-female-076782-67005",
+      icon: "🏢"
     }
   ]
   
@@ -233,7 +243,7 @@ const ContactPage = () => {
       <section className="contact-section">
         <div className="contact-map-form-container">
           <div className="map-container">
-            <h3 className="map-heading">Find Us Here</h3>
+            <h3 className="map-heading"><b>Head office:</b> <br /> H, 29 Shakurpur, near samrat cinema, Saint Nagar Delhi, Rani Bagh, Pitampura, Delhi, 110034</h3>
             <MapComponent />
           </div>
           <div className="contact-enquiry-container">
@@ -323,17 +333,6 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-
-      {/* WhatsApp Floating Button */}
-      <a
-        href="https://wa.me/917678267005"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="whatsapp-float"
-        aria-label="Chat on WhatsApp"
-      >
-        <FaWhatsapp />
-      </a>
     </>
   )
 }

@@ -4,10 +4,11 @@ import "./map.css"
 
 const MapComponent = () => {
   const handleMapClick = () => {
-    const latitude = 28.68541 // Replace with your latitude
-    const longitude = 77.14232 // Replace with your longitude
+    const latitude = 28.687936448864285
+    const longitude = 77.13462607301385
     const url = `https://www.google.com/maps?q=${latitude},${longitude}`
-    window.open(url, "_blank") // Open the map in a new tab
+    // const url = "https://maps.app.goo.gl/qGWKMEhrEEvBR4BY8"
+    window.open(url, "_blank")
   }
   return (
     <div className="col2 column1 first">
@@ -27,3 +28,5 @@ const MapComponent = () => {
 
 export default MapComponent
 
+const latitude = 28.687936448864285
+const longitude = 77.13462607301385
