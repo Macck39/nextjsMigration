@@ -384,7 +384,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 50px 20px;
+  padding: 50px 10px;
   gap: 20px;
   width: 100%;
   position: relative;
@@ -435,7 +435,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 900px;
+  max-width: 100%;
   transition: transform 0.5s ease;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
@@ -459,45 +459,17 @@
 .image-content:hover img {
   transform: scale(1.05);
 }
+@media (max-width: 1200px) {
 
-/* Removed unused styles for background-image and foreground-images */
-/* These can be uncommented if needed in the future */
-/*
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-  transition: transform 0.8s ease;
+  .text-content {
+    width: 100%;
+    max-width: 750px;
+  }
+  .image-content {
+    width: 100%;
+    max-width: 350px;
+  }
 }
-
-.background-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
-}
-
-.foreground-images {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
-  z-index: 2;
-  transition: transform 0.5s ease;
-}
-
-.foreground-images img {
-  max-width: calc(60% - 10px);
-  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-  transition: transform 0.5s ease, filter 0.5s ease;
-}
-
-img.plus-vector {
-  height: 200px;
-  margin-right: 10px;
-}
-*/
 
 /* Responsive styles for About Us section */
 @media (max-width: 992px) {
@@ -514,7 +486,6 @@ img.plus-vector {
 
   .image-content {
     width: 100%;
-    max-width: 600px;
   }
 }
 
