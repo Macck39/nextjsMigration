@@ -18,7 +18,7 @@ const AboutUs = () => {
       <div className="about-hero-section">
         <div className="about-hero-content">
           <h1>About Ragini Nursing Bureau</h1>
-          <p>Your Trusted Partner in Home Healthcare</p>
+          <p className="hero-subtitle">Your trusted partner in home healthcare</p>
         </div>
         <div className="about-hero-image">
           <img src="/assets/about-banner.png" alt="Ragini Nursing Bureau" />
@@ -28,7 +28,9 @@ const AboutUs = () => {
       {/* Introduction Section */}
       <section className="about-intro-section">
         <div className="about-intro-content">
-          <h2>Who We Are</h2>
+          <div className="section-header">
+            <h2 className="section-title">Who We Are</h2>
+          </div>
           <p>
             Ragini Nursing Bureau at Shakurpur Colony, Delhi, provides expertise nursing care through our qualified and trained caregivers. 
             We are well known for excellent care and personalized service that perfectly meets our clients' requirements. 
@@ -44,7 +46,9 @@ const AboutUs = () => {
 
       {/* Values Accordion Section */}
       <section className="about-values-section">
-        <h2>Our Core Values</h2>
+        <div className="section-header">
+          <h2 className="section-title">Our Core Values</h2>
+        </div>
         <div className="accordion-container">
           <div className="accordion-item">
             <div 
@@ -137,7 +141,10 @@ const AboutUs = () => {
       
       {/* History Timeline Section */}
       <section className="about-history-section">
-        <h2>Our Journey</h2>
+        <div className="section-header">
+          <h2 className="section-title">Our Journey</h2>
+          <p className="section-subtitle">From humble beginnings to becoming a trusted healthcare partner</p>
+        </div>
         <div className="timeline-container">
           {historyTimeline.map((item, index) => (
             <div className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`} key={index}>
@@ -153,8 +160,10 @@ const AboutUs = () => {
 
        {/* Team Section */}
       <section className="about-team-section">
-        <h2>Our Team</h2>
-        <p>Meet the dedicated professionals who make our mission possible</p>
+        <div className="section-header">
+          <h2 className="section-title">Our Team</h2>
+          <p className="section-subtitle">Meet the dedicated professionals who make our mission possible</p>
+        </div>
         <div className="team-cards-container">
           {teamMembers.map((member, index) => (
             <div className="team-card" key={index}>
@@ -173,7 +182,9 @@ const AboutUs = () => {
 
       {/* Closing Section */}
       <section className="about-closing-section">
-        <h2>Join Us on Our Mission</h2>
+        <div className="section-header">
+          <h2 className="section-title">Join Us on Our Mission</h2>
+        </div>
         <p>
           Thank you for considering <strong>Ragini Nursing Bureau</strong>. Together, 
           let's make healthcare more <strong>personal, accessible,</strong> and 

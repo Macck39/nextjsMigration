@@ -447,6 +447,15 @@
   transform: translateY(0);
 }
 
+@media screen and (max-width: 768px) {
+  .map-container .sec2map {
+    height: 250px !important;
+    min-height: 180px;
+    max-height: 300px;
+  }
+}
+
+
 
 /* Responsive Design */
 @media screen and (max-width: 992px) {

@@ -47,6 +47,39 @@
   animation: fadeIn 1s ease-out;
 }
 
+/* Consistent section heading styles */
+.about-us-container .section-header {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.about-us-container .section-title {
+  margin: 0;
+  color: #4ba889;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+}
+
+.about-us-container .section-subtitle {
+  margin: 12px auto 0;
+  max-width: 720px;
+  color: #6b7280;
+  font-size: clamp(0.938rem, 1.2vw, 1.125rem);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.about-us-container .hero-subtitle {
+  font-weight: 600;
+  opacity: 0.9;
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  color: #555;
+}
+
 /* Hero Section */
 .about-hero-section {
   display: flex;
@@ -146,21 +179,23 @@
   text-align: left;
 }
 
-.about-intro-content h2 {
-  font-size: 2.2rem;
-  color: #4ba889;
+.about-intro-content .section-header {
   margin-bottom: 30px;
+  text-align: left;
+}
+
+.about-intro-content .section-title {
+  text-align: left;
   position: relative;
   display: inline-block;
   padding-bottom: 15px;
 }
 
-.about-intro-content h2::after {
+.about-intro-content .section-title::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 80px;
   height: 3px;
   background-color: #4ba889;
@@ -186,19 +221,17 @@
   animation: fadeIn 1.2s ease-out;
 }
 
-.about-values-section h2 {
-  font-size: 2.2rem;
-  color: #4ba889;
-  text-align: center;
+.about-values-section .section-header {
   margin-bottom: 40px;
+}
+
+.about-values-section .section-title {
   position: relative;
   display: inline-block;
   padding-bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
-.about-values-section h2::after {
+.about-values-section .section-title::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -308,15 +341,7 @@
   text-align: center;
 }
 
-.about-team-section h2 {
-  font-size: 2rem;
-  color: #4ba889;
-  margin-bottom: 10px;
-}
-
-.about-team-section > p {
-  font-size: 1.1rem;
-  color: #555;
+.about-team-section .section-header {
   margin-bottom: 30px;
 }
 
@@ -386,10 +411,7 @@
   position: relative;
 }
 
-.about-history-section h2 {
-  font-size: 2rem;
-  color: #4ba889;
-  text-align: center;
+.about-history-section .section-header {
   margin-bottom: 40px;
 }
 
@@ -485,9 +507,7 @@
   border-radius: 10px;
 }
 
-.about-closing-section h2 {
-  font-size: 2rem;
-  color: #4ba889;
+.about-closing-section .section-header {
   margin-bottom: 20px;
 }
 
@@ -539,11 +559,7 @@
     font-size: 2rem;
   }
   
-  .about-intro-content h2,
-  .about-values-section h2,
-  .about-team-section h2,
-  .about-history-section h2,
-  .about-closing-section h2 {
+  .about-us-container .section-title {
     font-size: 1.8rem;
   }
 
@@ -567,12 +583,12 @@
     font-size: 1.8rem;
   }
   
-  .about-intro-content h2,
-  .about-values-section h2,
-  .about-team-section h2,
-  .about-history-section h2,
-  .about-closing-section h2 {
+  .about-us-container .section-title {
     font-size: 1.5rem;
+  }
+  
+  .about-us-container .section-subtitle {
+    font-size: 0.875rem;
   }
   
   .accordion-header h3 {
