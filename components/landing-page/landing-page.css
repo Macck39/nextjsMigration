@@ -1515,31 +1515,6 @@ img.colons {
     padding: 24px 16px;
     gap: 16px;
   }
-
-  .enquiry-container {
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-  }
-
-  .enquiry-form {
-    /* flex-direction: column; */
-    gap: 12px;
-  }
-
-  .left-fields,
-  .right-field {
-    width: 100%;
-  }
-
-  .right-field textarea {
-    height: 160px;
-  }
-
-  .enquiry-image {
-    max-width: 75%;
-    margin: 0 auto;
-  }
 }
 
 /* Enquiry */
@@ -1639,13 +1614,132 @@ img.colons {
   text-align: center; /* Center-align child elements */
 }
 
-@media (max-width: 480px) {
+/* Tablet and Mobile responsive styles for Enquiry Section */
+@media (max-width: 992px) {
+  .landing-page .d-flex.container {
+    flex-direction: column;
+  }
+  
+  .enquiry-container {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .enquiry-container + .col-md-3 {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .enquiry-container {
+    padding: 20px 15px;
+  }
+  
+  .enquiry-form {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .left-fields {
+    width: 100%;
+  }
+  
+  .right-field {
+    width: 100%;
+  }
+  
+  .right-field textarea {
+    height: 150px;
+  }
+  
+  .input-wrapper input,
+  .input-wrapper select {
+    font-size: 14px;
+    padding: 10px 10px 10px 35px;
+  }
+  
   .enquiry-image {
-    /* display: none; */
-    max-width: 50%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .enquiry-container {
+    padding: 15px 12px;
+    margin: 0 10px;
+  }
+  
+  .enquiry-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .left-fields {
+    width: 100%;
+    gap: 8px;
+  }
+  
+  .right-field {
+    width: 100%;
+  }
+  
+  .right-field textarea {
+    height: 120px;
+  }
+  
+  .input-wrapper {
+    margin-bottom: 8px;
+  }
+  
+  .input-wrapper input,
+  .input-wrapper select {
+    font-size: 14px;
+    height: 42px;
+    padding: 10px 10px 10px 35px;
+  }
+  
+  .input-wrapper select {
+    height: 44px;
+  }
+  
+  .enquiry-submit {
+    width: 100%;
+    max-width: 250px;
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .enquiry-container {
+    padding: 15px 10px;
+    margin: 0 5px;
+  }
+  
+  .input-wrapper i {
+    font-size: 14px;
+    left: 10px;
+  }
+  
+  .input-wrapper input,
+  .input-wrapper select {
+    font-size: 13px;
+    padding: 8px 8px 8px 32px;
+    height: 40px;
+  }
+  
+  .input-wrapper select {
+    height: 42px;
+  }
+  
+  .right-field textarea {
+    height: 100px;
+    font-size: 13px;
+  }
+  
+  .enquiry-image {
+    display: none;
   }
 }
 
