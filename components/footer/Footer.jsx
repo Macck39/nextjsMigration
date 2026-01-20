@@ -23,10 +23,8 @@ const Footer = () => {
             <FaLocationDot /> Our Office Address
           </p>
           <p>
-            H-29, Anandvas, DDA <br />
-            Market Block, H, Shakurpur <br />
-            Colony, Shakurpur, Samrat Cinema, <br />
-            Shakurpur Colony, Delhi 110034
+            H-29, Anandvas, DDA Market Block, H, Shakurpur, <br />
+             Samrat Cinema, Shakurpur Colony, Delhi 110034
           </p>
         </div>
 
@@ -43,7 +41,7 @@ const Footer = () => {
           </a>
           <br />
           <div className="contact-number">
-            <a href="tel:+91-7859989007">+91-7859989007</a>,
+            <a href="tel:+91-7859989007">+91-7859989007,</a>
             <a href="tel:+91-7678267005">+91-7678267005</a>
           </div>
           <div className="social-icons-footer text-center">

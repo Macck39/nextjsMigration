@@ -5,7 +5,7 @@ const cards = [
   },
   {
     image: "/assets/Physiotherapy Centres-1.png",
-    title: "Physiotherapy Center",
+    title: "Physiotherapy",
   },
   {
     image: "/assets/Doctor Visit.png",
@@ -17,7 +17,7 @@ const cards = [
   },
   {
     image: "/assets/Mother & Child Care.png",
-    title: "Mother & Child Care",
+    title: "Mother/Child Care",
   },
   {
     image: "/assets/Medical Equipment.png",
@@ -29,7 +29,7 @@ const cards = [
   },
   {
     image: "/assets/Group 86.png",
-    title: "Patient Assistant",
+    title: "Assistant",
   },
   {
     image: "/assets/X-Ray at Home.png",

@@ -34,64 +34,41 @@
   background-color: #4ab899;
 }
 
-/* Accordion Styles */
-.accordion-item {
-  margin-bottom: 1rem;
-  border: 1px solid #e1e1e1;
-  border-radius: 6px;
-  overflow: hidden;
+.terms-intro-text {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+  color: #555;
 }
 
-.accordion-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background-color: #f8f9fa;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.terms-block {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e1e1e1;
 }
 
-.accordion-header:hover {
-  background-color: #e9ecef;
-}
-
-.accordion-header.active {
-  background-color: #4ab899;
-  color: white;
-}
-
-.accordion-header h2 {
-  margin: 0;
-  font-size: 1.1rem;
+.terms-block-title {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
   font-weight: 600;
 }
 
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: 0 1.5rem;
+.terms-block p {
+  margin: 0.25rem 0;
+  line-height: 1.7;
+  margin-left: 1.5rem;
 }
 
-.accordion-content.active {
-  max-height: 1000px;
-  padding: 1.5rem;
-  border-top: 1px solid #e1e1e1;
-}
-
-.accordion-content p {
-  margin-top: 0;
-  line-height: 1.6;
-}
-
-.accordion-content ul {
+.terms-block ul {
   padding-left: 1.5rem;
+  margin: 0.5rem 0 0;
 }
 
-.accordion-content li {
+.terms-block li {
   margin-bottom: 0.5rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* Responsive Design */
@@ -99,17 +76,17 @@
   .terms-main-title {
     font-size: 1.8rem;
   }
-  
-  .accordion-header h2 {
-    font-size: 1rem;
+
+  .terms-section {
+    padding: 1.5rem;
   }
-  
-  .accordion-content {
-    padding: 0 1rem;
+
+  .terms-block-title {
+    font-size: 1.1rem;
   }
-  
-  .accordion-content.active {
-    padding: 1rem;
+
+  .terms-intro-text {
+    font-size: 0.95rem;
   }
 }
 
@@ -117,19 +94,13 @@
   .terms-main-title {
     font-size: 1.5rem;
   }
-  
-  .accordion-header {
-    padding: 0.8rem 1rem;
-  }
-  
-  .accordion-header h2 {
-    font-size: 0.9rem;
-  }
-  
+
   .terms-section {
     padding: 1.5rem 1rem;
   }
+
+  .terms-block-title {
+    font-size: 1rem;
+  }
 }
-
-
 

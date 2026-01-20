@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./landing-page.css"
 import Image from "next/image"
 import Link from "next/link"
@@ -10,6 +10,7 @@ import { FaUserNurse, FaHospital, FaSmile, FaMapMarkerAlt, FaPhone, FaEnvelope }
 import cards from "../../util/serviceList"
 import { createEnquiry } from "../../util/api"
 import { useNotification } from "../NotificationContext"
+import { serviceLocations, testimonials, landingVideos, whyChooseUs } from "../../util/commonData"
 
 const LandingPage = () => {
   const limitedItems = cards.slice(0, 8)
@@ -25,39 +26,6 @@ const LandingPage = () => {
   }
   const [enquiryData, setEnquiryData] = useState(initialEnquiryData)
   
-  // Service locations
-  const serviceLocations = [
-    "Pitampura Delhi", "Gurgaon", "Faridabad", "Noida", 
-    "Ghaziabad", "Panjab", "Mumbai", "Kolkata"
-  ]
-
-  const [testimonials] = useState([
-    {
-      text: '"Very professional at home medical services offered by Ragini Nursing Bureau. Will definitely recommend it to everyone who is in need! Thank you team."',
-      author: {
-        name: "Swati Bansal",
-      },
-    },
-    {
-      text: '"Ragini nursing is the best nursing service provider in Delhi NCR."',
-      author: {
-        name: "Dev Mandal",
-      },
-    },
-    {
-      text: '"Service is good. But behaviour is best."',
-      author: {
-        name: "Manita Sharma",
-      },
-    },
-    {
-      text: '"Their service is very good, I have taken service from all over Delhi."',
-      author: {
-        name: "Bunty studio B.R",
-      },
-    },
-  ])
-
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const [currentVideo, setCurrentVideo] = useState({
@@ -71,30 +39,6 @@ const LandingPage = () => {
       return nextIndex >= testimonials.length ? 0 : nextIndex
     })
   }
-
-  const videos = [
-   {
-      id: 1,
-      src: "https://www.youtube.com/embed/uEXSBuhJ1AA?si=thCqm7RBzg6vlleI",
-      title: "Experiment",
-      description: "Short Description.",
-      thumbnail: "/assets/Mask group.png",
-    },
-    {
-      id: 2,
-      src: "https://youtube.com/embed/duwQNtb-7rw?si=SKld_sSO0AT36jbL",
-      title: "Home Service",
-      description: "Bahut Dino se Office nahi aa rahe.",
-      thumbnail: "/assets/IVF.png",
-    },
-    {
-      id: 3,
-      src: "https://www.youtube.com/embed/saYYa6rbjb0",
-      title: "Home Service",
-      description: "Surgery ke baad sankraman",
-      thumbnail: "/assets/IVF.png",
-    },
-  ]
 
   const [showModal, setShowModal] = useState(false)
 
@@ -140,12 +84,12 @@ const LandingPage = () => {
   }
 
   return (
-    <>
+    <div className="landing-page">
       <section>
         <div className="wrapper">
           <div className="banner-content">
             <h1>Your Health Is Our Concern!</h1>
-            <h1>Your Personal Healthcare Assistant</h1>
+            <p className="hero-subtitle">Your personal healthcare assistant</p>
             <button className="btn" onClick={handleClick}>
               Book an Appointment
             </button>
@@ -201,7 +145,10 @@ const LandingPage = () => {
             </div>
             <div className="service-right-section">
               <div className="service">
-                <h2 className="text-center">Services & Enquiry</h2>
+                <div className="section-header">
+                  <h2 className="section-title">Our Services</h2>
+                  <p className="section-subtitle">Choose a service and we’ll call you back.</p>
+                </div>
                 <div className="cards-container">
                   {limitedItems.map((card, index) => (
                     <div className="card"
@@ -218,16 +165,15 @@ const LandingPage = () => {
                     </div>
                   ))}
                 </div>
-                
+                <div className="section-cta">
+                  <Link href="/services" className="cta-link">
+                    Show all services
+                    <span className="p-2">
+                      <i className="fa-solid fa-angles-right"></i>
+                    </span>
+                  </Link>
+                </div>
               </div>
-               <div id="show-more">
-              <Link href="/services">
-                Show More
-                <span className="p-2">
-                  <i className="fa-solid fa-angles-right"></i>
-                </span>
-              </Link>
-            </div>
             </div>
           </div>
         </div>
@@ -236,7 +182,9 @@ const LandingPage = () => {
         <div className="about-us-section">
           <div className="about-us-content">
             <div className="text-content">
-              <h2 className="text-center">About Us</h2>
+              <div className="section-header">
+                <h2 className="section-title">About Ragini Nursing Bureau</h2>
+              </div>
               <p>
                 We Ragini Nursing Bureau at Shakurpur Colony, Delhi, provide
                 expertise nursing care by our qualified and trained care takers.
@@ -268,125 +216,86 @@ const LandingPage = () => {
         </div>
       </section>
       <section className="why-choose-section mt-5">
-        <div>
-          <h2 className="text-center">Why Choose Us ?</h2>
+        <div className="section-header">
+          <h2 className="section-title">Why families choose us</h2>
         </div>
         <div className="why-choose-container">
-          <div className="product_card">
-            <div className="image">
-              <img src="/assets/home-service.webp" alt="Home Service" />
-            </div>
-            <div className="product_info">
-              <h2 className="product_name">Home Service</h2>
-              <p className="product_description">
-                All the nurses are trained to give the best patient care at
-                home.
-              </p>
-            </div>
-          </div>
-          <div className="product_card">
-            <div className="image">
-              <img src="/assets/chooseUsImg.png" alt="Care" />
-            </div>
-            <div className="product_info">
-              <h2 className="product_name">Care</h2>
-              <p className="product_description">
-                We help recover faster at Home by giving proper care.
-              </p>
-            </div>
-          </div>
-          <div className="product_card">
-            <div className="image">
-              <img src="/assets/best-protocol.jpg" alt="Best Protocols" />
-            </div>
-            <div className="product_info">
-              <h2 className="product_name">Best Protocols</h2>
-              <p className="product_description">
-                All clinical procedures performed are based on best protocols.
-              </p>
-            </div>
-          </div>
-          <div className="product_card">
-            <div className="image">
-              <img src="/assets/happier-you.jpg" alt="Convenience" />
-            </div>
-            <div className="product_info">
-              <h2 className="product_name">Convenience</h2>
-              <p className="product_description">
-                Be assured for high standards of trusted quality & service
-                consistency.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="mt-5">
-        <div>
-        <div>
-        <h2 className="text-center">Our Videos & Real Stories</h2>
-      </div>
-          <div className="container">
-        <div className="left-section">
-          <div className="video corner-wrapper">
-            <iframe
-              width="720"
-              height="315"
-              src={currentVideo.src}
-              title={`YouTube video player - ${currentVideo.title}`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <div className="youtube-channel-info">
-            <img
-              src="/assets/youtube-profile-image.jpg"
-              alt="Profile"
-              className="youtube-profile-photo"
-            />
-            <div className="youtube-channel-details">
-              <p className="youtube-channel-name">Ragini Nursing Bureau</p>
-            </div>
-          </div>
-        </div>
-        <div className="right-section">
-          {videos.map((video) => (
-            <div
-              className="thumbnail"
-              key={video.id}
-              onClick={() => handleVideoClick(video)}
-            >
-              <img
-                className="thumbnail-image"
-                src={video.thumbnail}
-                alt={`Thumbnail for ${video.title}`}
-              />
-              <div className="thumbnail-description">
-                <h4>{video.title}</h4>
-                <p>{video.description}</p>
+          {whyChooseUs.map((item, index) => (
+            <div className="product_card" key={index}>
+              <div className="image">
+                <img src={item.image} alt={item.title} />
+              </div>
+              <div className="product_info">
+                <h2 className="product_name">{item.title}</h2>
+                <p className="product_description">{item.description}</p>
               </div>
             </div>
           ))}
         </div>
-      </div>
-          <div
-            className="d-flex justify-content-end"
-            style={{ marginRight: "300px" }}
-          >
-            <Link href="/videos" className="d-flex align-items-center">
-              <span>Show More </span>
-              <span className="ml-1">
-                <i className="fa-solid fa-angles-right"></i>
-              </span>
-            </Link>
+      </section>
+      <section className="mt-5">
+        <div className="section-header">
+          <h2 className="section-title">Patient stories & videos</h2>
+        </div>
+        <div className="landing-videos-container">
+          <div className="landing-videos-left">
+            <div className="video corner-wrapper">
+              <iframe
+                className="video-embed"
+                width="100%"
+                height="100%"
+                src={currentVideo.src}
+                title={`YouTube video player - ${currentVideo.title}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="youtube-channel-info">
+              <img
+                src="/assets/youtube-profile-image.jpg"
+                alt="Profile"
+                className="youtube-profile-photo"
+              />
+              <div className="youtube-channel-details">
+                <p className="youtube-channel-name">Ragini Nursing Bureau</p>
+              </div>
+            </div>
           </div>
+          <div className="landing-videos-right">
+            {landingVideos.map((video) => (
+              <div
+                className="thumbnail"
+                key={video.id}
+                onClick={() => handleVideoClick(video)}
+              >
+                <img
+                  className="thumbnail-image"
+                  src={video.thumbnail}
+                  alt={`Thumbnail for ${video.title}`}
+                />
+                <div className="thumbnail-description">
+                  <h4>{video.title}</h4>
+                  <p>{video.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="link-container">
+          <Link href="/videos" className="d-flex align-items-center">
+            <span>Show more</span>
+            <span className="ml-1">
+              <i className="fa-solid fa-angles-right"></i>
+            </span>
+          </Link>
         </div>
       </section>
 
       <section>
-        <div>
-          <h2 className="text-center">Testimonials</h2>
+        <div className="section-header">
+          <h2 className="section-title">What our clients say</h2>
         </div>
         <div className="testimonial-section">
           <div className="testimonial-left">
@@ -419,8 +328,9 @@ const LandingPage = () => {
         </div>
       </section>
       <section className="my-5">
-        <div>
-          <h2 className="text-center">Enquiry</h2>
+        <div className="section-header">
+          <h2 className="section-title">Request a callback</h2>
+          <p className="section-subtitle">Tell us what you need — we’ll contact you shortly.</p>
         </div>
         <div className="d-flex container">
           <div className="enquiry-container col-md-9">
@@ -502,7 +412,7 @@ const LandingPage = () => {
           </button>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

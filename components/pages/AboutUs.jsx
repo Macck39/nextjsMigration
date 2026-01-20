@@ -3,6 +3,7 @@
 import { useState } from "react"
 import "./AboutUs.css"
 import { FaCheckCircle, FaHistory, FaUsers, FaHandshake, FaAward, FaHospital, FaUserNurse, FaHeartbeat } from 'react-icons/fa'
+import { teamMembers, historyTimeline } from "../../util/commonData"
 
 const AboutUs = () => {
   const [activeAccordion, setActiveAccordion] = useState("mission")
@@ -11,81 +12,13 @@ const AboutUs = () => {
     setActiveAccordion(activeAccordion === section ? null : section)
   }
 
-  // Team members data
-  const teamMembers = [
-    {
-      name: "Dr. Anmol kumar",
-      position: "Founder & CEO",
-      bio: "EX. RMO MKW hospital, MEDENTA, MAX- Healthcare,Maharaja Agersen Hospital , AIIMS Delhi Critical care experts unit.  ",
-      // image: "https://placehold.co/200x200?text=Dr.+Kumar"
-    },
-    {
-      name: "Dr. Pradeep Mishra",
-      position: "Co-founder",
-      bio: "(G.P) Apollo Healthcare ICU Experts Director - Research& Academic",
-      // image: "https://placehold.co/200x200?text=Priya"
-    },
-    {
-      name: "Mr. Vivek Rawat",
-      position: "Suppliers Head",
-      bio: "Suppliers Head Delhi NCR - Ragini Nursing Bureau",
-      // image: "https://placehold.co/200x200?text=Amit"
-    },
-    {
-      name: "Miss Rakhi",
-      position: "Critical Care Experts Head",
-      bio: "Nursing officer B.sc  NICU CCU ICU PICU, Critical care experts Delhi & NCR Head",
-      // image: "https://placehold.co/200x200?text=Dr.+Gupta"
-    },
-    {
-      name: "Mr. Rajesh (HR) ",
-      position: "Resources Management",
-      bio: "Resources Management Guide. ( Accounts).  ",
-    },
-    {
-      name: "Mrs. Babita",
-      position: "Life & End Care Expert",
-      bio: "Life & End care experts ICU Unit & Medicals Equipment Delhi Hospital (DNC ).",
-      // image: "https://placehold.co/200x200?text=Neha"
-    }
-  ]
-
-  // Company history timeline data
-  const historyTimeline = [
-    {
-      year: "2016",
-      title: "Foundation",
-      description: "Ragini Nursing Bureau was established in Delhi with a mission to provide quality home healthcare services to patients in need."
-    },
-    {
-      year: "2018",
-      title: "Expansion",
-      description: "Expanded our services to include specialized care for elderly patients, post-surgical recovery, and maternal care services."
-    },
-    {
-      year: "2020",
-      title: "Growth",
-      description: "Added physiotherapy services, ICU setups at home, and medical equipment rental to our comprehensive offerings."
-    },
-    {
-      year: "2022",
-      title: "Regional Expansion",
-      description: "Extended our services to Gurgaon, Faridabad, Noida, and Ghaziabad to serve more patients across the NCR region."
-    },
-    {
-      year: "2024",
-      title: "National Presence",
-      description: "Established presence in major cities including Mumbai, Kolkata, and Punjab, reaching the milestone of serving over 500 satisfied clients."
-    }
-  ]
-
   return (
     <div className="about-us-container">
       {/* Hero Section */}
       <div className="about-hero-section">
         <div className="about-hero-content">
           <h1>About Ragini Nursing Bureau</h1>
-          <p>Your Trusted Partner in Home Healthcare</p>
+          <p className="hero-subtitle">Your trusted partner in home healthcare</p>
         </div>
         <div className="about-hero-image">
           <img src="/assets/about-banner.png" alt="Ragini Nursing Bureau" />
@@ -95,7 +28,9 @@ const AboutUs = () => {
       {/* Introduction Section */}
       <section className="about-intro-section">
         <div className="about-intro-content">
-          <h2>Who We Are</h2>
+          <div className="section-header">
+            <h2 className="section-title">Who We Are</h2>
+          </div>
           <p>
             Ragini Nursing Bureau at Shakurpur Colony, Delhi, provides expertise nursing care through our qualified and trained caregivers. 
             We are well known for excellent care and personalized service that perfectly meets our clients' requirements. 
@@ -111,7 +46,9 @@ const AboutUs = () => {
 
       {/* Values Accordion Section */}
       <section className="about-values-section">
-        <h2>Our Core Values</h2>
+        <div className="section-header">
+          <h2 className="section-title">Our Core Values</h2>
+        </div>
         <div className="accordion-container">
           <div className="accordion-item">
             <div 
@@ -204,7 +141,10 @@ const AboutUs = () => {
       
       {/* History Timeline Section */}
       <section className="about-history-section">
-        <h2>Our Journey</h2>
+        <div className="section-header">
+          <h2 className="section-title">Our Journey</h2>
+          <p className="section-subtitle">From humble beginnings to becoming a trusted healthcare partner</p>
+        </div>
         <div className="timeline-container">
           {historyTimeline.map((item, index) => (
             <div className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`} key={index}>
@@ -220,8 +160,10 @@ const AboutUs = () => {
 
        {/* Team Section */}
       <section className="about-team-section">
-        <h2>Our Team</h2>
-        <p>Meet the dedicated professionals who make our mission possible</p>
+        <div className="section-header">
+          <h2 className="section-title">Our Team</h2>
+          <p className="section-subtitle">Meet the dedicated professionals who make our mission possible</p>
+        </div>
         <div className="team-cards-container">
           {teamMembers.map((member, index) => (
             <div className="team-card" key={index}>
@@ -240,7 +182,9 @@ const AboutUs = () => {
 
       {/* Closing Section */}
       <section className="about-closing-section">
-        <h2>Join Us on Our Mission</h2>
+        <div className="section-header">
+          <h2 className="section-title">Join Us on Our Mission</h2>
+        </div>
         <p>
           Thank you for considering <strong>Ragini Nursing Bureau</strong>. Together, 
           let's make healthcare more <strong>personal, accessible,</strong> and 

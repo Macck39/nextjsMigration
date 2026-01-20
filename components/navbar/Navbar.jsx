@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { RiBarChartHorizontalLine } from "react-icons/ri"
@@ -39,21 +39,23 @@ const Navbar = () => {
   }, [pathname])
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-container">
-        <div className="logo">
-          <Link href="/">
-            <img src="/assets/Ragini-Logo.png" alt="logo" id="logo-img" className="logo-image" />
-          </Link>
-        </div>
-        <div className="menu-icon" onClick={handleShowNavbar}>
-          {showNavbar ? (
-            <IoCloseSharp size={32} className="close-icon" />
-          ) : (
-            <RiBarChartHorizontalLine size={38} className="bar-icon" />
-          )}
-        </div>
-        <div className={`nav-elements ${showNavbar ? "active" : ""}`}>
+    <>
+      {showNavbar && <div className="nav-backdrop" onClick={closeNavbar}></div>}
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="navbar-container">
+          <div className="logo">
+            <Link href="/">
+              <img src="/assets/Ragini-Logo.png" alt="logo" id="logo-img" className="logo-image" />
+            </Link>
+          </div>
+          <div className="menu-icon" onClick={handleShowNavbar}>
+            {showNavbar ? (
+              <IoCloseSharp size={32} className="close-icon" />
+            ) : (
+              <RiBarChartHorizontalLine size={38} className="bar-icon" />
+            )}
+          </div>
+          <div className={`nav-elements ${showNavbar ? "active" : ""}`}>
           <ul>
             <li>
               <Link href="/" className={pathname === "/" ? "nav-active" : ""}>
@@ -82,8 +84,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+        </div>
+      </nav>
+    </>
   )
 }
 
