@@ -13,6 +13,7 @@ import { AiOutlineWhatsApp } from "react-icons/ai"
 import { LuPhoneCall } from "react-icons/lu";
 import { BiPhoneCall, BiSolidTime } from "react-icons/bi"
 import { ImLink } from "react-icons/im"
+import PromoVideoPlayer from "../promo-video/PromoVideoPlayer"
 
 const Footer = () => {
   return (
@@ -20,7 +21,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-column">
           <p>
-            <FaLocationDot /> Our Office Address
+            <FaLocationDot /> Head Office Address
           </p>
           <p>
             H-29, Anandvas, DDA Market Block, H, Shakurpur, <br />
@@ -115,6 +116,9 @@ const Footer = () => {
           </a>
         </div>
       </section>
+      
+      {/* Promo Video Player - Available on all pages */}
+      <PromoVideoPlayer />
     </footer>
   )
 }

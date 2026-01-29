@@ -188,6 +188,39 @@ const ContactPage = () => {
         </div>
       </section>
 
+      {/* Promotional Banner Section */}
+      <section className="promo-banner-section">
+        <div className="promo-banner-container">
+          <div className="promo-banner-content">
+            <h2 className="promo-banner-title">Know Your Health, Own Your Life</h2>
+            <p className="promo-banner-text">
+              Ragini Nursing Bureau - Your trusted partner for quality home healthcare services across Delhi NCR
+            </p>
+            <div className="promo-banner-stats">
+              <div className="promo-stat">
+                <span className="stat-number">1200+</span>
+                <span className="stat-label">Staff</span>
+              </div>
+              <div className="promo-stat">
+                <span className="stat-number">24x7</span>
+                <span className="stat-label">Service</span>
+              </div>
+              <div className="promo-stat">
+                <span className="stat-number">50+</span>
+                <span className="stat-label">Daily Services</span>
+              </div>
+            </div>
+          </div>
+          <div className="promo-banner-image">
+            <img 
+              src="/updates/Banner.jpeg" 
+              alt="Ragini Nursing Bureau Services Banner" 
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Map and Form Section */}
       <section className="contact-section">
         <div className="contact-map-form-container">

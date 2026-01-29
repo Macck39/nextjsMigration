@@ -1171,22 +1171,22 @@
 .thumbnail-description {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: center;
   flex: 1;
   min-width: 0;
+  padding: 4px 0;
 }
 
 .thumbnail-description h4 {
   margin: 0;
   font-size: 1rem;
   color: #2c3e50;
-}
-
-.thumbnail-description p {
-  margin: 0;
-  color: #616161;
-  font-size: 0.9rem;
+  font-weight: 600;
   line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .youtube-channel-info {
@@ -1235,71 +1235,149 @@
   border: 3px solid #eee;
 }
 
-/* @media screen and (max-width: 1440px) {
-  .image-content {
-    width: 200%;
-  }
-} */
-/* Media Queries */
+/* Media Queries for Videos Section */
 @media screen and (max-width: 1024px) {
   .landing-videos-container {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
+  
   .landing-videos-left {
     width: 100%;
+    max-width: 700px;
   }
+  
   .landing-videos-right {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
-   
-}
-
-@media screen and (max-width: 900px) {
-  .landing-videos-left {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+  
   .thumbnail {
-    width: calc(50% - 10px); /* Adjust width to fit two thumbnails with gap */
-    margin-bottom: 20px;
-    display: flex;
+    margin-bottom: 0;
     flex-direction: row;
+    padding: 8px;
   }
+  
+  .thumbnail-image {
+    width: 100px;
+    height: 65px;
+    border-radius: 8px;
+  }
+  
   .thumbnail-description h4 {
-    font-size: 16px;
-  }
-  .thumbnail-description p {
-    font-size: 12px;
+    font-size: 0.85rem;
+    -webkit-line-clamp: 2;
   }
 }
 
-@media screen and (max-width: 676px) {
-  .thumbnail {
-    width: 100%; /* Make thumbnails full width on very small screens */
+@media screen and (max-width: 768px) {
+  .landing-videos-container {
+    padding: 16px;
+    gap: 16px;
   }
+  
   .landing-videos-left {
     width: 100%;
   }
+  
   .landing-videos-right {
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    background: #f8fdfb;
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid #e8f5f1;
   }
-
+  
   .thumbnail {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 0;
+    gap: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
-
+  
   .thumbnail-image {
-    width: 100%;
-    height: auto;
+    width: 80px;
+    height: 55px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  
+  .thumbnail-description {
+    padding: 0;
+  }
+  
+  .thumbnail-description h4 {
+    font-size: 0.78rem;
+    line-height: 1.3;
+    -webkit-line-clamp: 2;
+    color: #2c3e50;
+  }
+  
+  .youtube-channel-info {
+    margin: 8px 0;
+  }
+  
+  .youtube-profile-photo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .youtube-channel-name {
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .landing-videos-container {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .landing-videos-right {
+    padding: 10px;
+    gap: 8px;
+  }
+  
+  .thumbnail {
+    padding: 6px;
+    gap: 8px;
+    border-radius: 8px;
+  }
+  
+  .thumbnail-image {
+    width: 70px;
+    height: 48px;
+    border-radius: 5px;
+  }
+  
+  .thumbnail-description h4 {
+    font-size: 0.72rem;
+    -webkit-line-clamp: 2;
+  }
+  
+  .youtube-channel-info {
+    margin: 6px 0;
+  }
+  
+  .youtube-profile-photo {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .youtube-channel-name {
+    font-size: 0.8rem;
   }
 }
 

@@ -2,13 +2,14 @@
 
 import { useState } from "react"
 import "./Videos.css"
-import { FaUserNurse,FaHospital,FaBrain,FaLungs,FaHome,FaPills,FaPlus,FaMinus,FaCheckCircle } from "react-icons/fa"
+import { FaUserNurse,FaHospital,FaBrain,FaLungs,FaHome,FaPills,FaPlus,FaMinus,FaCheckCircle, FaChevronDown, FaChevronUp, FaPlay } from "react-icons/fa"
 import { detailedServices, videoPageVideos, dementiaTips } from "../../util/commonData"
 
 
 const VideosPage = () => {
 
   const [activeAccordion, setActiveAccordion] = useState(null)
+  const [isVideoListExpanded, setIsVideoListExpanded] = useState(true)
 
   const [currentVideo, setCurrentVideo] = useState({
     src: "https://youtube.com/embed/duwQNtb-7rw?si=SKld_sSO0AT36jbL",
@@ -23,6 +24,10 @@ const VideosPage = () => {
       src: video.src,
       title: video.title,
     })
+  }
+
+  const toggleVideoList = () => {
+    setIsVideoListExpanded(!isVideoListExpanded)
   }
  
   return (
@@ -48,35 +53,42 @@ const VideosPage = () => {
               allowFullScreen
             ></iframe>
           </div>
-          {/* <div className="youtube-channel-info">
-            <img
-              src="/assets/youtube-profile-image.jpg"
-              alt="Profile"
-              className="youtube-profile-photo"
-            />
-            <div className="youtube-channel-details">
-              <p className="youtube-channel-name">Ragini Nursing Bureau</p>
-            </div>
-          </div> */}
         </div>
-        <div className="right-section">
-          {videoPageVideos.map((video) => (
-            <div
-              className="thumbnail"
-              key={video.id}
-              onClick={() => handleVideoClick(video)}
-            >
-              <img
-                className="thumbnail-image"
-                src={video.thumbnail}
-                alt={`Thumbnail for ${video.title}`}
-              />
-              <div className="thumbnail-description">
-                <h4>{video.title}</h4>
-                <p>{video.description}</p>
-              </div>
+        
+        {/* Collapsible Video List Widget */}
+        <div className="video-list-widget">
+          <div className="video-list-header" onClick={toggleVideoList}>
+            <div className="video-list-header-content">
+              <FaPlay className="video-list-icon" />
+              <span className="video-list-title">More Videos ({videoPageVideos.length})</span>
             </div>
-          ))}
+            {isVideoListExpanded ? <FaChevronUp /> : <FaChevronDown />}
+          </div>
+          
+          <div className={`video-list-content ${isVideoListExpanded ? 'expanded' : ''}`}>
+            <div className="video-list-scroll">
+              {videoPageVideos.map((video) => (
+                <div
+                  className={`video-list-item ${currentVideo.src === video.src ? 'active' : ''}`}
+                  key={video.id}
+                  onClick={() => handleVideoClick(video)}
+                >
+                  <div className="video-list-thumbnail">
+                    <img
+                      src={video.thumbnail}
+                      alt={`Thumbnail for ${video.title}`}
+                    />
+                    <div className="video-play-overlay">
+                      <FaPlay />
+                    </div>
+                  </div>
+                  <div className="video-list-info">
+                    <h4>{video.title}</h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

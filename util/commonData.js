@@ -50,26 +50,22 @@ export const testimonials = [
 export const landingVideos = [
   {
     id: 1,
-    src: "https://www.youtube.com/embed/uEXSBuhJ1AA?si=thCqm7RBzg6vlleI",
-    title: "#Medicall #exbihition",
-    description: "all hospital requiredment Medical Equipment Pan India",
-    thumbnail: "/assets/Mask group.png",
+    src: "https://youtube.com/embed/duwQNtb-7rw?si=SKld_sSO0AT36jbL",
+    title: "Bahut dino se office nahi aa rahe. socha puchke aata hu kya hua yar mummy papa ko is age #athome",
+    thumbnail: "/assets/IVF.png",
   },
   {
     id: 2,
-    src: "https://www.youtube.com/embed/cC5sdwRsu4g",
-    title: "#घाव की ड्रेसिंग करने का तरीका",
-    description: "Dressing kaise karte hai by Dr.ANMOL KUMAR",
-    thumbnail: "/assets/dressing.jpg",
+    src: "https://www.youtube.com/embed/phRW428EayI",
+    title: "कम बजट में घर को बनाएं ICU: जरूरी मशीनें और सेटअप की पूरी जानकारी।",   
+    thumbnail: "/Updates/icuSetup.png",
   },
   {
     id: 3,
-    src: "https://youtube.com/embed/duwQNtb-7rw?si=SKld_sSO0AT36jbL",
-    title: "Home Service",
-    description: "Bahut Dino se Office nahi aa rahe.",
-    thumbnail: "/assets/IVF.png",
+    src: "https://www.youtube.com/embed/qftoUHFvhZ4",
+    title: "क्या आप भी सर्च कर रहे हैं नर्सिंग देखभाल वृद्धावस्था देखभाल आईसीयू सेटअप घर #short #viral #home",
+    thumbnail: "/Updates/oldAgeCareAtHome.jpg",
   },
-
 ]
 
 /**
@@ -78,53 +74,46 @@ export const landingVideos = [
 export const videoPageVideos = [
   {
     id: 1,
-    src: "https://www.youtube.com/embed/uEXSBuhJ1AA?si=thCqm7RBzg6vlleI",
-    title: "#Medicall #exbihition",
-    description: "all hospital requiredment Medical Equipment Pan India",
-    thumbnail: "/assets/Mask group.png",
+    src: "https://www.youtube.com/embed/phRW428EayI",
+    title: "कम बजट में घर को बनाएं ICU: जरूरी मशीनें और सेटअप की पूरी जानकारी।",   
+    thumbnail: "/Updates/icuSetup.png",
   },
   {
     id: 2,
-    src: "https://www.youtube.com/shorts/qftoUHFvhZ4",
-    title: "Old Age care at home",
-    description: "क्या आप भी सर्च कर रहे हैं नर्सिंग देखभाल के लिए?",
-    thumbnail: "/assets/dressing.jpg",
+    src: "https://www.youtube.com/embed/qftoUHFvhZ4",
+    title: "क्या आप भी सर्च कर रहे हैं नर्सिंग देखभाल वृद्धावस्था देखभाल आईसीयू सेटअप घर #short #viral #home",
+    thumbnail: "/Updates/oldAgeCareAtHome.jpg",
   },
   {
     id: 3,
-    src: "https://youtube.com/embed/duwQNtb-7rw?si=SKld_sSO0AT36jbL",
-    title: "Home Service",
-    description: "Bahut Dino se Office nahi aa rahe.",
-    thumbnail: "/assets/IVF.png",
+    src: "https://www.youtube.com/embed/v87N-LAvKwc",
+    title: "मुंह के कैंसर का सबसे अच्छा इलाज #care #subscribe  #oralcancerawareness #prevention by Dr.Anmol #top",
+    thumbnail: "/Updates/mouthCancer.jpg",
   },
   {
     id: 4,
-    src: "https://www.youtube.com/shorts/6zBYcrcSsiE",
-    title: "@RAGININURSINGBUREAU1 #elder",
-    description: "Patient care Recliner Bed 🛌 delhi Ncr...",
-    thumbnail: "/assets/surgery.jpg",
+    src: "https://youtube.com/embed/duwQNtb-7rw?si=SKld_sSO0AT36jbL",
+    title: "Bahut dino se office nahi aa rahe. socha puchke aata hu kya hua yar mummy papa ko is age #athome",
+    thumbnail: "/assets/IVF.png",
   },
   {
     id: 5,
-    src: "https://www.youtube.com/shorts/B99QwqmzsJM",
-    title: "#homehealthcare",
-    description: "Hospital bed price near New Delhi, Delhi",
-    thumbnail: "/assets/homeheathcare.jpg",
+    src: "https://www.youtube.com/embed/uEXSBuhJ1AA",
+    title: "#Medicall #exbihition #atoz all hospital requiredment Medical Equipment Pan India #participate",
+    thumbnail: "/assets/Mask group.png",
   },
   {
     id: 6,
-    src: "https://www.youtube.com/watch?v=v87N-LAvKwc",
-    title: "#care #oralcancerawareness #prevention",
-    description: "मुंह के कैंसर का सबसे अच्छा इलाज",
-    thumbnail: "/assets/homeheathcare.jpg",
+    src: "https://www.youtube.com/embed/6zBYcrcSsiE",
+    title: "Patient care Recliner Bed 🛌 delhi Ncr Rent Purchased Home delivery @RAGININURSINGBUREAU1 #elder",
+    thumbnail: "/Updates/reclinerBed.jpg",
   },
   {
     id: 7,
-    src: "https://www.youtube.com/watch?v=phRW428EayI",
-    title: "#icucare #athome/#home",
-    description: "कम बजट में घर को बनाएं ICU",
-    thumbnail: "/assets/homeheathcare.jpg",
-  },
+    src: "https://www.youtube.com/embed/B99QwqmzsJM",
+    title: "Hospital bed price near New Delhi, Delhi #medical #bed #care #hospital #icucare call now 7859989007",
+    thumbnail: "/Updates/hospitalBed.jpg",
+  }
 ]
 
 /**

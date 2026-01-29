@@ -41,13 +41,16 @@ const LandingPage = () => {
   }
 
   const [showModal, setShowModal] = useState(false)
+  const [selectedService, setSelectedService] = useState(null)
 
-  const handleClick = () => {
+  const handleClick = (service = null) => {
+    setSelectedService(service)
     setShowModal(true)
   }
 
   const handleClose = () => {
     setShowModal(false)
+    setSelectedService(null)
   }
 
   const clearForm = () => {
@@ -95,7 +98,7 @@ const LandingPage = () => {
             </button>
           </div>
         </div>
-        <AppointmentModal show={showModal} handleClose={handleClose} />
+        <AppointmentModal show={showModal} handleClose={handleClose} service={selectedService} />
       </section>
       <section className="three-button-section">
         <div className="three-button">
@@ -277,7 +280,6 @@ const LandingPage = () => {
                 />
                 <div className="thumbnail-description">
                   <h4>{video.title}</h4>
-                  <p>{video.description}</p>
                 </div>
               </div>
             ))}

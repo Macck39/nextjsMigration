@@ -4,8 +4,18 @@ import { useState, useEffect } from "react"
 import "./all-services.css"
 import AppointmentModal from "../appointment-modal/AppointmentModal"
 import cards from "../../util/serviceList"
-import { FaPlus, FaMinus, FaMapMarkerAlt, FaPhone, FaEnvelope, FaCheckCircle, FaUserNurse, FaHospital, FaBrain, FaLungs, FaHome, FaPills, FaStethoscope, FaHeartbeat, FaShieldAlt, FaPrescriptionBottleAlt } from 'react-icons/fa'
+import { FaPlus, FaMinus, FaMapMarkerAlt, FaPhone, FaEnvelope, FaCheckCircle, FaUserNurse, FaHospital, FaBrain, FaLungs, FaHome, FaPills, FaStethoscope, FaHeartbeat, FaShieldAlt, FaPrescriptionBottleAlt, FaArrowRight } from 'react-icons/fa'
 import { serviceLocations, serviceDescriptions, detailedServices, benefits } from "../../util/commonData"
+
+// Featured services with new category images
+const featuredServices = [
+  { image: "/updates/categoryImages/NursingService.jpeg", title: "Nursing Service", description: "Professional care at home" },
+  { image: "/updates/categoryImages/BabyCareAndVaccinationAtHome.jpeg", title: "Baby Care & Vaccination at Home", description: "Expert infant care" },
+  { image: "/updates/categoryImages/GetTrainedAttendentServiceAtHome.jpeg", title: "Trained Attendant Service at Home/Hospital Near You", description: "Dedicated caregivers" },
+  { image: "/updates/categoryImages/ICUSetupAtHome.jpeg", title: "ICU Setup at Home", description: "Hospital-grade equipment" },
+  { image: "/updates/categoryImages/LabTestAtHome.jpeg", title: "Lab Test at Home", description: "Convenient diagnostics" },
+  { image: "/updates/categoryImages/MedicineDeliveryAtHomeDelhi.jpeg", title: "Medicine Delivery at Home", description: "Doorstep delivery" },
+]
 
 const AllServices = () => {
   const [showModal, setShowModal] = useState(false)
@@ -79,7 +89,65 @@ const AllServices = () => {
             </div>
           </div>
         </div>
-        <section>
+
+        {/* All Services List - Text Only Section */}
+        <section className="all-services-list-section">
+          <div className="services-list-container">
+            <h2 className="services-list-title">
+              <span className="title-highlight">Our Complete</span> Services
+            </h2>
+            <p className="services-list-subtitle">Comprehensive healthcare solutions tailored to your needs</p>
+            <div className="services-text-grid">
+              {cards.map((service, index) => (
+                <div 
+                  key={index} 
+                  className="service-text-item"
+                  onClick={() => handleCardClick(service, index)}
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <span className="service-number">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="service-name">{service.title}</span>
+                  <FaArrowRight className="service-arrow" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Care Services Gallery */}
+        <section className="featured-services-section">
+          <div className="featured-services-container">
+            <h2 className="featured-title">
+              Featured <span className="title-accent">Care Services</span>
+            </h2>
+            <p className="featured-subtitle">Specialized healthcare delivered to your doorstep</p>
+            <div className="featured-services-grid">
+              {featuredServices.map((service, index) => (
+                <div 
+                  key={index} 
+                  className="featured-service-card"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  onClick={() => handleAppointmentClick({ title: service.title })}
+                >
+                  <div className="featured-image-wrapper">
+                    <img src={service.image} alt={service.title} loading="lazy" />
+                    <div className="featured-image-shine"></div>
+                  </div>
+                  <div className="featured-overlay">
+                    <div className="featured-content">
+                      <h3>{service.title}</h3>
+                      <p>{service.description}</p>
+                      <span className="featured-cta">Book Now</span>
+                    </div>
+                  </div>
+                  <div className="featured-ring"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* <section>
           <div className="all_services_wrapper">
             <div className="all_services-cards-container">
               {cards.map((card, index) => (
@@ -124,7 +192,7 @@ const AllServices = () => {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Specialized Premium Services Section */}
         <section className="specialized-care-section" id="specialized-care">

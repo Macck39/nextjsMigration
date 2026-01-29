@@ -1,2 +1,376 @@
-/* Callback modal styles */
+/* ============================================
+   Redesigned Callback Modal
+   Modern & Clean Form Design
+   ============================================ */
 
+/* Override Ant Design Modal Styles */
+.callback-modal-redesigned .ant-modal-content {
+  padding: 0 !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fdfb 100%) !important;
+  box-shadow: 
+    0 25px 80px rgba(74, 184, 153, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.callback-modal-redesigned .ant-modal-body {
+  padding: 0 !important;
+}
+
+/* Content Wrapper */
+.callback-content-wrapper {
+  position: relative;
+  padding: 20px 16px 16px;
+  overflow: hidden;
+}
+
+/* Background Decoration */
+.callback-bg-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.callback-bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+}
+
+.callback-bg-1 {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, #4ab899 0%, #3a9d7f 100%);
+  top: -60px;
+  right: -40px;
+}
+
+.callback-bg-2 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #68d4b8 0%, #4ab899 100%);
+  bottom: 30px;
+  left: -30px;
+}
+
+/* Close Button */
+.callback-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.callback-close-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  transform: rotate(90deg);
+}
+
+/* Header */
+.callback-header {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.callback-icon-wrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4ab899 0%, #3a9d7f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  box-shadow: 0 5px 15px rgba(74, 184, 153, 0.35);
+}
+
+.callback-main-icon {
+  font-size: 18px;
+  color: white;
+}
+
+.callback-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 5px 0;
+}
+
+/* Selected Service Badge */
+.selected-service-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, rgba(74, 184, 153, 0.1) 0%, rgba(74, 184, 153, 0.15) 100%);
+  border: 1px solid rgba(74, 184, 153, 0.3);
+  color: #2d8a70;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.badge-service-icon {
+  font-size: 10px;
+  color: #4ab899;
+  flex-shrink: 0;
+}
+
+.selected-service-badge span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.callback-subtitle {
+  font-size: 0.7rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Form Styles */
+.callback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field-icon {
+  position: absolute;
+  left: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(74, 184, 153, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4ab899;
+  font-size: 11px;
+  z-index: 1;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 10px 10px 10px 46px;
+  border: 1.5px solid #e8f5f1;
+  border-radius: 10px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #1e293b;
+  background: #fafffe;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-field input::placeholder {
+  color: #94a3b8;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: #4ab899;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(74, 184, 153, 0.1);
+}
+
+.form-field select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.form-field select option {
+  padding: 10px;
+}
+
+/* Submit Button */
+.callback-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 16px;
+  margin-top: 2px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4ab899 0%, #3a9d7f 100%);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(74, 184, 153, 0.35);
+}
+
+.callback-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(74, 184, 153, 0.45);
+}
+
+.callback-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.callback-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-send-icon {
+  font-size: 10px;
+}
+
+.btn-spinner {
+  font-size: 12px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Footer Note */
+.callback-footer-note {
+  text-align: center;
+  font-size: 9px;
+  color: #94a3b8;
+  margin: 10px 0 0 0;
+}
+
+/* Success State */
+.callback-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+  text-align: center;
+}
+
+.success-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.success-icon {
+  font-size: 24px;
+  color: white;
+}
+
+.callback-success h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.callback-success p {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+}
+
+@keyframes successPop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Modal Animation */
+.callback-modal-redesigned .ant-modal {
+  animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Mask */
+.callback-modal-redesigned .ant-modal-mask {
+  background: rgba(15, 23, 42, 0.6) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive */
+@media screen and (max-width: 360px) {
+  .callback-content-wrapper {
+    padding: 20px 16px 16px;
+  }
+  
+  .callback-icon-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .callback-main-icon {
+    font-size: 18px;
+  }
+  
+  .callback-title {
+    font-size: 1.1rem;
+  }
+  
+  .form-field input,
+  .form-field select {
+    padding: 10px 10px 10px 48px;
+    font-size: 12px;
+  }
+  
+  .field-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+  
+  .callback-submit-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
