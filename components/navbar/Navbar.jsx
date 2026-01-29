@@ -45,7 +45,14 @@ const Navbar = () => {
         <div className="navbar-container">
           <div className="logo">
             <Link href="/">
-              <img src="/assets/Ragini-Logo.png" alt="logo" id="logo-img" className="logo-image" />
+              <Image 
+                src="/assets/Ragini-Logo.png" 
+                alt="Ragini Nursing Bureau Logo" 
+                width={150} 
+                height={50} 
+                priority
+                className="logo-image"
+              />
             </Link>
           </div>
           <div className="menu-icon" onClick={handleShowNavbar}>
