@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react"
+import Image from "next/image"
 import "./AboutUs.css"
 import { FaCheckCircle, FaHistory, FaUsers, FaHandshake, FaAward, FaHospital, FaUserNurse, FaHeartbeat } from 'react-icons/fa'
 import { teamMembers, historyTimeline } from "../../util/commonData"
@@ -21,7 +22,14 @@ const AboutUs = () => {
           <p className="hero-subtitle">Your trusted partner in home healthcare</p>
         </div>
         <div className="about-hero-image">
-          <img src="/assets/about-banner.png" alt="Ragini Nursing Bureau" />
+          <Image 
+            src="/assets/about-banner.png" 
+            alt="Ragini Nursing Bureau" 
+            width={600}
+            height={400}
+            priority
+            style={{ width: '100%', height: 'auto' }}
+          />
         </div>
       </div>
 
@@ -168,7 +176,10 @@ const AboutUs = () => {
           {teamMembers.map((member, index) => (
             <div className="team-card" key={index}>
               <div className="team-card-image">
-                <img src={member.image} alt={member.name} />
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
+                />
               </div>
               <div className="team-card-content">
                 <h3>{member.name}</h3>

@@ -1,16 +1,95 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { AuthProvider } from '@/components/AuthContext'
-import { NotificationProvider } from '@/components/NotificationContext'
-import Navbar from '@/components/navbar/Navbar'
-import Footer from '@/components/footer/Footer'
+import Providers from '@/components/Providers'
 import ClientLayout from '@/components/ClientLayout'
 
 const inter = Inter({ subsets: ['latin'] })
 
+// Enhanced metadata for SEO, Open Graph, and Twitter cards
 export const metadata = {
-  title: 'Ragini Nursing ',
-  description: 'Your Personal Healthcare Assistant',
+  // Title configuration with template for child pages
+  title: {
+    default: 'Ragini Nursing Bureau - Home Healthcare Services in Delhi NCR',
+    template: '%s | Ragini Nursing Bureau'
+  },
+  description: 'Professional home healthcare services including nursing care, ICU setup at home, elderly care, physiotherapy, baby care, and more. 24/7 availability across Delhi NCR. Trusted by thousands of families.',
+  keywords: [
+    'nursing bureau',
+    'home healthcare',
+    'Delhi NCR',
+    'nursing services',
+    'elderly care',
+    'ICU setup at home',
+    'physiotherapy at home',
+    'nursing care',
+    'home nurse',
+    'patient care',
+    'medical attendant',
+    'baby care',
+    'mother and child care'
+  ],
+  authors: [{ name: 'Ragini Nursing Bureau' }],
+  creator: 'Ragini Nursing Bureau',
+  publisher: 'Ragini Nursing Bureau',
+  
+  // Open Graph metadata for social sharing
+  openGraph: {
+    title: 'Ragini Nursing Bureau - Home Healthcare Services',
+    description: 'Your trusted partner for quality home healthcare services. Professional nurses, ICU setup, elderly care, and more across Delhi NCR.',
+    url: 'https://ragininursingbureau.com',
+    siteName: 'Ragini Nursing Bureau',
+    locale: 'en_IN',
+    type: 'website',
+    images: [
+      {
+        url: '/assets/Ragini-Logo.png',
+        width: 800,
+        height: 600,
+        alt: 'Ragini Nursing Bureau Logo',
+      }
+    ],
+  },
+  
+  // Twitter card metadata
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ragini Nursing Bureau - Home Healthcare Services',
+    description: 'Professional home healthcare services including nursing care, ICU setup, elderly care across Delhi NCR.',
+    images: ['/assets/Ragini-Logo.png'],
+  },
+  
+  // Favicon and icons configuration
+  icons: {
+    icon: '/assets/Ragini-Logo.ico',
+    shortcut: '/assets/Ragini-Logo.ico',
+    apple: '/assets/Ragini-Logo.png',
+  },
+  
+  // Robots configuration
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  
+  // Verification for search consoles (add your IDs after verification)
+  // verification: {
+  //   google: 'your-google-verification-code',
+  // },
+  
+  // Alternate languages (if applicable)
+  alternates: {
+    canonical: 'https://ragininursingbureau.com',
+  },
+  
+  // Category for better classification
+  category: 'Healthcare',
 }
 
 export default function RootLayout({ children }) {
@@ -37,13 +116,11 @@ export default function RootLayout({ children }) {
         ></script>
       </head>
       <body className={inter.className}>
-        <NotificationProvider>
-          <AuthProvider>
-            <ClientLayout>
-              {children}
-            </ClientLayout>
-          </AuthProvider>
-        </NotificationProvider>
+        <Providers>
+          <ClientLayout>
+            {children}
+          </ClientLayout>
+        </Providers>
       </body>
     </html>
   )

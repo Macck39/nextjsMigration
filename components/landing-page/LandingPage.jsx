@@ -1,10 +1,19 @@
 'use client'
 
 import { useState, useEffect } from "react"
+import dynamic from "next/dynamic"
 import "./landing-page.css"
 import Image from "next/image"
 import Link from "next/link"
-import AppointmentModal from "../appointment-modal/AppointmentModal"
+
+// Dynamic import for AppointmentModal - Only loaded when user clicks
+const AppointmentModal = dynamic(
+  () => import("../appointment-modal/AppointmentModal"),
+  { 
+    loading: () => null,
+    ssr: false 
+  }
+)
 
 import { FaUserNurse, FaHospital, FaSmile, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa"
 import cards from "../../util/serviceList"
@@ -166,7 +175,13 @@ const LandingPage = () => {
           
           <div className="service-content">
             <div className="service-left-section">
-              <img src="/assets/Frame 427318620.png" alt="Service" />
+              <Image 
+                src="/assets/Frame 427318620.png" 
+                alt="Home Healthcare Services" 
+                width={400} 
+                height={350}
+                style={{ width: '100%', height: 'auto' }}
+              />
             </div>
             <div className="service-right-section">
               <div className="service">
@@ -182,7 +197,7 @@ const LandingPage = () => {
                       <img
                         className="card-img-top"
                         src={card.image}
-                        alt={`Card ${index + 1}`}
+                        alt={card.title}
                       />
                       <div className="card-body">
                         <h6>{card.title}</h6>
@@ -235,7 +250,13 @@ const LandingPage = () => {
                   className="plus-vector"
                 />
               </div> */}
-              <img src="/assets/aboutUsDescImg.png" alt="aboutUsDescImg" />
+              <Image 
+                src="/assets/aboutUsDescImg.png" 
+                alt="About Ragini Nursing Bureau" 
+                width={400} 
+                height={300}
+                style={{ width: '100%', height: 'auto' }}
+              />
             </div>
           </div>
         </div>
@@ -248,7 +269,13 @@ const LandingPage = () => {
           {whyChooseUs.map((item, index) => (
             <div className="product_card" key={index}>
               <div className="image">
-                <img src={item.image} alt={item.title} />
+                <Image 
+                  src={item.image} 
+                  alt={item.title} 
+                  width={300} 
+                  height={200}
+                  style={{ width: '100%', height: 'auto' }}
+                />
               </div>
               <div className="product_info">
                 <h2 className="product_name">{item.title}</h2>
@@ -278,9 +305,11 @@ const LandingPage = () => {
               ></iframe>
             </div>
             <div className="youtube-channel-info">
-              <img
+              <Image
                 src="/assets/youtube-profile-image.jpg"
-                alt="Profile"
+                alt="Ragini Nursing Bureau YouTube Profile"
+                width={50}
+                height={50}
                 className="youtube-profile-photo"
               />
               <div className="youtube-channel-details">
@@ -324,11 +353,22 @@ const LandingPage = () => {
         <div className="testimonial-section">
           <div className="testimonial-left">
             <div className="ratings-icon">
-              <img src="/assets/Group 89.png" alt="Rating" />
+              <Image 
+                src="/assets/Group 89.png" 
+                alt="Customer Ratings" 
+                width={150} 
+                height={150}
+              />
             </div>
           </div>
           <div className="testimonial-right">
-            <img src="/assets/,,.png" alt="Colons" className="colons" />
+            <Image 
+              src="/assets/,,.png" 
+              alt="Quotation marks" 
+              width={50} 
+              height={40}
+              className="colons" 
+            />
             <div className="testimonial-cards">
               {testimonials
                 .slice(currentIndex, currentIndex + 2)
@@ -427,7 +467,14 @@ const LandingPage = () => {
             </form>
           </div>
           <div className="col-md-3">
-            <img src="/assets/Enquiry-Image.png" alt="Enquiry" className="enquiry-image" />
+            <Image 
+              src="/assets/Enquiry-Image.png" 
+              alt="Request a Callback" 
+              width={300} 
+              height={350}
+              className="enquiry-image"
+              style={{ width: '100%', height: 'auto' }}
+            />
           </div>
         </div>
         <div className="enquiry-btn-container">

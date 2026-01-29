@@ -6,25 +6,9 @@ import "./promo-video.css"
 
 const PromoVideoPlayer = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [isMinimized, setIsMinimized] = useState(false)
+  const [isMinimized, setIsMinimized] = useState(true) // Start with minimized button visible
   const videoRef = useRef(null)
   const modalRef = useRef(null)
-
-  // Check if user has already seen the video in this session
-  useEffect(() => {
-    const hasSeenVideo = sessionStorage.getItem('promoVideoSeen')
-    if (!hasSeenVideo) {
-      // Show popup after a small delay
-      const timer = setTimeout(() => {
-        setIsOpen(true)
-        setIsMinimized(false)
-      }, 2000)
-      return () => clearTimeout(timer)
-    } else {
-      // Show minimized button if already seen
-      setIsMinimized(true)
-    }
-  }, [])
 
   // Handle video play when modal opens
   useEffect(() => {
@@ -41,7 +25,6 @@ const PromoVideoPlayer = () => {
     }
     setIsOpen(false)
     setIsMinimized(true)
-    sessionStorage.setItem('promoVideoSeen', 'true')
   }
 
   const handleReopen = () => {

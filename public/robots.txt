@@ -1,0 +1,18 @@
+# Ragini Nursing Bureau - Robots.txt
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Disallow API routes
+Disallow: /api/
+
+# Disallow login/admin pages
+Disallow: /login
+Disallow: /portal-8f3c2a/
+
+# Crawl-delay (optional, for polite crawling)
+Crawl-delay: 1
+
+# Sitemap location (update domain before deployment)
+Sitemap: https://ragininursingbureau.com/sitemap.xml

@@ -1,15 +1,46 @@
 'use client'
 
 import { useState } from "react"
+import Image from "next/image"
+import dynamic from "next/dynamic"
 import "./contact-us.css"
 import { BiPhoneCall, BiSolidTime } from "react-icons/bi"
 import { FaLocationDot, FaWhatsapp, FaPhone, FaEnvelope } from "react-icons/fa6"
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaPinterest, FaExternalLinkAlt } from "react-icons/fa"
-import MapComponent from "../map/MapComponent"
 import cards from "../../util/serviceList"
 import { createRequest } from "../../util/api"
 import { socialLinks, quickLinks, contactInfo } from "../../util/commonData"
 import { message } from "antd"
+
+// Dynamic import for MapComponent - Maps don't need SSR and are heavy
+const MapComponent = dynamic(
+  () => {
+    // #region agent log
+    if (typeof window !== 'undefined') {
+      fetch('http://127.0.0.1:7242/ingest/b841c0e5-3deb-42e9-8e6c-5e2b97b1092f',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'ContactPage.jsx:dynamicImport',message:'MapComponent dynamic import started',data:{},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'B'})}).catch(()=>{});
+    }
+    // #endregion
+    return import("../map/MapComponent").then(mod => {
+      // #region agent log
+      if (typeof window !== 'undefined') {
+        fetch('http://127.0.0.1:7242/ingest/b841c0e5-3deb-42e9-8e6c-5e2b97b1092f',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'ContactPage.jsx:dynamicImport',message:'MapComponent dynamic import SUCCESS',data:{hasDefault:!!mod.default},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'B'})}).catch(()=>{});
+      }
+      // #endregion
+      return mod;
+    }).catch(err => {
+      // #region agent log
+      if (typeof window !== 'undefined') {
+        fetch('http://127.0.0.1:7242/ingest/b841c0e5-3deb-42e9-8e6c-5e2b97b1092f',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'ContactPage.jsx:dynamicImport',message:'MapComponent dynamic import FAILED',data:{error:err?.message||String(err)},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'B'})}).catch(()=>{});
+      }
+      // #endregion
+      throw err;
+    });
+  },
+  { 
+    loading: () => <div className="map-skeleton" style={{ height: '550px', background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading map...</div>,
+    ssr: false 
+  }
+)
 
 const ContactPage = () => {
   const servicesOptions = cards.map((item) => item.title)
@@ -211,10 +242,12 @@ const ContactPage = () => {
             </div>
           </div>
           <div className="promo-banner-image">
-            <img 
+            <Image 
               src="/updates/Banner.jpeg" 
               alt="Ragini Nursing Bureau Services Banner" 
-              loading="lazy"
+              width={500}
+              height={350}
+              style={{ width: '100%', height: 'auto' }}
             />
           </div>
         </div>
