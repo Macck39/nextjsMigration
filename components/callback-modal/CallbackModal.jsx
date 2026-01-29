@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Modal, message } from "antd"
 import "./callback-modal.css"
 import cards from "../../util/serviceList"
-import { callbackRequest } from "../../util/api"
+import { createRequest } from "../../util/api"
 import { 
   FaTimes, 
   FaUser, 
@@ -63,7 +63,7 @@ const CallbackModal = ({ show, handleClose, serviceName }) => {
     setIsSubmitting(true)
     
     try {
-      await callbackRequest(formData)
+      await createRequest({ ...formData, type: "callback" })
       setIsSuccess(true)
       message.success("Callback request submitted successfully!")
       

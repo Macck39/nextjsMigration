@@ -5,7 +5,6 @@ import "./login.css"
 import { useAuth } from "../AuthContext"
 import { useRouter } from "next/navigation"
 import { useNotification } from "../NotificationContext"
-import Cookies from 'js-cookie'
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -25,7 +24,7 @@ const Login = () => {
     e.preventDefault()
     const success = await login(credentials)
     if (success) {
-      router.push("/admindashboard")
+      router.push("/portal-8f3c2a")
       addNotification("Login Successfull", "success", 3000)
     } else {
       addNotification("Invalid Credentials", "error", 3000)
@@ -33,11 +32,10 @@ const Login = () => {
   }
 
   useEffect(() => {
-    const token = Cookies.get('token')
-    if(token){ 
-      router.push("/admindashboard")
+    if (isAuthenticated) {
+      router.push("/portal-8f3c2a")
     }
-  }, [router])
+  }, [isAuthenticated, router])
   
   return (
     <>

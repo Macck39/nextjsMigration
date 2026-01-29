@@ -8,9 +8,10 @@ import AppointmentModal from "../appointment-modal/AppointmentModal"
 
 import { FaUserNurse, FaHospital, FaSmile, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa"
 import cards from "../../util/serviceList"
-import { createEnquiry } from "../../util/api"
+import { createRequest } from "../../util/api"
 import { useNotification } from "../NotificationContext"
 import { serviceLocations, testimonials, landingVideos, whyChooseUs } from "../../util/commonData"
+import { message } from "antd"
 
 const LandingPage = () => {
   const limitedItems = cards.slice(0, 8)
@@ -69,20 +70,41 @@ const LandingPage = () => {
     })
   }
 
+  const getFieldValue = (value) => (typeof value === "string" ? value.trim() : "")
+
+  const getFriendlyError = (error) => {
+    if (!error) return "Failed to submit. Please try again."
+    if (error.statusCode === 400) {
+      return "Please fill all required fields."
+    }
+    const messageText = error.message || ""
+    if (/validation|required|path\s+`/i.test(messageText)) {
+      return "Please fill all required fields."
+    }
+    return messageText || "Failed to submit. Please try again."
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const requiredFields = ["fullname", "email", "mobile", "location", "service"]
+    const hasMissing = requiredFields.some((field) => !getFieldValue(enquiryData[field]))
+    if (hasMissing) {
+      message.error("Please fill all required fields.")
+      return
+    }
     try {
-      const response = await createEnquiry(enquiryData)
+      const response = await createRequest({ ...enquiryData, type: "callback" })
       console.log(response)
       if (response) {
-        addNotification("Enquiry Submitted Successfully", "success", 3000)
+        message.success("Callback request submitted successfully!")
         clearForm()
       } else {
-        addNotification("Enquiry Submission Failed", "error", 3000)
+        message.error("Failed to submit. Please try again.")
       }
     } catch (error) {
       console.error("Error Submitting Enquiry", error)
-      addNotification(error.message, "error", 3000)
+      const friendlyMessage = getFriendlyError(error)
+      message.error(friendlyMessage)
     }
   }
 
@@ -361,7 +383,7 @@ const LandingPage = () => {
                 <div className="input-wrapper">
                   <i className="fas fa-phone"></i>
                   <input
-                    type="number"
+                    type="tel"
                     name="mobile"
                     value={enquiryData.mobile}
                     onChange={handleChange}

@@ -1,217 +1,353 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useEffect, useMemo, useState } from "react"
 import "./AdminDashboard.css"
 import { useNotification } from "../NotificationContext"
 import { useRouter } from "next/navigation"
 import { useAuth } from "../AuthContext"
-import Cookies from "js-cookie"
-import { getAllEnquiry, getAllUsers, getCallbackRequests, logout as apiLogout, getUserProfile } from "../../util/api"
-import * as XLSX from 'xlsx'
+import { getAllUsers, getRequests, getUserProfile, logout as apiLogout } from "../../util/api"
+import * as XLSX from "xlsx"
+import { Modal } from "antd"
+
+const PAGE_SIZE = 20
 
 const AdminDashboard = () => {
-  const [activeMenu, setActiveMenu] = useState("request")
-  const [data, setData] = useState([])
+  const router = useRouter()
+  const { addNotification } = useNotification()
+  const { isAuthenticated, isLoading, logout } = useAuth()
+
+  const [activeTab, setActiveTab] = useState("requests") // requests | users
+  const [rows, setRows] = useState([])
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState("")
+  const [searchTerm, setSearchTerm] = useState("")
+  const [requestType, setRequestType] = useState("all") // all | callback | enquiry
+  const [page, setPage] = useState(1)
+
   const [userProfile, setUserProfile] = useState(null)
   const [showProfileDropdown, setShowProfileDropdown] = useState(false)
-  const { addNotification } = useNotification()
-  const { isAuthenticated, logout, checkAuth, isLoading } = useAuth()
-  const [searchTerm, setSearchTerm] = useState("")
-  const [filteredData, setFilteredData] = useState([])
-  const router = useRouter()
 
-  const exportToExcel = () => {
-    const worksheet = XLSX.utils.json_to_sheet(filteredData)
-    const workbook = XLSX.utils.book_new()
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Data")
-    XLSX.writeFile(workbook, `${activeMenu}_data.xlsx`)
-  }
-
-  const menuItems = [
-    { id: "request", icon: "📞", label: "Callback Requests" },
-    { id: "enquiry", icon: "📋", label: "Enquiries" },
-    { id: "user", icon: "👤", label: "All Users" },
-  ]
+  const [messageModalOpen, setMessageModalOpen] = useState(false)
+  const [messageModalTitle, setMessageModalTitle] = useState("")
+  const [messageModalText, setMessageModalText] = useState("")
 
   useEffect(() => {
     const init = async () => {
-      if (!isLoading) {
-        if (!isAuthenticated) {
-          router.push('/login')
-        } else {
-          fetchData(activeMenu)
-        }
+      if (isLoading) return
+      if (!isAuthenticated) {
+        router.push("/login")
+        return
+      }
+      try {
+        const me = await getUserProfile()
+        setUserProfile(me.data)
+      } catch {
+        // ignore (API handlers will still protect)
       }
     }
     init()
-  }, [isAuthenticated, isLoading, activeMenu, router])
-  
-  useEffect(() => {
-    if (isAuthenticated && !isLoading) {
-      fetchUserProfile()
-    }
-  }, [isAuthenticated, isLoading])
+  }, [isAuthenticated, isLoading, router])
 
   useEffect(() => {
-    handleSearch(searchTerm)
-  }, [searchTerm, data])
+    if (isLoading) return
+    if (!isAuthenticated) return
+    fetchTabData(activeTab)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab, isAuthenticated, isLoading])
 
-  const fetchUserProfile = async () => {
-    try {
-      const response = await getUserProfile()
-      setUserProfile(response.data)
-    } catch (error) {
-      console.error("Error fetching user profile:", error)
-      addNotification("Failed to fetch user profile", "error", 3000)
+  useEffect(() => {
+    setPage(1)
+  }, [searchTerm, requestType, activeTab])
+
+  const filteredRows = useMemo(() => {
+    let data = Array.isArray(rows) ? rows : []
+
+    if (activeTab === "requests" && requestType !== "all") {
+      data = data.filter((r) => (r?.type || "").toLowerCase() === requestType)
     }
-  }
-  
-  const fetchData = async (endpoint) => {
+
+    const term = searchTerm.trim().toLowerCase()
+    if (!term) return data
+
+    return data.filter((item) =>
+      Object.values(item || {}).some((v) =>
+        String(v ?? "")
+          .toLowerCase()
+          .includes(term)
+      )
+    )
+  }, [rows, activeTab, requestType, searchTerm])
+
+  const totalPages = Math.max(1, Math.ceil(filteredRows.length / PAGE_SIZE))
+  const paginatedRows = useMemo(() => {
+    const start = (page - 1) * PAGE_SIZE
+    return filteredRows.slice(start, start + PAGE_SIZE)
+  }, [filteredRows, page])
+
+  const fetchTabData = async (tab) => {
     setLoading(true)
-    setError(null)
+    setError("")
     try {
-      let response
-      switch (endpoint) {
-        case 'request':
-          response = await getCallbackRequests()
-          break
-        case 'enquiry':
-          response = await getAllEnquiry()
-          break
-        case 'user':
-          response = await getAllUsers()
-          break
-        default:
-          throw new Error('Invalid endpoint')
-      }
-      setData(response.data)
+      const res = tab === "users" ? await getAllUsers() : await getRequests()
+      setRows(res.data || [])
     } catch (err) {
-      if (err.statusCode === 401) {
+      if (err?.statusCode === 401) {
         addNotification("Session expired. Please login again.", "error", 3000)
-        logout()
+        await logout()
+        router.push("/login")
       } else {
+        setError(err?.message || "Failed to fetch data. Please try again.")
         addNotification("An error occurred.", "error", 3000)
-        setError("Failed to fetch data. Please try again.")
       }
     } finally {
       setLoading(false)
     }
   }
 
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(filteredRows)
+    const workbook = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(workbook, worksheet, activeTab)
+    XLSX.writeFile(workbook, `${activeTab}_data.xlsx`)
+  }
+
   const handleLogout = async () => {
     try {
       const res = await apiLogout()
       if (res.status === 200) {
-        logout()
+        await logout()
         addNotification(res.data.message, "success")
         router.push("/")
       }
-    } catch (error) {
+    } catch {
       addNotification("An error occurred during logout.", "error", 3000)
-      setError("Failed to fetch data. Please try again.")
     }
   }
 
-  const handleSearch = (term) => {
-    setSearchTerm(term)
-    if (term.trim() === "") {
-      setFilteredData(data)
-    } else {
-      const lowercasedTerm = term.toLowerCase()
-      const filtered = data.filter(item =>
-        Object.values(item).some(value =>
-          value.toString().toLowerCase().includes(lowercasedTerm)
-        )
-      )
-      setFilteredData(filtered)
-    }
+  const openMessage = (row) => {
+    setMessageModalTitle(`${row?.fullname || "Request"} (${row?.type || "-"})`)
+    setMessageModalText(row?.message || "")
+    setMessageModalOpen(true)
   }
 
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+  if (isLoading) return <div className="admin-loading">Loading...</div>
 
   return (
     <div className="admin-dashboard">
-      <aside className="sidebar">
-        <div className="logo">DASHBOARD</div>
-        <nav>
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              className={`menu-item ${activeMenu === item.id ? "active" : ""}`}
-              onClick={() => setActiveMenu(item.id)}
-            >
-              <span className="icon">{item.icon}</span>
-              {item.label}
-            </button>
-          ))}
+      <aside className="admin-sidebar">
+        <div className="admin-brand">
+          <div className="admin-brand-title">Admin</div>
+          <div className="admin-brand-subtitle">Ragini Nursing Bureau</div>
+        </div>
+
+        <nav className="admin-nav">
+          <button
+            className={`admin-tab ${activeTab === "requests" ? "active" : ""}`}
+            onClick={() => setActiveTab("requests")}
+            type="button"
+          >
+            Requests
+          </button>
+          <button
+            className={`admin-tab ${activeTab === "users" ? "active" : ""}`}
+            onClick={() => setActiveTab("users")}
+            type="button"
+          >
+            Users
+          </button>
         </nav>
       </aside>
-      <main className="content">
-        <header>
-          <div className="search-bar">
-            <input type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => handleSearch(e.target.value)}
-            />
-            <button>🔍</button>
-          </div>
-          <button
-            className="export-button"
-            onClick={exportToExcel}
-          >
-            Export to Excel
-          </button>
-          <div className="user-profile">
-            <div
-              className="avatar"
-              onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-            >
-              👤
+
+      <main className="admin-content">
+        <header className="admin-header">
+          <div className="admin-left">
+            <div className="admin-search">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
-            {showProfileDropdown && (
-              <div className="profile-dropdown">
-                <div className="profile-info">
-                  <p><strong>{userProfile?.username}</strong></p>
-                </div>
-                <button onClick={handleLogout}>Logout</button>
+
+            {activeTab === "requests" && (
+              <div className="admin-filter">
+                <select
+                  value={requestType}
+                  onChange={(e) => setRequestType(e.target.value)}
+                >
+                  <option value="all">All types</option>
+                  <option value="callback">Callback</option>
+                  <option value="enquiry">Enquiry</option>
+                </select>
               </div>
             )}
           </div>
+
+          <div className="admin-right">
+            <button className="admin-export" onClick={exportToExcel} type="button">
+              Export
+            </button>
+
+            <div className="admin-profile">
+              <button
+                className="admin-avatar"
+                type="button"
+                onClick={() => setShowProfileDropdown((v) => !v)}
+              >
+                👤
+              </button>
+              {showProfileDropdown && (
+                <div className="admin-profile-dropdown">
+                  <div className="admin-profile-meta">
+                    <div className="admin-profile-name">{userProfile?.username || "-"}</div>
+                    <div className="admin-profile-role">{userProfile?.role || "-"}</div>
+                  </div>
+                  <button className="admin-logout" onClick={handleLogout} type="button">
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </header>
-        <section className="data-section">
-          <h2>{activeMenu.charAt(0).toUpperCase() + activeMenu.slice(1)}</h2>
-          {loading && <p>Loading...</p>}
-          {error && <p className="error-message">{error}</p>}
-          {!loading && !error && filteredData.length > 0 && (
-            <table>
-              <thead>
-                <tr>
-                  {Object.keys(filteredData[0]).map((key) => (
-                    <th key={key}>
-                      {key.charAt(0).toUpperCase() + key.slice(1)}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.map((item, index) => (
-                  <tr key={index}>
-                    {Object.entries(item).map(([key, value]) => (
-                      <td key={key}>{value}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+
+        <section className="admin-card">
+          <div className="admin-card-head">
+            <div className="admin-card-title">
+              {activeTab === "users" ? "Users" : "Requests"}
+            </div>
+            <div className="admin-card-subtitle">
+              {filteredRows.length} record{filteredRows.length === 1 ? "" : "s"}
+            </div>
+          </div>
+
+          {loading && <div className="admin-status">Loading...</div>}
+          {!loading && error && <div className="admin-error">{error}</div>}
+
+          {!loading && !error && paginatedRows.length === 0 && (
+            <div className="admin-status">No data available.</div>
           )}
-          {!loading && !error && filteredData.length === 0 && <p>No data available.</p>}
+
+          {!loading && !error && paginatedRows.length > 0 && (
+            <div className="admin-table-wrap">
+              {activeTab === "requests" ? (
+                <table className="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Type</th>
+                      <th>Name</th>
+                      <th>Mobile</th>
+                      <th>Email</th>
+                      <th>Location</th>
+                      <th>Service</th>
+                      <th>Message</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {paginatedRows.map((r, idx) => (
+                      <tr key={`${r?.mobile || ""}-${r?.createdAt || ""}-${idx}`}>
+                        <td className="mono created-col" data-label="Timestamp">
+                          {r.createdAt}
+                        </td>
+                        <td data-label="Type">
+                          <span className={`badge badge-${r.type || "unknown"}`}>
+                            {r.type || "-"}
+                          </span>
+                        </td>
+                        <td data-label="Name">{r.fullname}</td>
+                        <td className="mono" data-label="Mobile">
+                          {r.mobile}
+                        </td>
+                        <td data-label="Email">
+                          {r.email}
+                        </td>
+                        <td data-label="Location">
+                          {r.location}
+                        </td>
+                        <td data-label="Service">
+                          {r.service}
+                        </td>
+                        <td data-label="Message">
+                          {r.message ? (
+                            <button
+                              className="link-btn"
+                              type="button"
+                              onClick={() => openMessage(r)}
+                            >
+                              View
+                            </button>
+                          ) : (
+                            <span className="muted">—</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <table className="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Role</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {paginatedRows.map((u, idx) => (
+                      <tr key={`${u?.username || ""}-${idx}`}>
+                        <td data-label="Username">
+                          {u.username}
+                        </td>
+                        <td data-label="Role">
+                          <span className={`badge badge-${u.role || "user"}`}>
+                            {u.role}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          )}
+
+          {!loading && !error && filteredRows.length > 0 && (
+            <div className="admin-pagination">
+              <button
+                type="button"
+                className="pager-btn"
+                disabled={page <= 1}
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+              >
+                Prev
+              </button>
+              <div className="pager-meta">
+                Page <span className="mono">{page}</span> /{" "}
+                <span className="mono">{totalPages}</span>
+              </div>
+              <button
+                type="button"
+                className="pager-btn"
+                disabled={page >= totalPages}
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              >
+                Next
+              </button>
+            </div>
+          )}
         </section>
       </main>
+
+      <Modal
+        open={messageModalOpen}
+        title={messageModalTitle}
+        footer={null}
+        onCancel={() => setMessageModalOpen(false)}
+      >
+        <div className="admin-message">{messageModalText || "No message"}</div>
+      </Modal>
     </div>
   )
 }

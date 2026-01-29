@@ -7,13 +7,12 @@ import { FaLocationDot, FaWhatsapp, FaPhone, FaEnvelope } from "react-icons/fa6"
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaPinterest, FaExternalLinkAlt } from "react-icons/fa"
 import MapComponent from "../map/MapComponent"
 import cards from "../../util/serviceList"
-import { useNotification } from "../NotificationContext"
-import { createEnquiry } from "../../util/api"
+import { createRequest } from "../../util/api"
 import { socialLinks, quickLinks, contactInfo } from "../../util/commonData"
+import { message } from "antd"
 
 const ContactPage = () => {
   const servicesOptions = cards.map((item) => item.title)
-  const { addNotification } = useNotification()
 
   const [enquiryData, setEnquiryData] = useState({
     fullname: "",
@@ -32,9 +31,9 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await createEnquiry(enquiryData)
+      const response = await createRequest({ ...enquiryData, type: "enquiry" })
       if (response) {
-        addNotification("Enquiry Submitted Successfully", "success", 3000)
+        message.success("Enquiry Submitted Successfully")
         setEnquiryData({
           fullname: "",
           email: "",
@@ -44,11 +43,11 @@ const ContactPage = () => {
           service: "",
         })
       } else {
-        addNotification("Enquiry Submission Failed", "error", 3000)
+        message.error("Enquiry Submission Failed")
       }
     } catch (error) {
       console.error("Error Submitting Enquiry", error)
-      addNotification(error.message, "error", 3000)
+      message.error(error.message)
     }
   }
 
@@ -263,7 +262,7 @@ const ContactPage = () => {
                 <div className="contact-input-wrapper">
                   <i className="fas fa-phone"></i>
                   <input 
-                    type="number"
+                    type="tel"
                     name="mobile"
                     value={enquiryData.mobile}
                     onChange={handleChange}

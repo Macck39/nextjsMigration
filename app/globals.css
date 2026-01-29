@@ -24,5 +24,9 @@ code {
     monospace;
 }
 
+.ant-message {
+  z-index: 12000;
+}
+
 
 
