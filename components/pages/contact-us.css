@@ -306,6 +306,160 @@
   color: #4ab899;
 }
 
+/* ============================================
+   Promotional Banner Section
+   ============================================ */
+.promo-banner-section {
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.promo-banner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1.5rem;
+}
+
+.promo-banner-content {
+  flex: 1;
+  padding: 2rem;
+  background: linear-gradient(135deg, #4ab899 0%, #3a9d7f 100%);
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 10px 40px rgba(74, 184, 153, 0.3);
+}
+
+.promo-banner-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.promo-banner-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+  margin-bottom: 1.5rem;
+}
+
+.promo-banner-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.promo-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  min-width: 90px;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.promo-banner-image {
+  flex: 0 0 320px;
+  height: 630px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.promo-banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.4s ease;
+}
+
+.promo-banner-image:hover img {
+  transform: scale(1.03);
+}
+
+/* Responsive for Banner Section */
+@media (max-width: 992px) {
+  .promo-banner-container {
+    flex-direction: column;
+  }
+  
+  .promo-banner-content {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .promo-banner-stats {
+    justify-content: center;
+  }
+  
+  .promo-banner-image {
+    flex: none;
+    width: 100%;
+    max-width: 350px;
+    height: 580px;
+  }
+}
+
+@media (max-width: 576px) {
+  .promo-banner-section {
+    margin: 1.5rem 0;
+  }
+  
+  .promo-banner-content {
+    padding: 1.5rem;
+  }
+  
+  .promo-banner-title {
+    font-size: 1.4rem;
+  }
+  
+  .promo-banner-text {
+    font-size: 0.9rem;
+  }
+  
+  .promo-banner-stats {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .promo-stat {
+    min-width: 80px;
+    padding: 0.75rem;
+  }
+  
+  .stat-number {
+    font-size: 1.2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+  }
+  
+  .promo-banner-image {
+    height: 550px;
+    max-width: 280px;
+  }
+}
+
 /* Map and Form Section */
 .contact-section {
   display: flex;

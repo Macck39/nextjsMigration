@@ -1,19 +1,49 @@
 'use client'
 
 import { useState } from "react"
+import Image from "next/image"
+import dynamic from "next/dynamic"
 import "./contact-us.css"
 import { BiPhoneCall, BiSolidTime } from "react-icons/bi"
 import { FaLocationDot, FaWhatsapp, FaPhone, FaEnvelope } from "react-icons/fa6"
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaPinterest, FaExternalLinkAlt } from "react-icons/fa"
-import MapComponent from "../map/MapComponent"
 import cards from "../../util/serviceList"
-import { useNotification } from "../NotificationContext"
-import { createEnquiry } from "../../util/api"
+import { createRequest } from "../../util/api"
 import { socialLinks, quickLinks, contactInfo } from "../../util/commonData"
+import { message } from "antd"
+
+// Dynamic import for MapComponent - Maps don't need SSR and are heavy
+const MapComponent = dynamic(
+  () => {
+    // #region agent log
+    if (typeof window !== 'undefined') {
+      fetch('http://127.0.0.1:7242/ingest/b841c0e5-3deb-42e9-8e6c-5e2b97b1092f',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'ContactPage.jsx:dynamicImport',message:'MapComponent dynamic import started',data:{},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'B'})}).catch(()=>{});
+    }
+    // #endregion
+    return import("../map/MapComponent").then(mod => {
+      // #region agent log
+      if (typeof window !== 'undefined') {
+        fetch('http://127.0.0.1:7242/ingest/b841c0e5-3deb-42e9-8e6c-5e2b97b1092f',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'ContactPage.jsx:dynamicImport',message:'MapComponent dynamic import SUCCESS',data:{hasDefault:!!mod.default},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'B'})}).catch(()=>{});
+      }
+      // #endregion
+      return mod;
+    }).catch(err => {
+      // #region agent log
+      if (typeof window !== 'undefined') {
+        fetch('http://127.0.0.1:7242/ingest/b841c0e5-3deb-42e9-8e6c-5e2b97b1092f',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'ContactPage.jsx:dynamicImport',message:'MapComponent dynamic import FAILED',data:{error:err?.message||String(err)},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'B'})}).catch(()=>{});
+      }
+      // #endregion
+      throw err;
+    });
+  },
+  { 
+    loading: () => <div className="map-skeleton" style={{ height: '550px', background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading map...</div>,
+    ssr: false 
+  }
+)
 
 const ContactPage = () => {
   const servicesOptions = cards.map((item) => item.title)
-  const { addNotification } = useNotification()
 
   const [enquiryData, setEnquiryData] = useState({
     fullname: "",
@@ -32,9 +62,9 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await createEnquiry(enquiryData)
+      const response = await createRequest({ ...enquiryData, type: "enquiry" })
       if (response) {
-        addNotification("Enquiry Submitted Successfully", "success", 3000)
+        message.success("Enquiry Submitted Successfully")
         setEnquiryData({
           fullname: "",
           email: "",
@@ -44,11 +74,11 @@ const ContactPage = () => {
           service: "",
         })
       } else {
-        addNotification("Enquiry Submission Failed", "error", 3000)
+        message.error("Enquiry Submission Failed")
       }
     } catch (error) {
       console.error("Error Submitting Enquiry", error)
-      addNotification(error.message, "error", 3000)
+      message.error(error.message)
     }
   }
 
@@ -188,6 +218,41 @@ const ContactPage = () => {
         </div>
       </section>
 
+      {/* Promotional Banner Section */}
+      <section className="promo-banner-section">
+        <div className="promo-banner-container">
+          <div className="promo-banner-content">
+            <h2 className="promo-banner-title">Know Your Health, Own Your Life</h2>
+            <p className="promo-banner-text">
+              Ragini Nursing Bureau - Your trusted partner for quality home healthcare services across Delhi NCR
+            </p>
+            <div className="promo-banner-stats">
+              <div className="promo-stat">
+                <span className="stat-number">1200+</span>
+                <span className="stat-label">Staff</span>
+              </div>
+              <div className="promo-stat">
+                <span className="stat-number">24x7</span>
+                <span className="stat-label">Service</span>
+              </div>
+              <div className="promo-stat">
+                <span className="stat-number">50+</span>
+                <span className="stat-label">Daily Services</span>
+              </div>
+            </div>
+          </div>
+          <div className="promo-banner-image">
+            <Image 
+              src="/assets/Banner.jpeg" 
+              alt="Ragini Nursing Bureau Services Banner" 
+              width={500}
+              height={350}
+              style={{ width: '100%', height: 'auto' }}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Map and Form Section */}
       <section className="contact-section">
         <div className="contact-map-form-container">
@@ -230,7 +295,7 @@ const ContactPage = () => {
                 <div className="contact-input-wrapper">
                   <i className="fas fa-phone"></i>
                   <input 
-                    type="number"
+                    type="tel"
                     name="mobile"
                     value={enquiryData.mobile}
                     onChange={handleChange}

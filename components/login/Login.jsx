@@ -5,13 +5,14 @@ import "./login.css"
 import { useAuth } from "../AuthContext"
 import { useRouter } from "next/navigation"
 import { useNotification } from "../NotificationContext"
-import Cookies from 'js-cookie'
+import { FaUser, FaLock, FaSignInAlt, FaUserNurse } from "react-icons/fa"
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
   })
+  const [isLoading, setIsLoading] = useState(false)
   const { login, isAuthenticated } = useAuth()
   const { addNotification } = useNotification()
   const router = useRouter()
@@ -23,98 +24,116 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!credentials.username || !credentials.password) {
+      addNotification("Please fill in all fields", "error", 3000)
+      return
+    }
+    setIsLoading(true)
     const success = await login(credentials)
+    setIsLoading(false)
     if (success) {
-      router.push("/admindashboard")
-      addNotification("Login Successfull", "success", 3000)
+      router.push("/portal-8f3c2a")
+      addNotification("Login Successful", "success", 3000)
     } else {
       addNotification("Invalid Credentials", "error", 3000)
     }
   }
 
   useEffect(() => {
-    const token = Cookies.get('token')
-    if(token){ 
-      router.push("/admindashboard")
+    if (isAuthenticated) {
+      router.push("/portal-8f3c2a")
     }
-  }, [router])
+  }, [isAuthenticated, router])
   
   return (
-    <>
-      <section
-        className="vh-100 d-flex justify-content-center align-items-center"
-        id="login-container"
-      >
-        <div className="h-100">
-          <div className="row d-flex align-items-center justify-content-center h-100 w-100">
-            <div className="col-md-8 col-lg-7 col-xl-6">
-              <img src="/assets/image 26.png" className="img-fluid" alt="Phone image" />
+    <div className="login-page">
+      <div className="login-container">
+        {/* Left Side - Branding */}
+        <div className="login-branding">
+          <div className="branding-content">
+            <div className="brand-icon">
+              <FaUserNurse />
             </div>
-            <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-              <h1 className="text-center mb-3">Welcome Back</h1>
-              <h6 className="text-center mb-3">
-                Welcome to Ragini Nursing Bureau
-              </h6>
-              <form onSubmit={handleSubmit}>
-                <div data-mdb-input-init className="form-outline mb-4">
-                  <input
-                    type="username"
-                    name="username"
-                    placeholder="Enter your email"
-                    id="form1Example13"
-                    className="form-control form-control-lg"
-                    value={credentials.username}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div data-mdb-input-init className="form-outline mb-4">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    id="form1Example23"
-                    className="form-control form-control-lg"
-                    value={credentials.password}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="d-flex justify-content-around align-items-center mb-4">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="form1Example3"
-                      defaultChecked
-                    />
-                    <label className="form-check-label" htmlFor="form1Example3">
-                      {" "}
-                      Remember me{" "}
-                    </label>
-                  </div>
-                  <a href="#!">Forgot password?</a>
-                </div>
-
-                <button
-                  type="submit"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  className=" btn-primary btn-lg btn-block"
-                >
-                  Sign in
-                </button>
-              </form>
+            <h1 className="brand-title">Ragini Nursing Bureau</h1>
+            <p className="brand-tagline">Your Health, Our Priority</p>
+            <div className="brand-features">
+              <div className="feature-item">
+                <span className="feature-check">✓</span>
+                <span>24/7 Home Healthcare</span>
+              </div>
+              <div className="feature-item">
+                <span className="feature-check">✓</span>
+                <span>Professional Nursing Care</span>
+              </div>
+              <div className="feature-item">
+                <span className="feature-check">✓</span>
+                <span>Trusted by 500+ Families</span>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    </>
+
+        {/* Right Side - Login Form */}
+        <div className="login-form-section">
+          <div className="login-form-container">
+            <div className="login-header">
+              <h2>Admin Portal</h2>
+              <p>Sign in to access the dashboard</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="login-form">
+              <div className="input-group">
+                <div className="input-icon">
+                  <FaUser />
+                </div>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={credentials.username}
+                  onChange={handleChange}
+                  autoComplete="username"
+                />
+              </div>
+
+              <div className="input-group">
+                <div className="input-icon">
+                  <FaLock />
+                </div>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={credentials.password}
+                  onChange={handleChange}
+                  autoComplete="current-password"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="login-btn"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <span className="loading-spinner"></span>
+                ) : (
+                  <>
+                    <FaSignInAlt />
+                    <span>Sign In</span>
+                  </>
+                )}
+              </button>
+            </form>
+
+            <div className="login-footer">
+              <p>Authorized personnel only</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
 export default Login
-
-
-

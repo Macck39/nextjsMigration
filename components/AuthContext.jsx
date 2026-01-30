@@ -2,8 +2,7 @@
 
 import { createContext, useState, useContext, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import Cookies from 'js-cookie'
-import { getUserProfile, handleLogin } from "../util/api"
+import { getUserProfile, handleLogin, logout as apiLogout } from "../util/api"
 
 const AuthContext = createContext()
 
@@ -13,17 +12,11 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter()
 
 const checkAuth= async()=>{
-  const token = Cookies.get('token')
-  if(token){
-    try {
-        await getUserProfile()
-        setIsAuthenticated(true)
-    } catch(error){
-      console.error("Token validation error:", error)
-      Cookies.remove('token')
-      setIsAuthenticated(false)
-    }
-  }else{
+  try {
+    await getUserProfile()
+    setIsAuthenticated(true)
+  } catch (error) {
+    console.error("Auth check error:", error)
     setIsAuthenticated(false)
   }
   setIsLoading(false)
@@ -48,8 +41,12 @@ useEffect(() => {
     }
 
   }
-  const logout = () => {
-    Cookies.remove('token')
+  const logout = async () => {
+    try {
+      await apiLogout()
+    } catch {
+      // ignore
+    }
     setIsAuthenticated(false)
   }
 

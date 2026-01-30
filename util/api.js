@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:9090/api/v1';
+const BASE_URL = '/api';
 
 const authAxios = axios.create({
   baseURL: BASE_URL,
@@ -20,27 +20,21 @@ const handleApiError = (error) => {
   }
 };
 export const handleLogin = (credentials) => 
-  authAxios.post('/user/login', credentials).catch(handleApiError);
+  authAxios.post('/auth/login', credentials).catch(handleApiError);
   
-export const createEnquiry = (data) => 
-  authAxios.post('/enquiry/', data).catch(handleApiError);
+export const createRequest = (data) =>
+  authAxios.post('/requests', data).catch(handleApiError);
 
-export const callbackRequest = (data) => 
-  authAxios.post('/request/', data).catch(handleApiError);
-
-export const getCallbackRequests = () => 
-    authAxios.get('/request/').catch(handleApiError);
-
-export const getAllEnquiry = () => 
-    authAxios.get('/enquiry').catch(handleApiError);
+export const getRequests = () =>
+  authAxios.get('/requests').catch(handleApiError);
 
   export const getAllUsers = () => 
-    authAxios.get('/user/all').catch(handleApiError);
+    authAxios.get('/users').catch(handleApiError);
   
   export const getUserProfile = () => 
-    authAxios.get('/user/').catch(handleApiError);
+    authAxios.get('/auth/me').catch(handleApiError);
   export const logout = () => 
-    authAxios.get('/user/logout').catch(handleApiError);
+    authAxios.post('/auth/logout').catch(handleApiError);
   
   // Add more API functions as needed
   export const createPost = (postData) => 
