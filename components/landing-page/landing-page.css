@@ -1015,7 +1015,6 @@
 .why-choose-container {
   display: flex;
   justify-content: space-around;
-  /* flex-wrap: wrap; */
 }
 
 .product_card {
@@ -1068,6 +1067,7 @@
 
   .product_card {
     width: 90%;
+    height: auto;
     margin: 10px 0;
   }
 }

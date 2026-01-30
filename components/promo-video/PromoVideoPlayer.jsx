@@ -67,9 +67,9 @@ const PromoVideoPlayer = () => {
                 muted
                 playsInline
                 loop
-                poster="/updates/categoryImages/NursingService.jpeg"
+                poster="/assets/NursingService.jpeg"
               >
-                <source src="/updates/RaginiNursingBureauMain.mp4" type="video/mp4" />
+                <source src="/assets/RaginiNursingBureauMain.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

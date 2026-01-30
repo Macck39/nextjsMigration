@@ -12,8 +12,9 @@ const VideosPage = () => {
   const [isVideoListExpanded, setIsVideoListExpanded] = useState(true)
 
   const [currentVideo, setCurrentVideo] = useState({
-    src: "https://youtube.com/embed/duwQNtb-7rw?si=SKld_sSO0AT36jbL",
-    title: "Default Video",
+    src: videoPageVideos[0].src,
+    title: videoPageVideos[0].title,
+    thumbnail: videoPageVideos[0].thumbnail,
   })
   const toggleAccordion = (section) => {
     setActiveAccordion(activeAccordion === section ? null : section)

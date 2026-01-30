@@ -18,12 +18,12 @@ import { serviceLocations, serviceDescriptions, detailedServices, benefits } fro
 
 // Featured services with new category images
 const featuredServices = [
-  { image: "/updates/categoryImages/NursingService.jpeg", title: "Nursing Service", description: "Professional care at home" },
-  { image: "/updates/categoryImages/BabyCareAndVaccinationAtHome.jpeg", title: "Baby Care & Vaccination at Home", description: "Expert infant care" },
-  { image: "/updates/categoryImages/GetTrainedAttendentServiceAtHome.jpeg", title: "Trained Attendant Service at Home/Hospital Near You", description: "Dedicated caregivers" },
-  { image: "/updates/categoryImages/ICUSetupAtHome.jpeg", title: "ICU Setup at Home", description: "Hospital-grade equipment" },
-  { image: "/updates/categoryImages/LabTestAtHome.jpeg", title: "Lab Test at Home", description: "Convenient diagnostics" },
-  { image: "/updates/categoryImages/MedicineDeliveryAtHomeDelhi.jpeg", title: "Medicine Delivery at Home", description: "Doorstep delivery" },
+  { image: "/assets/NursingService.jpeg", title: "Nursing Service", description: "Professional care at home" },
+  { image: "/assets/BabyCareAndVaccinationAtHome.jpeg", title: "Baby Care & Vaccination at Home", description: "Expert infant care" },
+  { image: "/assets/GetTrainedAttendentServiceAtHome.jpeg", title: "Trained Attendant Service at Home/Hospital Near You", description: "Dedicated caregivers" },
+  { image: "/assets/ICUSetupAtHome.jpeg", title: "ICU Setup at Home", description: "Hospital-grade equipment" },
+  { image: "/assets/LabTestAtHome.jpeg", title: "Lab Test at Home", description: "Convenient diagnostics" },
+  { image: "/assets/MedicineDeliveryAtHomeDelhi.jpeg", title: "Medicine Delivery at Home", description: "Doorstep delivery" },
 ]
 
 const AllServices = () => {

@@ -268,15 +268,10 @@ const LandingPage = () => {
         <div className="why-choose-container">
           {whyChooseUs.map((item, index) => (
             <div className="product_card" key={index}>
-              <div className="image">
-                <Image 
-                  src={item.image} 
-                  alt={item.title} 
-                  width={300} 
-                  height={200}
-                  style={{ width: '100%', height: 'auto' }}
-                />
-              </div>
+              <img 
+                src={item.image} 
+                alt={item.title} 
+              />
               <div className="product_info">
                 <h2 className="product_name">{item.title}</h2>
                 <p className="product_description">{item.description}</p>

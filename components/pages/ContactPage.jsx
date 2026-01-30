@@ -243,7 +243,7 @@ const ContactPage = () => {
           </div>
           <div className="promo-banner-image">
             <Image 
-              src="/updates/Banner.jpeg" 
+              src="/assets/Banner.jpeg" 
               alt="Ragini Nursing Bureau Services Banner" 
               width={500}
               height={350}

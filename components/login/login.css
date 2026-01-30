@@ -160,10 +160,15 @@
 .input-icon {
   position: absolute;
   left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #a0aec0;
   font-size: 18px;
   z-index: 1;
   transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .input-group input {
@@ -318,9 +323,7 @@
 
   .input-group input {
     height: 52px;
-  }
-
-  .login-btn {
+  }  .login-btn {
     height: 52px;
   }
 }

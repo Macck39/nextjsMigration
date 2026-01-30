@@ -58,13 +58,13 @@ export const landingVideos = [
     id: 2,
     src: "https://www.youtube.com/embed/phRW428EayI",
     title: "कम बजट में घर को बनाएं ICU: जरूरी मशीनें और सेटअप की पूरी जानकारी।",   
-    thumbnail: "/Updates/icuSetup.png",
+    thumbnail: "/assets/icuSetup.png",
   },
   {
     id: 3,
     src: "https://www.youtube.com/embed/qftoUHFvhZ4",
     title: "क्या आप भी सर्च कर रहे हैं नर्सिंग देखभाल वृद्धावस्था देखभाल आईसीयू सेटअप घर #short #viral #home",
-    thumbnail: "/Updates/oldAgeCareAtHome.jpg",
+    thumbnail: "/assets/oldAgeCareAtHome.jpg",
   },
 ]
 
@@ -76,19 +76,19 @@ export const videoPageVideos = [
     id: 1,
     src: "https://www.youtube.com/embed/phRW428EayI",
     title: "कम बजट में घर को बनाएं ICU: जरूरी मशीनें और सेटअप की पूरी जानकारी।",   
-    thumbnail: "/Updates/icuSetup.png",
+    thumbnail: "/assets/icuSetup.png",
   },
   {
     id: 2,
     src: "https://www.youtube.com/embed/qftoUHFvhZ4",
     title: "क्या आप भी सर्च कर रहे हैं नर्सिंग देखभाल वृद्धावस्था देखभाल आईसीयू सेटअप घर #short #viral #home",
-    thumbnail: "/Updates/oldAgeCareAtHome.jpg",
+    thumbnail: "/assets/oldAgeCareAtHome.jpg",
   },
   {
     id: 3,
     src: "https://www.youtube.com/embed/v87N-LAvKwc",
     title: "मुंह के कैंसर का सबसे अच्छा इलाज #care #subscribe  #oralcancerawareness #prevention by Dr.Anmol #top",
-    thumbnail: "/Updates/mouthCancer.jpg",
+    thumbnail: "/assets/mouthCancer.jpg",
   },
   {
     id: 4,
@@ -106,13 +106,13 @@ export const videoPageVideos = [
     id: 6,
     src: "https://www.youtube.com/embed/6zBYcrcSsiE",
     title: "Patient care Recliner Bed 🛌 delhi Ncr Rent Purchased Home delivery @RAGININURSINGBUREAU1 #elder",
-    thumbnail: "/Updates/reclinerBed.jpg",
+    thumbnail: "/assets/reclinerBed.jpg",
   },
   {
     id: 7,
     src: "https://www.youtube.com/embed/B99QwqmzsJM",
     title: "Hospital bed price near New Delhi, Delhi #medical #bed #care #hospital #icucare call now 7859989007",
-    thumbnail: "/Updates/hospitalBed.jpg",
+    thumbnail: "/assets/hospitalBed.jpg",
   }
 ]
 
