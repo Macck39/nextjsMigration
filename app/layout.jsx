@@ -9,24 +9,24 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   // Title configuration with template for child pages
   title: {
-    default: 'Ragini Nursing Bureau - Home Healthcare Services in Delhi NCR',
-    template: '%s | Ragini Nursing Bureau'
+    default: 'Ragini Nursing Bureau - Home Healthcare & Nursing Services in Delhi',
+    template: '%s | Ragini Nursing Bureau Delhi'
   },
-  description: 'Professional home healthcare services including nursing care, ICU setup at home, elderly care, physiotherapy, baby care, and more. 24/7 availability across Delhi NCR. Trusted by thousands of families.',
+  description: 'Professional nursing and home healthcare services in Delhi: nursing care, ICU setup at home, elderly care, physiotherapy, baby care, and more. 24/7 availability across Delhi. Trusted by thousands of families in Delhi.',
   keywords: [
-    'nursing bureau',
-    'home healthcare',
+    'nursing bureau Delhi',
+    'home healthcare Delhi',
+    'nursing services Delhi',
     'Delhi NCR',
-    'nursing services',
-    'elderly care',
-    'ICU setup at home',
-    'physiotherapy at home',
-    'nursing care',
-    'home nurse',
-    'patient care',
-    'medical attendant',
-    'baby care',
-    'mother and child care'
+    'elderly care Delhi',
+    'ICU setup at home Delhi',
+    'physiotherapy at home Delhi',
+    'nursing care Delhi',
+    'home nurse Delhi',
+    'patient care Delhi',
+    'medical attendant Delhi',
+    'baby care Delhi',
+    'mother and child care Delhi'
   ],
   authors: [{ name: 'Ragini Nursing Bureau' }],
   creator: 'Ragini Nursing Bureau',
@@ -34,10 +34,10 @@ export const metadata = {
   
   // Open Graph metadata for social sharing
   openGraph: {
-    title: 'Ragini Nursing Bureau - Home Healthcare Services',
-    description: 'Your trusted partner for quality home healthcare services. Professional nurses, ICU setup, elderly care, and more across Delhi NCR.',
+    title: 'Ragini Nursing Bureau - Home Healthcare & Nursing Services in Delhi',
+    description: 'Your trusted partner for quality home healthcare services in Delhi. Professional nurses, ICU setup, elderly care, and more across Delhi.',
     url: 'https://ragininursingbureau.com',
-    siteName: 'Ragini Nursing Bureau',
+    siteName: 'Ragini Nursing Bureau Delhi',
     locale: 'en_IN',
     type: 'website',
     images: [
@@ -45,7 +45,7 @@ export const metadata = {
         url: '/assets/Ragini-Logo.png',
         width: 800,
         height: 600,
-        alt: 'Ragini Nursing Bureau Logo',
+        alt: 'Ragini Nursing Bureau Delhi - Home Healthcare Services',
       }
     ],
   },
@@ -53,8 +53,8 @@ export const metadata = {
   // Twitter card metadata
   twitter: {
     card: 'summary_large_image',
-    title: 'Ragini Nursing Bureau - Home Healthcare Services',
-    description: 'Professional home healthcare services including nursing care, ICU setup, elderly care across Delhi NCR.',
+    title: 'Ragini Nursing Bureau - Home Healthcare & Nursing Services in Delhi',
+    description: 'Professional nursing and home healthcare services in Delhi: nursing care, ICU setup, elderly care across Delhi.',
     images: ['/assets/Ragini-Logo.png'],
   },
   
@@ -96,6 +96,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="preload" href="/assets/banner1.jpg" as="image" />
+        <link rel="preload" href="/assets/contact-banner.png" as="image" />
+        <link rel="preload" href="/assets/our-services2.webp" as="image" />
+        <link rel="preload" href="/assets/about-banner.png" as="image" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"

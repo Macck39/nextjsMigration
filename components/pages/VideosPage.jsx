@@ -36,7 +36,7 @@ const VideosPage = () => {
       <div className="videos-container">
       
       <div className="image-conatiner">
-        <div className="about-banner"></div>
+        <div className="about-banner" aria-hidden />
       </div>
 
       {/* <h2 className="videos-title">Health Videos & Helpful Information</h2> */}

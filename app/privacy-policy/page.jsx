@@ -2,9 +2,9 @@ import PrivacyPolicy from '@/components/pages/PrivacyPolicy'
 
 export const metadata = {
   title: 'Privacy Policy',
-  description: 'Read Ragini Nursing Bureau\'s privacy policy. Learn how we collect, use, and protect your personal information when using our home healthcare services.',
+  description: 'Ragini Nursing Bureau Delhi privacy policy. How we collect, use, and protect your information when using our nursing and home healthcare services in Delhi.',
   openGraph: {
-    title: 'Privacy Policy - Ragini Nursing Bureau',
+    title: 'Privacy Policy - Ragini Nursing Bureau Delhi',
     description: 'Our commitment to protecting your privacy and personal data.',
   },
   robots: {

@@ -2,10 +2,10 @@ import TermsConditions from '@/components/pages/TermsConditions'
 
 export const metadata = {
   title: 'Terms & Conditions',
-  description: 'Read the terms and conditions for using Ragini Nursing Bureau\'s home healthcare services. Understand your rights and responsibilities as a client.',
+  description: 'Terms and conditions for Ragini Nursing Bureau Delhi nursing and home healthcare services. Your rights and responsibilities as a client in Delhi.',
   openGraph: {
-    title: 'Terms & Conditions - Ragini Nursing Bureau',
-    description: 'Terms of service for Ragini Nursing Bureau healthcare services.',
+    title: 'Terms & Conditions - Ragini Nursing Bureau Delhi',
+    description: 'Terms of service for Ragini Nursing Bureau Delhi healthcare services.',
   },
   robots: {
     index: true,

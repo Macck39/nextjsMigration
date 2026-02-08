@@ -2,20 +2,20 @@ import AllServices from '@/components/pages/AllServices'
 
 export const metadata = {
   title: 'Our Services',
-  description: 'Explore our comprehensive home healthcare services: nursing care, ICU setup at home, elderly care, physiotherapy, baby care, lab tests at home, medical equipment rental, and more in Delhi NCR.',
+  description: 'Nursing and home healthcare services in Delhi: nursing care, ICU at home, elderly care, physiotherapy, baby care, lab tests at home, medical equipment rental. Serving Delhi.',
   openGraph: {
-    title: 'Healthcare Services - Ragini Nursing Bureau',
-    description: 'Complete range of home healthcare services including nursing, ICU setup, physiotherapy, elderly care, and medical equipment.',
+    title: 'Healthcare Services in Delhi - Ragini Nursing Bureau',
+    description: 'Complete range of nursing and home healthcare services in Delhi: nursing, ICU setup, physiotherapy, elderly care, medical equipment.',
   },
   keywords: [
-    'home nursing services',
-    'ICU setup at home',
-    'physiotherapy at home',
-    'elderly care services',
-    'baby care at home',
-    'medical equipment rental',
-    'lab tests at home',
-    'Delhi NCR healthcare'
+    'home nursing services Delhi',
+    'ICU setup at home Delhi',
+    'physiotherapy at home Delhi',
+    'elderly care services Delhi',
+    'baby care at home Delhi',
+    'medical equipment rental Delhi',
+    'lab tests at home Delhi',
+    'healthcare Delhi'
   ],
 }
 

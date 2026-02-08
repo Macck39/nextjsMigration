@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { RiBarChartHorizontalLine } from "react-icons/ri"
 import { IoCloseSharp } from "react-icons/io5"
+import { FaHome, FaInfoCircle, FaPlayCircle, FaConciergeBell, FaPhone } from "react-icons/fa"
 import Image from "next/image"
 import "./navbar.css"
 // import Logo from "../../../public/Ragini-Logo.png"
@@ -66,26 +67,31 @@ const Navbar = () => {
           <ul>
             <li>
               <Link href="/" className={pathname === "/" ? "nav-active" : ""}>
+                <FaHome className="nav-icon" aria-hidden />
                 <span>HOME</span>
               </Link>
             </li>
             <li>
               <Link href="/about-us" className={pathname === "/about-us" ? "nav-active" : ""}>
+                <FaInfoCircle className="nav-icon" aria-hidden />
                 <span>ABOUT US</span>
               </Link>
             </li>
             <li>
               <Link href="/videos" className={pathname === "/videos" ? "nav-active" : ""}>
+                <FaPlayCircle className="nav-icon" aria-hidden />
                 <span>VIDEOS</span>
               </Link>
             </li>
             <li>
               <Link href="/services" className={pathname === "/services" ? "nav-active" : ""}>
+                <FaConciergeBell className="nav-icon" aria-hidden />
                 <span>SERVICES</span>
               </Link>
             </li>
             <li>
               <Link href="/contact" className={pathname === "/contact" ? "nav-active" : ""}>
+                <FaPhone className="nav-icon" aria-hidden />
                 <span>CONTACT US</span>
               </Link>
             </li>

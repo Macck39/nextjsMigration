@@ -1,18 +1,9 @@
 'use client'
 
 import { useState, useEffect } from "react"
-import dynamic from "next/dynamic"
 import "./all-services.css"
 import cards from "../../util/serviceList"
-
-// Dynamic import for AppointmentModal - Only loaded when user clicks
-const AppointmentModal = dynamic(
-  () => import("../appointment-modal/AppointmentModal"),
-  { 
-    loading: () => null,
-    ssr: false 
-  }
-)
+import AppointmentModal from "../appointment-modal/AppointmentModal"
 import { FaPlus, FaMinus, FaMapMarkerAlt, FaPhone, FaEnvelope, FaCheckCircle, FaUserNurse, FaHospital, FaBrain, FaLungs, FaHome, FaPills, FaStethoscope, FaHeartbeat, FaShieldAlt, FaPrescriptionBottleAlt, FaArrowRight } from 'react-icons/fa'
 import { serviceLocations, serviceDescriptions, detailedServices, benefits } from "../../util/commonData"
 
@@ -76,8 +67,24 @@ const AllServices = () => {
   return (
     <>
       <section>
-        <div className="all-services-wrapper">
-          <div className="all-services-banner">
+        <div
+          className="all-services-wrapper"
+          style={{
+            minHeight: '400px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            className="all-services-banner"
+            style={{
+              position: 'relative',
+              zIndex: 1,
+              textAlign: 'center',
+              width: '100%',
+            }}
+          >
             <h1 className="all-services-text">OUR SERVICES</h1>
           </div>
         </div>
