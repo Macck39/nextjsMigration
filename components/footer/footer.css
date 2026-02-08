@@ -163,8 +163,6 @@
 
 .float-call {
   bottom: 95px;
-  background-color: #25d366;
-  box-shadow: 0 4px 15px rgba(75, 168, 137, 0.4);
 }
 
 .float:hover {
@@ -172,9 +170,6 @@
   box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
 }
 
-.float-call:hover {
-  box-shadow: 0 6px 25px rgba(75, 168, 137, 0.6);
-}
 
 .my-float,
 .float-dialer {
