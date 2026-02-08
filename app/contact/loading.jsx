@@ -8,8 +8,18 @@ export default function ContactLoading() {
 
   return (
     <div style={{ padding: 0, background: '#fff' }}>
-      {/* Banner Skeleton */}
-      <div style={{ ...shimmerStyle, height: '250px' }}></div>
+      {/* Banner Skeleton - match contact-wrapper height to avoid layout shift */}
+      <div
+        style={{
+          height: '450px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#e8e8e8',
+        }}
+      >
+        <div style={{ ...shimmerStyle, height: '48px', width: '220px' }} />
+      </div>
       
       {/* Contact Info Skeleton */}
       <div style={{

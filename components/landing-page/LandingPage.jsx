@@ -1,19 +1,10 @@
 'use client'
 
-import { useState, useEffect } from "react"
-import dynamic from "next/dynamic"
+import { useState } from "react"
 import "./landing-page.css"
 import Image from "next/image"
 import Link from "next/link"
-
-// Dynamic import for AppointmentModal - Only loaded when user clicks
-const AppointmentModal = dynamic(
-  () => import("../appointment-modal/AppointmentModal"),
-  { 
-    loading: () => null,
-    ssr: false 
-  }
-)
+import AppointmentModal from "../appointment-modal/AppointmentModal"
 
 import { FaUserNurse, FaHospital, FaSmile, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa"
 import cards from "../../util/serviceList"
@@ -120,8 +111,24 @@ const LandingPage = () => {
   return (
     <div className="landing-page">
       <section>
-        <div className="wrapper">
-          <div className="banner-content">
+        <div
+          className="wrapper"
+          style={{
+            minHeight: '400px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            className="banner-content"
+            style={{
+              position: 'relative',
+              zIndex: 1,
+              textAlign: 'center',
+              width: '100%',
+            }}
+          >
             <h1>Your Health Is Our Concern!</h1>
             <p className="hero-subtitle">Your personal healthcare assistant</p>
             <button className="btn" onClick={handleClick}>

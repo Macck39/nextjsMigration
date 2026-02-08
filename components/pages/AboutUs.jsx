@@ -16,7 +16,15 @@ const AboutUs = () => {
   return (
     <div className="about-us-container">
       {/* Hero Section */}
-      <div className="about-hero-section">
+      <div
+        className="about-hero-section"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          minHeight: '320px',
+        }}
+      >
         <div className="about-hero-content">
           <h1>About Ragini Nursing Bureau</h1>
           <p className="hero-subtitle">Your trusted partner in home healthcare</p>

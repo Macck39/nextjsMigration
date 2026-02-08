@@ -2,10 +2,10 @@ import PaymentPolicy from '@/components/pages/PaymentPolicy'
 
 export const metadata = {
   title: 'Payment Policy',
-  description: 'Understand Ragini Nursing Bureau\'s payment terms, accepted payment methods, refund policy, and billing procedures for home healthcare services.',
+  description: 'Ragini Nursing Bureau Delhi payment terms, accepted methods, refund policy, and billing for nursing and home healthcare services in Delhi.',
   openGraph: {
-    title: 'Payment Policy - Ragini Nursing Bureau',
-    description: 'Payment terms and conditions for our healthcare services.',
+    title: 'Payment Policy - Ragini Nursing Bureau Delhi',
+    description: 'Payment terms and conditions for our healthcare services in Delhi.',
   },
   robots: {
     index: true,
