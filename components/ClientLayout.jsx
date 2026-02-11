@@ -12,8 +12,10 @@ export default function ClientLayout({ children }) {
   return (
     <>
       {!isLoginRoute && <Navbar />}
-      <main>{children}</main>
-      {!isLoginRoute && <Footer />}
+      <div className="main-content-wrapper">
+        <main>{children}</main>
+        {!isLoginRoute && <Footer />}
+      </div>
     </>
   )
 }

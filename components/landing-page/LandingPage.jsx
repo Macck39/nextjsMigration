@@ -6,7 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import AppointmentModal from "../appointment-modal/AppointmentModal"
 
-import { FaUserNurse, FaHospital, FaSmile, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa"
+import { FaUserNurse, FaHospital, FaSmile, FaMapMarkerAlt, FaPhone, FaEnvelope, FaAngleDoubleRight, FaChevronCircleRight, FaUser, FaCheckSquare } from "react-icons/fa"
 import cards from "../../util/serviceList"
 import { createRequest } from "../../util/api"
 import { useNotification } from "../NotificationContext"
@@ -131,6 +131,7 @@ const LandingPage = () => {
           >
             <h1>Your Health Is Our Concern!</h1>
             <p className="hero-subtitle">Your personal healthcare assistant</p>
+            <br/ >  
             <button className="btn" onClick={handleClick}>
               Book an Appointment
             </button>
@@ -216,7 +217,7 @@ const LandingPage = () => {
                   <Link href="/services" className="cta-link">
                     Show all services
                     <span className="p-2">
-                      <i className="fa-solid fa-angles-right"></i>
+                      <FaAngleDoubleRight />
                     </span>
                   </Link>
                 </div>
@@ -341,8 +342,8 @@ const LandingPage = () => {
         <div className="link-container">
           <Link href="/videos" className="d-flex align-items-center">
             <span>Show more</span>
-            <span className="ml-1">
-              <i className="fa-solid fa-angles-right"></i>
+            <span className="ms-1">
+              <FaAngleDoubleRight />
             </span>
           </Link>
         </div>
@@ -388,14 +389,14 @@ const LandingPage = () => {
             </div>
 
             <div className="slider-icon" onClick={handleNextTestimonial}>
-              <i className="fas fa-circle-chevron-right"></i>
+              <FaChevronCircleRight />
             </div>
           </div>
         </div>
       </section>
       <section className="my-5">
         <div className="section-header">
-          <h2 className="section-title">Request a callback</h2>
+          <h2 className="section-title">Send us an enquiry</h2>
           <p className="section-subtitle">Tell us what you need — we’ll contact you shortly.</p>
         </div>
         <div className="d-flex container">
@@ -403,7 +404,7 @@ const LandingPage = () => {
             <form className="enquiry-form" onSubmit={handleSubmit}>
               <div className="left-fields">
                 <div className="input-wrapper">
-                  <i className="fas fa-user"></i>
+                  <FaUser />
                   <input
                     type="text"
                     name="fullname"
@@ -413,7 +414,7 @@ const LandingPage = () => {
                   />
                 </div>
                 <div className="input-wrapper">
-                  <i className="fas fa-envelope"></i>
+                  <FaEnvelope />
                   <input
                     type="email"
                     name="email"
@@ -423,7 +424,7 @@ const LandingPage = () => {
                   />
                 </div>
                 <div className="input-wrapper">
-                  <i className="fas fa-phone"></i>
+                  <FaPhone />
                   <input
                     type="tel"
                     name="mobile"
@@ -433,7 +434,7 @@ const LandingPage = () => {
                   />
                 </div>
                 <div className="input-wrapper">
-                  <i className="fa-solid fa-square-check"></i>
+                  <FaCheckSquare />
                   <select
                     name="service"
                     value={enquiryData.service}
@@ -448,7 +449,7 @@ const LandingPage = () => {
                   </select>
                 </div>
                 <div className="input-wrapper">
-                  <i className="fas fa-map-marker-alt"></i>
+                  <FaMapMarkerAlt />
                   <input
                     type="text"
                     name="location"

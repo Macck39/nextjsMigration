@@ -540,11 +540,17 @@
   margin-bottom: 1rem;
 }
 
-.contact-input-wrapper i {
+.contact-input-wrapper i,
+.contact-input-wrapper svg {
   position: absolute;
+  top: 50%;
   left: 12px;
+  transform: translateY(-50%);
   color: #4ab899;
   font-size: 1rem;
+  width: 1em;
+  height: 1em;
+  pointer-events: none;
 }
 
 .contact-input-wrapper input,
@@ -582,6 +588,10 @@
   border-radius: 30px;
   cursor: pointer;
   width: 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
   transition: transform 0.3s ease, box-shadow 0.3s ease;

@@ -5,7 +5,7 @@ import Image from "next/image"
 import "./contact-us.css"
 import { BiPhoneCall, BiSolidTime } from "react-icons/bi"
 import { FaLocationDot, FaWhatsapp, FaPhone, FaEnvelope } from "react-icons/fa6"
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaPinterest, FaExternalLinkAlt } from "react-icons/fa"
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaPinterest, FaExternalLinkAlt, FaUser, FaBriefcase, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa"
 import cards from "../../util/serviceList"
 import { createRequest } from "../../util/api"
 import { socialLinks, quickLinks, contactInfo } from "../../util/commonData"
@@ -257,7 +257,7 @@ const ContactPage = () => {
             <form className="contact-enquiry-form" onSubmit={handleSubmit}>
               <div className="contact-form-fields">
                 <div className="contact-input-wrapper">
-                  <i className="fas fa-user"></i>
+                  <FaUser />
                   <input 
                     type="text"
                     name="fullname"
@@ -268,7 +268,7 @@ const ContactPage = () => {
                   />
                 </div>
                 <div className="contact-input-wrapper">
-                  <i className="fas fa-envelope"></i>
+                  <FaEnvelope />
                   <input 
                     type="email"
                     name="email"
@@ -279,7 +279,7 @@ const ContactPage = () => {
                   />
                 </div>
                 <div className="contact-input-wrapper">
-                  <i className="fas fa-phone"></i>
+                  <FaPhone />
                   <input 
                     type="tel"
                     name="mobile"
@@ -290,7 +290,7 @@ const ContactPage = () => {
                   />
                 </div>
                 <div className="contact-input-wrapper">
-                  <i className="fas fa-briefcase"></i>
+                  <FaBriefcase />
                   <select
                     name="service"
                     value={enquiryData.service}
@@ -307,7 +307,7 @@ const ContactPage = () => {
                 </div>
 
                 <div className="contact-input-wrapper">
-                  <i className="fas fa-map-marker-alt"></i>
+                  <FaMapMarkerAlt />
                   <input
                     type="text"
                     name="location"
@@ -328,7 +328,7 @@ const ContactPage = () => {
                 </div>
                 <div className="d-flex justify-content-center my-1">
                   <button type="submit" className="submit-button">
-                    <i className="fas fa-paper-plane"></i> Submit Enquiry
+                    <FaPaperPlane /> Submit Enquiry
                   </button>
                 </div>
               </div>

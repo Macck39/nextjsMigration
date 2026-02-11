@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useState, useContext, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { getUserProfile, handleLogin, logout as apiLogout } from "../util/api"
 
 const AuthContext = createContext()
@@ -10,21 +10,31 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
+  const pathname = usePathname()
 
-const checkAuth= async()=>{
-  try {
-    await getUserProfile()
-    setIsAuthenticated(true)
-  } catch (error) {
-    console.error("Auth check error:", error)
-    setIsAuthenticated(false)
+  const checkAuth = async () => {
+    try {
+      await getUserProfile()
+      setIsAuthenticated(true)
+      if (pathname === "/login") {
+        router.push("/portal-8f3c2a")
+      }
+    } catch (error) {
+      console.error("Auth check error:", error)
+      setIsAuthenticated(false)
+    }
+    setIsLoading(false)
   }
-  setIsLoading(false)
-}
 
-useEffect(() => {
-  checkAuth()
-}, [])
+  useEffect(() => {
+    // Only check auth on login and admin dashboard routes
+    if (pathname === "/login" || pathname.startsWith("/portal-8f3c2a")) {
+      checkAuth()
+    } else {
+      // For all other routes we don't need an auth check
+      setIsLoading(false)
+    }
+  }, [pathname])
 
   const login = async (credentials) => {
     try {
@@ -50,8 +60,18 @@ useEffect(() => {
     setIsAuthenticated(false)
   }
 
-  if (isLoading) {
-    return <div>Loading...</div> // Or any loading component
+  // On login page: always show the form immediately; auth check runs in background and redirects if already logged in
+  if (pathname === "/login") {
+    return (
+      <AuthContext.Provider value={{ isAuthenticated, login, logout, isLoading, checkAuth }}>
+        {children}
+      </AuthContext.Provider>
+    )
+  }
+
+  // On portal: block until auth check completes so we don't flash dashboard for unauthenticated users
+  if (isLoading && pathname?.startsWith("/portal-8f3c2a")) {
+    return <div />
   }
 
   return (
@@ -62,4 +82,3 @@ useEffect(() => {
 }
 
 export const useAuth = () => useContext(AuthContext)
-

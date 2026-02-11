@@ -2,7 +2,6 @@
 // Next.js will automatically serve this at /sitemap.xml
 
 export default function sitemap() {
-  // Update this to your actual domain before deployment
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ragininursingbureau.com';
   
   // Define all public routes with their metadata
