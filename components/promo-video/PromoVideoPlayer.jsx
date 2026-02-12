@@ -67,6 +67,7 @@ const PromoVideoPlayer = () => {
                 muted
                 playsInline
                 loop
+                preload="metadata"
                 poster="/assets/NursingService.jpeg"
               >
                 <source src="/assets/RaginiNursingBureauMain.mp4" type="video/mp4" />
