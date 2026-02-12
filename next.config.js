@@ -29,7 +29,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net",
       "style-src 'self' 'unsafe-inline' cdn.jsdelivr.net cdnjs.cloudflare.com fonts.googleapis.com",
       "font-src 'self' cdnjs.cloudflare.com fonts.gstatic.com",
-      "img-src 'self' data: blob:",
+      "img-src 'self' data: blob: i.ytimg.com img.youtube.com",
       "frame-src 'self' www.google.com www.youtube.com youtube.com",
       "connect-src 'self'",
     ].join('; ')

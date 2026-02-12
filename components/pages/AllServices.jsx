@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import "./all-services.css"
 import cards from "../../util/serviceList"
 import AppointmentModal from "../appointment-modal/AppointmentModal"
@@ -76,6 +77,19 @@ const AllServices = () => {
             justifyContent: 'center',
           }}
         >
+          <Image
+            src="/assets/our-services2.webp"
+            alt="Our Healthcare Services"
+            fill
+            priority
+            sizes="100vw"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              filter: 'brightness(0.3)',
+              zIndex: 0,
+            }}
+          />
           <div
             className="all-services-banner"
             style={{
