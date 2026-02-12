@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react"
+import Image from "next/image"
 import "./Videos.css"
 import { FaUserNurse,FaHospital,FaBrain,FaLungs,FaHome,FaPills,FaPlus,FaMinus,FaCheckCircle, FaChevronDown, FaChevronUp, FaPlay } from "react-icons/fa"
 import { detailedServices, videoPageVideos, dementiaTips } from "../../util/commonData"
@@ -36,7 +37,21 @@ const VideosPage = () => {
       <div className="videos-container">
       
       <div className="image-conatiner">
-        <div className="about-banner" aria-hidden />
+        <div className="about-banner" aria-hidden>
+          <Image
+            src="/assets/about-banner2.webp"
+            alt="Health Videos & Information"
+            fill
+            priority
+            sizes="100vw"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center top',
+              filter: 'brightness(0.9)',
+              zIndex: 0,
+            }}
+          />
+        </div>
       </div>
 
       {/* <h2 className="videos-title">Health Videos & Helpful Information</h2> */}

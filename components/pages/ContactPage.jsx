@@ -76,6 +76,19 @@ const ContactPage = () => {
             justifyContent: 'center',
           }}
         >
+          <Image
+            src="/assets/contact-banner.webp"
+            alt="Contact Ragini Nursing Bureau"
+            fill
+            priority
+            sizes="100vw"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              filter: 'brightness(0.7)',
+              zIndex: 0,
+            }}
+          />
           <div
             className="contact-banner"
             style={{

@@ -31,7 +31,7 @@ const AboutUs = () => {
         </div>
         <div className="about-hero-image">
           <Image 
-            src="/assets/about-banner.png" 
+            src="/assets/about-banner.webp" 
             alt="Ragini Nursing Bureau" 
             width={600}
             height={400}

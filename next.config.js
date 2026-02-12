@@ -36,7 +36,7 @@ const securityHeaders = [
   },
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=(self)'
+    value: 'camera=(), microphone=(), geolocation=(self), picture-in-picture=(self "https://www.youtube.com" "https://youtube.com")'
   }
 ];
 

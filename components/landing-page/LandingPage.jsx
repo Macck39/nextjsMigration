@@ -1,17 +1,18 @@
 'use client'
 
 import { useState } from "react"
+import dynamic from "next/dynamic"
 import "./landing-page.css"
 import Image from "next/image"
 import Link from "next/link"
-import AppointmentModal from "../appointment-modal/AppointmentModal"
+
+const AppointmentModal = dynamic(() => import("../appointment-modal/AppointmentModal"), { ssr: false })
 
 import { FaUserNurse, FaHospital, FaSmile, FaMapMarkerAlt, FaPhone, FaEnvelope, FaAngleDoubleRight, FaChevronCircleRight, FaUser, FaCheckSquare } from "react-icons/fa"
 import cards from "../../util/serviceList"
 import { createRequest } from "../../util/api"
 import { useNotification } from "../NotificationContext"
 import { serviceLocations, testimonials, landingVideos, whyChooseUs } from "../../util/commonData"
-import { message } from "antd"
 
 const LandingPage = () => {
   const limitedItems = cards.slice(0, 8)
@@ -89,22 +90,22 @@ const LandingPage = () => {
     const requiredFields = ["fullname", "email", "mobile", "location", "service"]
     const hasMissing = requiredFields.some((field) => !getFieldValue(enquiryData[field]))
     if (hasMissing) {
-      message.error("Please fill all required fields.")
+      addNotification("Please fill all required fields.", "error")
       return
     }
     try {
       const response = await createRequest({ ...enquiryData, type: "callback" })
       console.log(response)
       if (response) {
-        message.success("Callback request submitted successfully!")
+        addNotification("Callback request submitted successfully!", "success")
         clearForm()
       } else {
-        message.error("Failed to submit. Please try again.")
+        addNotification("Failed to submit. Please try again.", "error")
       }
     } catch (error) {
       console.error("Error Submitting Enquiry", error)
       const friendlyMessage = getFriendlyError(error)
-      message.error(friendlyMessage)
+      addNotification(friendlyMessage, "error")
     }
   }
 
@@ -120,6 +121,20 @@ const LandingPage = () => {
             justifyContent: 'center',
           }}
         >
+          <Image
+            src="/assets/banner1.webp"
+            alt="Home Healthcare & Nursing Services"
+            fill
+            priority
+            sizes="100vw"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              filter: 'brightness(0.55) blur(0.8px)',
+              opacity: 0.9,
+              zIndex: 0,
+            }}
+          />
           <div
             className="banner-content"
             style={{
@@ -302,9 +317,8 @@ const LandingPage = () => {
                 src={currentVideo.src}
                 title={`YouTube video player - ${currentVideo.title}`}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="accelerometer; fullscreen; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
               ></iframe>
             </div>
             <div className="youtube-channel-info">

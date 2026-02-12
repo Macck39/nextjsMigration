@@ -1,5 +1,3 @@
-/* Bootstrap from installed package (no CDN) */
-@import 'bootstrap/dist/css/bootstrap.min.css';
 
 html {
   scroll-behavior: smooth;

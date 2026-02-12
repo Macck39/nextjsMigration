@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './globals.css'
 import Providers from '@/components/Providers'
 import ClientLayout from '@/components/ClientLayout'
@@ -96,7 +97,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="preload" href="/assets/banner1.jpg" as="image" />
       </head>
       <body className={inter.className}>
         <Providers>
