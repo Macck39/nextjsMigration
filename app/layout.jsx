@@ -80,9 +80,9 @@ export const metadata = {
   },
   
   // Verification for search consoles (add your IDs after verification)
-  // verification: {
-  //   google: 'your-google-verification-code',
-  // },
+  verification: {
+    google: '4OhR-ILbYPizk2JNbxXXTqrvyQMv6DnlqZJVfD5nCgM',
+  },
   
   // Alternate languages (if applicable)
   alternates: {
