@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './globals.css'
 import Providers from '@/components/Providers'
 import ClientLayout from '@/components/ClientLayout'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,7 +33,7 @@ export const metadata = {
   authors: [{ name: 'Ragini Nursing Bureau' }],
   creator: 'Ragini Nursing Bureau',
   publisher: 'Ragini Nursing Bureau',
-  
+
   // Open Graph metadata for social sharing
   openGraph: {
     title: 'Ragini Nursing Bureau - Home Healthcare & Nursing Services in Delhi',
@@ -50,7 +51,7 @@ export const metadata = {
       }
     ],
   },
-  
+
   // Twitter card metadata
   twitter: {
     card: 'summary_large_image',
@@ -58,14 +59,14 @@ export const metadata = {
     description: 'Professional nursing and home healthcare services in Delhi: nursing care, ICU setup, elderly care across Delhi.',
     images: ['/assets/Ragini-Logo.png'],
   },
-  
+
   // Favicon and icons configuration
   icons: {
     icon: '/assets/Ragini-Logo.ico',
     shortcut: '/assets/Ragini-Logo.ico',
     apple: '/assets/Ragini-Logo.png',
   },
-  
+
   // Robots configuration
   robots: {
     index: true,
@@ -78,17 +79,17 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  
+
   // Verification for search consoles (add your IDs after verification)
   verification: {
     google: '4OhR-ILbYPizk2JNbxXXTqrvyQMv6DnlqZJVfD5nCgM',
   },
-  
+
   // Alternate languages (if applicable)
   alternates: {
     canonical: 'https://ragininursingbureau.com',
   },
-  
+
   // Category for better classification
   category: 'Healthcare',
 }
@@ -99,6 +100,18 @@ export default function RootLayout({ children }) {
       <head>
       </head>
       <body className={inter.className}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11042496857"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-11042496857');
+  `}
+        </Script>
         <Providers>
           <ClientLayout>
             {children}
